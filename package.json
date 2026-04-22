@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "deploy": "npm run build && wrangler pages deploy dist/ADINOVA/browser --project-name=adinova",
+    "deploy:dev": "npm run build && wrangler pages deploy dist/ADINOVA/browser --project-name=adinova --env=development"
   },
   "private": true,
   "packageManager": "npm@11.11.0",
