@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" width="1000" height="600">
+  <defs>
+    <linearGradient id="night-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0D1520"/>
+      <stop offset="60%" stop-color="#1A2535"/>
+      <stop offset="100%" stop-color="#242E40"/>
+    </linearGradient>
+    <linearGradient id="glow-warm" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F0D890" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#E0B860" stop-opacity="0.7"/>
+    </linearGradient>
+    <linearGradient id="glow-cool" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#90C0E8" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#6090C0" stop-opacity="0.5"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="halo">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+    <linearGradient id="building-night" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1E2530"/>
+      <stop offset="100%" stop-color="#141820"/>
+    </linearGradient>
+    <linearGradient id="ground-reflect" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1A2030"/>
+      <stop offset="100%" stop-color="#0D1018"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Night sky -->
+  <rect width="1000" height="600" fill="url(#night-sky)"/>
+
+  <!-- Stars -->
+  <circle cx="80" cy="40" r="1.2" fill="#FFFFFF" opacity="0.7"/>
+  <circle cx="180" cy="25" r="1" fill="#FFFFFF" opacity="0.6"/>
+  <circle cx="300" cy="50" r="1.5" fill="#FFFFFF" opacity="0.8"/>
+  <circle cx="420" cy="20" r="1" fill="#FFFFFF" opacity="0.5"/>
+  <circle cx="550" cy="38" r="1.2" fill="#FFFFFF" opacity="0.7"/>
+  <circle cx="700" cy="15" r="1" fill="#FFFFFF" opacity="0.6"/>
+  <circle cx="820" cy="45" r="1.5" fill="#FFFFFF" opacity="0.8"/>
+  <circle cx="930" cy="28" r="1" fill="#FFFFFF" opacity="0.5"/>
+  <circle cx="150" cy="70" r="1" fill="#FFFFFF" opacity="0.4"/>
+  <circle cx="620" cy="60" r="1.2" fill="#FFFFFF" opacity="0.6"/>
+  <circle cx="880" cy="72" r="1" fill="#FFFFFF" opacity="0.5"/>
+
+  <!-- Ground -->
+  <rect x="0" y="490" width="1000" height="110" fill="url(#ground-reflect)"/>
+  <line x1="0" y1="490" x2="1000" y2="490" stroke="#303848" stroke-width="2"/>
+
+  <!-- Building silhouette -->
+  <rect x="200" y="100" width="600" height="392" fill="url(#building-night)"/>
+
+  <!-- Building edge highlights (structural lines) -->
+  <line x1="200" y1="100" x2="200" y2="492" stroke="#2A3545" stroke-width="2"/>
+  <line x1="800" y1="100" x2="800" y2="492" stroke="#2A3545" stroke-width="2"/>
+  <line x1="200" y1="100" x2="800" y2="100" stroke="#303848" stroke-width="2"/>
+
+  <!-- Floor division lines (subtle) -->
+  <line x1="200" y1="200" x2="800" y2="200" stroke="#202830" stroke-width="1"/>
+  <line x1="200" y1="280" x2="800" y2="280" stroke="#202830" stroke-width="1"/>
+  <line x1="200" y1="360" x2="800" y2="360" stroke="#202830" stroke-width="1"/>
+  <line x1="200" y1="440" x2="800" y2="440" stroke="#202830" stroke-width="1"/>
+
+  <!-- Lit windows - floor 5 (top) -->
+  <rect x="225" y="118" width="55" height="65" fill="url(#glow-warm)" filter="url(#glow)"/>
+  <rect x="295" y="118" width="55" height="65" fill="url(#glow-cool)" filter="url(#glow)"/>
+  <rect x="510" y="118" width="55" height="65" fill="url(#glow-warm)" filter="url(#glow)"/>
+  <rect x="650" y="118" width="55" height="65" fill="url(#glow-warm)" filter="url(#glow)"/>
+  <rect x="720" y="118" width="55" height="65" fill="url(#glow-cool)" filter="url(#glow)"/>
+
+  <!-- Lit windows - floor 4 -->
+  <rect x="225" y="210" width="55" height="55" fill="url(#glow-warm)" filter="url(#glow)"/>
+  <rect x="365" y="210" width="55" height="55" fill="url(#glow-cool)" filter="url(#glow)"/>
+  <rect x="440" y="210" width="55" height="55" fill="url(#glow-warm)" filter="url(#glow)"/>
+  <rect x="580" y="210" width="55" height="55" fill="url(#glow-warm)" filter="url(#glow)"/>
+  <rect x="720" y="210" width="55" height="55" fill="url(#glow-cool)" filter="url(#glow)"/>
+
+  <!-- Lit windows - floor 3 -->
+  <rect x="295" y="290" width="55" height="55" fill="url(#glow-warm)" filter="url(#glow)"/>
+  <rect x="440" y="290" width="55" height="55" fill="url(#glow-warm)" filter="url(#glow)"/>
+  <rect x="510" y="290" width="55" height="55" fill="url(#glow-cool)" filter="url(#glow)"/>
+  <rect x="650" y="290" width="55" height="55" fill="url(#glow-warm)" filter="url(#glow)"/>
+  <rect x="720" y="290" width="55" height="55" fill="url(#glow-warm)" filter="url(#glow)"/>
+
+  <!-- Lit windows - floor 2 -->
+  <rect x="225" y="370" width="55" height="55" fill="url(#glow-cool)" filter="url(#glow)"/>
+  <rect x="365" y="370" width="55" height="55" fill="url(#glow-warm)" filter="url(#glow)"/>
+  <rect x="510" y="370" width="55" height="55" fill="url(#glow-warm)" filter="url(#glow)"/>
+  <rect x="580" y="370" width="55" height="55" fill="url(#glow-cool)" filter="url(#glow)"/>
+  <rect x="720" y="370" width="55" height="55" fill="url(#glow-warm)" filter="url(#glow)"/>
+
+  <!-- Ground floor illuminated entrance -->
+  <rect x="440" y="440" width="120" height="52" fill="#E8C870" opacity="0.6" filter="url(#glow)"/>
+  <!-- Entrance glow on ground -->
+  <ellipse cx="500" cy="492" rx="100" ry="18" fill="#C8A840" opacity="0.18" filter="url(#halo)"/>
+
+  <!-- Street lights -->
+  <line x1="160" y1="350" x2="160" y2="492" stroke="#303848" stroke-width="4"/>
+  <circle cx="160" cy="345" r="10" fill="#F8E890" opacity="0.7" filter="url(#glow)"/>
+  <ellipse cx="160" cy="492" rx="60" ry="12" fill="#C8A840" opacity="0.12" filter="url(#halo)"/>
+
+  <line x1="840" y1="350" x2="840" y2="492" stroke="#303848" stroke-width="4"/>
+  <circle cx="840" cy="345" r="10" fill="#F8E890" opacity="0.7" filter="url(#glow)"/>
+  <ellipse cx="840" cy="492" rx="60" ry="12" fill="#C8A840" opacity="0.12" filter="url(#halo)"/>
+
+  <!-- Window reflections on ground -->
+  <rect x="255" y="492" width="40" height="30" fill="#E8C060" opacity="0.07"/>
+  <rect x="450" y="492" width="40" height="30" fill="#80A8D0" opacity="0.07"/>
+  <rect x="600" y="492" width="40" height="30" fill="#E8C060" opacity="0.07"/>
+
+  <!-- Moon -->
+  <circle cx="880" cy="60" r="24" fill="#E8E0D0" opacity="0.85"/>
+  <circle cx="890" cy="54" r="20" fill="url(#night-sky)" opacity="0.6"/>
+
+  <!-- Label -->
+  <text x="500" y="558" font-family="Georgia, serif" font-size="12" fill="#8090A8" text-anchor="middle" letter-spacing="4">RENDER NOCTURNO · FACHADA SUR</text>
+  <text x="500" y="578" font-family="Georgia, serif" font-size="10" fill="#506080" text-anchor="middle" letter-spacing="2">07 / NIGHT RENDER · 1000 × 600</text>
+</svg>

@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 500" width="1200" height="500">
+  <defs>
+    <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#5A5248" stroke-width="1.5"/>
+    </pattern>
+    <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#C8D8E4"/>
+      <stop offset="100%" stop-color="#E0E8EE"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky background -->
+  <rect width="1200" height="500" fill="url(#sky2)"/>
+
+  <!-- Ground fill -->
+  <rect x="0" y="410" width="1200" height="90" fill="url(#hatch)" opacity="0.5"/>
+  <rect x="0" y="408" width="1200" height="5" fill="#3A3530"/>
+
+  <!-- Building section cut walls -->
+  <!-- Left outer wall (cut) -->
+  <rect x="120" y="120" width="22" height="290" fill="url(#hatch)"/>
+  <rect x="120" y="120" width="22" height="290" fill="none" stroke="#3A3530" stroke-width="1.5"/>
+  <!-- Right outer wall (cut) -->
+  <rect x="1058" y="120" width="22" height="290" fill="url(#hatch)"/>
+  <rect x="1058" y="120" width="22" height="290" fill="none" stroke="#3A3530" stroke-width="1.5"/>
+
+  <!-- Roof/slab (cut) -->
+  <rect x="118" y="108" width="964" height="18" fill="url(#hatch)"/>
+  <rect x="118" y="108" width="964" height="18" fill="none" stroke="#3A3530" stroke-width="1.5"/>
+
+  <!-- Floor slabs (cut) - 3 levels -->
+  <!-- Floor 3 -->
+  <rect x="118" y="240" width="964" height="14" fill="url(#hatch)"/>
+  <rect x="118" y="240" width="964" height="14" fill="none" stroke="#3A3530" stroke-width="1.5"/>
+  <!-- Floor 2 -->
+  <rect x="118" y="325" width="964" height="14" fill="url(#hatch)"/>
+  <rect x="118" y="325" width="964" height="14" fill="none" stroke="#3A3530" stroke-width="1.5"/>
+  <!-- Floor 1 (ground) -->
+  <rect x="118" y="408" width="964" height="8" fill="url(#hatch)"/>
+
+  <!-- Internal walls (thin, not cut) -->
+  <line x1="380" y1="126" x2="380" y2="409" stroke="#5A5248" stroke-width="6"/>
+  <line x1="640" y1="126" x2="640" y2="409" stroke="#5A5248" stroke-width="6"/>
+  <line x1="860" y1="126" x2="860" y2="409" stroke="#5A5248" stroke-width="6"/>
+
+  <!-- Windows per floor -->
+  <!-- Top floor -->
+  <rect x="175" y="140" width="170" height="85" fill="#A8C8D8" opacity="0.5"/>
+  <rect x="175" y="140" width="170" height="85" fill="none" stroke="#3A3530" stroke-width="2"/>
+  <rect x="420" y="140" width="180" height="85" fill="#A8C8D8" opacity="0.45"/>
+  <rect x="420" y="140" width="180" height="85" fill="none" stroke="#3A3530" stroke-width="2"/>
+  <rect x="680" y="140" width="145" height="85" fill="#A8C8D8" opacity="0.55"/>
+  <rect x="680" y="140" width="145" height="85" fill="none" stroke="#3A3530" stroke-width="2"/>
+  <rect x="900" y="140" width="130" height="85" fill="#A8C8D8" opacity="0.4"/>
+  <rect x="900" y="140" width="130" height="85" fill="none" stroke="#3A3530" stroke-width="2"/>
+
+  <!-- Middle floor -->
+  <rect x="175" y="265" width="170" height="48" fill="#A8C8D8" opacity="0.45"/>
+  <rect x="175" y="265" width="170" height="48" fill="none" stroke="#3A3530" stroke-width="2"/>
+  <rect x="420" y="265" width="180" height="48" fill="#A8C8D8" opacity="0.5"/>
+  <rect x="420" y="265" width="180" height="48" fill="none" stroke="#3A3530" stroke-width="2"/>
+  <rect x="680" y="265" width="145" height="48" fill="#A8C8D8" opacity="0.4"/>
+  <rect x="680" y="265" width="145" height="48" fill="none" stroke="#3A3530" stroke-width="2"/>
+  <rect x="900" y="265" width="130" height="48" fill="#A8C8D8" opacity="0.55"/>
+  <rect x="900" y="265" width="130" height="48" fill="none" stroke="#3A3530" stroke-width="2"/>
+
+  <!-- Ground floor - large openings -->
+  <rect x="165" y="345" width="190" height="60" fill="#A8C8D8" opacity="0.35"/>
+  <rect x="165" y="345" width="190" height="60" fill="none" stroke="#3A3530" stroke-width="2"/>
+  <rect x="410" y="345" width="200" height="60" fill="#A8C8D8" opacity="0.4"/>
+  <rect x="410" y="345" width="200" height="60" fill="none" stroke="#3A3530" stroke-width="2"/>
+  <!-- Entrance door -->
+  <rect x="665" y="345" width="80" height="65" fill="#88A8C0" opacity="0.5"/>
+  <rect x="665" y="345" width="80" height="65" fill="none" stroke="#3A3530" stroke-width="2"/>
+  <rect x="895" y="345" width="145" height="60" fill="#A8C8D8" opacity="0.38"/>
+  <rect x="895" y="345" width="145" height="60" fill="none" stroke="#3A3530" stroke-width="2"/>
+
+  <!-- Dimension lines -->
+  <line x1="60" y1="126" x2="60" y2="408" stroke="#3A3530" stroke-width="1"/>
+  <line x1="54" y1="126" x2="66" y2="126" stroke="#3A3530" stroke-width="1"/>
+  <line x1="54" y1="254" x2="66" y2="254" stroke="#3A3530" stroke-width="1"/>
+  <line x1="54" y1="339" x2="66" y2="339" stroke="#3A3530" stroke-width="1"/>
+  <line x1="54" y1="408" x2="66" y2="408" stroke="#3A3530" stroke-width="1"/>
+  <text x="50" y="198" font-family="Georgia, serif" font-size="10" fill="#3A3530" text-anchor="middle" transform="rotate(-90 50 198)">3.20 m</text>
+  <text x="50" y="300" font-family="Georgia, serif" font-size="10" fill="#3A3530" text-anchor="middle" transform="rotate(-90 50 300)">2.80 m</text>
+  <text x="50" y="376" font-family="Georgia, serif" font-size="10" fill="#3A3530" text-anchor="middle" transform="rotate(-90 50 376)">3.00 m</text>
+
+  <!-- Section line indicator -->
+  <line x1="80" y1="30" x2="1120" y2="30" stroke="#D04040" stroke-width="2" stroke-dasharray="10,6"/>
+  <text x="90" y="25" font-family="Georgia, serif" font-size="12" fill="#D04040" letter-spacing="1">A</text>
+  <text x="1100" y="25" font-family="Georgia, serif" font-size="12" fill="#D04040" letter-spacing="1">A'</text>
+
+  <!-- Label -->
+  <text x="600" y="458" font-family="Georgia, serif" font-size="12" fill="#3A3530" text-anchor="middle" letter-spacing="4">SECCIÓN TRANSVERSAL A-A' · ESC 1:100</text>
+  <text x="600" y="476" font-family="Georgia, serif" font-size="10" fill="#7A7268" text-anchor="middle" letter-spacing="2">06 / SECTION CUT · 1200 × 500</text>
+</svg>

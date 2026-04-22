@@ -1,0 +1,71 @@
+﻿<section id="estudio" class="px-6 py-14 text-white lg:px-10 lg:py-20">
+  <div class="mx-auto max-w-7xl border-t border-white/10 pt-8">
+    <div class="grid gap-10 lg:grid-cols-[0.95fr_1.05fr]">
+      <div data-scroll-reveal class="max-w-xl">
+        <p class="text-[11px] uppercase tracking-[0.32em] text-[#36A8A8]">Estudio</p>
+        <h2 class="mt-4 text-3xl font-medium leading-tight text-white sm:text-4xl">
+          Historia, valores y equipo.
+        </h2>
+      </div>
+
+      <p data-scroll-reveal class="max-w-2xl text-sm leading-7 text-white/70 sm:text-base">
+        Adinova es un estudio de arquitectura contemporanea con sede en Quito. Trabajamos desde la
+        precision espacial, la materialidad honesta y el control de la luz. Cada proyecto se aborda
+        como un proceso riguroso donde la escala, el contexto y el uso definen decisiones coherentes
+        y duraderas.
+      </p>
+    </div>
+
+    <div data-stagger-reveal class="mt-12 grid gap-4 lg:grid-cols-[1.1fr_0.9fr]">
+      <article class="premium-card rounded-[1.6rem] border border-white/10 bg-white/[0.04] p-6 sm:p-8">
+        <p class="text-[11px] uppercase tracking-[0.28em] text-[#36A8A8]">Historia</p>
+        <p class="mt-6 max-w-2xl text-sm leading-7 text-white/70 sm:text-base">
+          El estudio se origina a partir de una practica que entiende la arquitectura como un
+          equilibrio entre idea, materia y construccion. La experiencia acumulada en vivienda,
+          comercio e interiores ha permitido consolidar un lenguaje propio, basado en la sobriedad
+          material y el control de la luz. Cada proyecto busca generar valor en su entorno, con la
+          capacidad de adaptarse al tiempo.
+        </p>
+      </article>
+
+      <div class="grid gap-4">
+        <article
+          class="premium-card rounded-[1.6rem] border border-white/10 bg-white/[0.04] p-6 sm:p-8"
+        >
+          <p class="text-[11px] uppercase tracking-[0.28em] text-[#36A8A8]">Valores</p>
+
+          <div class="mt-6 space-y-5">
+            @for (value of values; track value.title) {
+              <div class="border-t border-white/10 pt-5 first:border-t-0 first:pt-0">
+                <h3 class="text-lg font-medium text-white">{{ value.title }}</h3>
+                <p class="mt-2 text-sm leading-7 text-white/70">{{ value.description }}</p>
+              </div>
+            }
+          </div>
+        </article>
+
+        <article
+          class="premium-card rounded-[1.6rem] border border-white/10 bg-white/[0.04] p-6 sm:p-8"
+        >
+          <p class="text-[11px] uppercase tracking-[0.28em] text-[#36A8A8]">Equipo</p>
+
+          <div class="mt-6 space-y-4">
+            @for (member of team; track member.name) {
+              <div
+                class="flex items-center justify-between gap-4 border-t border-white/10 pt-4 first:border-t-0 first:pt-0"
+              >
+                <p class="text-sm uppercase tracking-[0.22em] text-white">{{ member.name }}</p>
+                <p class="text-[11px] uppercase tracking-[0.22em] text-white/70">
+                  {{ member.role }}
+                </p>
+              </div>
+            }
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+

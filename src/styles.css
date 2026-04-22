@@ -1,3 +1,120 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
+
+:root {
+  color-scheme: dark;
+  --bg: #030303;
+  --surface: rgba(255, 255, 255, 0.035);
+  --surface-2: rgba(255, 255, 255, 0.06);
+  --surface-3: rgba(255, 255, 255, 0.1);
+  --text: #ffffff;
+  --text-muted: rgba(255, 255, 255, 0.7);
+  --accent: #36a8a8;
+  --accent-glow: rgba(54, 168, 168, 0.5);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: 
+    radial-gradient(ellipse 100% 60% at 50% -10%, rgba(54, 168, 168, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 30% at 85% 0%, rgba(54, 168, 168, 0.04) 0%, transparent 40%),
+    radial-gradient(ellipse 50% 25% at 15% 100%, rgba(54, 168, 168, 0.03) 0%, transparent 35%);
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 20% 75%, rgba(54, 168, 168, 0.025) 0%, transparent 20%);
+  z-index: 0;
+}
+
+app-root {
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 3px;
+  opacity: 0.6;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  opacity: 0.8;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.section-panel {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.section-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, transparent 40%);
+  opacity: 0;
+  transition: opacity 350ms ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.section-panel:hover::before {
+  opacity: 1;
+}
+
+.premium-card {
+  background: var(--surface);
+  border: 1px solid var(--surface-3);
+  transition:
+    transform 320ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 320ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-color 300ms ease,
+    background-color 320ms ease;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+}
+
+.premium-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(54, 168, 168, 0.2);
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(54, 168, 168, 0.06);
+}
+
+.glow-dot {
+  box-shadow: 0 0 8px var(--accent-glow);
+}

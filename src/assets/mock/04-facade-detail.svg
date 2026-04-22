@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 900" width="700" height="900">
+  <defs>
+    <linearGradient id="conc" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#B8B0A4"/>
+      <stop offset="100%" stop-color="#908880"/>
+    </linearGradient>
+    <linearGradient id="win-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6890A8"/>
+      <stop offset="50%" stop-color="#8AACC0" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#4A7090"/>
+    </linearGradient>
+    <filter id="emboss">
+      <feConvolveMatrix order="3" kernelMatrix="-1 -1 0 -1 1 1 0 1 1"/>
+    </filter>
+    <pattern id="texture" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="4" fill="none"/>
+      <circle cx="2" cy="2" r="0.5" fill="#00000008"/>
+    </pattern>
+  </defs>
+
+  <!-- Wall base -->
+  <rect width="700" height="900" fill="url(#conc)"/>
+  <rect width="700" height="900" fill="url(#texture)"/>
+
+  <!-- Horizontal concrete bands -->
+  <rect x="0" y="0" width="700" height="12" fill="#A8A098"/>
+  <rect x="0" y="148" width="700" height="12" fill="#A0988E"/>
+  <rect x="0" y="308" width="700" height="12" fill="#A0988E"/>
+  <rect x="0" y="468" width="700" height="12" fill="#A0988E"/>
+  <rect x="0" y="628" width="700" height="12" fill="#A0988E"/>
+  <rect x="0" y="788" width="700" height="12" fill="#A0988E"/>
+
+  <!-- Row 1 windows -->
+  <rect x="60" y="30" width="160" height="110" fill="url(#win-grad)"/>
+  <rect x="60" y="30" width="160" height="110" fill="none" stroke="#707868" stroke-width="4"/>
+  <line x1="140" y1="30" x2="140" y2="140" stroke="#808878" stroke-width="2"/>
+  <rect x="270" y="30" width="160" height="110" fill="url(#win-grad)" opacity="0.85"/>
+  <rect x="270" y="30" width="160" height="110" fill="none" stroke="#707868" stroke-width="4"/>
+  <line x1="350" y1="30" x2="350" y2="140" stroke="#808878" stroke-width="2"/>
+  <rect x="480" y="30" width="160" height="110" fill="url(#win-grad)" opacity="0.9"/>
+  <rect x="480" y="30" width="160" height="110" fill="none" stroke="#707868" stroke-width="4"/>
+  <line x1="560" y1="30" x2="560" y2="140" stroke="#808878" stroke-width="2"/>
+
+  <!-- Row 2 windows -->
+  <rect x="60" y="170" width="160" height="128" fill="url(#win-grad)" opacity="0.7"/>
+  <rect x="60" y="170" width="160" height="128" fill="none" stroke="#707868" stroke-width="4"/>
+  <line x1="140" y1="170" x2="140" y2="298" stroke="#808878" stroke-width="2"/>
+  <line x1="60" y1="234" x2="220" y2="234" stroke="#808878" stroke-width="2"/>
+  <rect x="270" y="170" width="160" height="128" fill="url(#win-grad)"/>
+  <rect x="270" y="170" width="160" height="128" fill="none" stroke="#707868" stroke-width="4"/>
+  <line x1="350" y1="170" x2="350" y2="298" stroke="#808878" stroke-width="2"/>
+  <line x1="270" y1="234" x2="430" y2="234" stroke="#808878" stroke-width="2"/>
+  <rect x="480" y="170" width="160" height="128" fill="url(#win-grad)" opacity="0.75"/>
+  <rect x="480" y="170" width="160" height="128" fill="none" stroke="#707868" stroke-width="4"/>
+  <line x1="560" y1="170" x2="560" y2="298" stroke="#808878" stroke-width="2"/>
+  <line x1="480" y1="234" x2="640" y2="234" stroke="#808878" stroke-width="2"/>
+
+  <!-- Row 3 windows -->
+  <rect x="60" y="330" width="160" height="128" fill="url(#win-grad)" opacity="0.9"/>
+  <rect x="60" y="330" width="160" height="128" fill="none" stroke="#707868" stroke-width="4"/>
+  <line x1="140" y1="330" x2="140" y2="458" stroke="#808878" stroke-width="2"/>
+  <rect x="270" y="330" width="160" height="128" fill="url(#win-grad)" opacity="0.65"/>
+  <rect x="270" y="330" width="160" height="128" fill="none" stroke="#707868" stroke-width="4"/>
+  <line x1="350" y1="330" x2="350" y2="458" stroke="#808878" stroke-width="2"/>
+  <rect x="480" y="330" width="160" height="128" fill="url(#win-grad)"/>
+  <rect x="480" y="330" width="160" height="128" fill="none" stroke="#707868" stroke-width="4"/>
+  <line x1="560" y1="330" x2="560" y2="458" stroke="#808878" stroke-width="2"/>
+
+  <!-- Row 4 windows -->
+  <rect x="60" y="490" width="160" height="128" fill="url(#win-grad)" opacity="0.8"/>
+  <rect x="60" y="490" width="160" height="128" fill="none" stroke="#707868" stroke-width="4"/>
+  <rect x="270" y="490" width="160" height="128" fill="url(#win-grad)"/>
+  <rect x="270" y="490" width="160" height="128" fill="none" stroke="#707868" stroke-width="4"/>
+  <line x1="350" y1="490" x2="350" y2="618" stroke="#808878" stroke-width="2"/>
+  <line x1="270" y1="554" x2="430" y2="554" stroke="#808878" stroke-width="2"/>
+  <rect x="480" y="490" width="160" height="128" fill="url(#win-grad)" opacity="0.72"/>
+  <rect x="480" y="490" width="160" height="128" fill="none" stroke="#707868" stroke-width="4"/>
+
+  <!-- Row 5 windows -->
+  <rect x="60" y="650" width="160" height="128" fill="url(#win-grad)" opacity="0.88"/>
+  <rect x="60" y="650" width="160" height="128" fill="none" stroke="#707868" stroke-width="4"/>
+  <line x1="140" y1="650" x2="140" y2="778" stroke="#808878" stroke-width="2"/>
+  <line x1="60" y1="714" x2="220" y2="714" stroke="#808878" stroke-width="2"/>
+  <rect x="270" y="650" width="160" height="128" fill="url(#win-grad)" opacity="0.6"/>
+  <rect x="270" y="650" width="160" height="128" fill="none" stroke="#707868" stroke-width="4"/>
+  <rect x="480" y="650" width="160" height="128" fill="url(#win-grad)"/>
+  <rect x="480" y="650" width="160" height="128" fill="none" stroke="#707868" stroke-width="4"/>
+  <line x1="560" y1="650" x2="560" y2="778" stroke="#808878" stroke-width="2"/>
+
+  <!-- Light reflections on select windows -->
+  <rect x="62" y="32" width="40" height="8" fill="#FFFFFF" opacity="0.2" rx="1"/>
+  <rect x="272" y="172" width="35" height="8" fill="#FFFFFF" opacity="0.18" rx="1"/>
+  <rect x="482" y="332" width="38" height="8" fill="#FFFFFF" opacity="0.22" rx="1"/>
+
+  <!-- Row 6 - partial at bottom -->
+  <rect x="60" y="810" width="160" height="80" fill="url(#win-grad)" opacity="0.78"/>
+  <rect x="60" y="810" width="160" height="80" fill="none" stroke="#707868" stroke-width="4"/>
+  <rect x="270" y="810" width="160" height="80" fill="url(#win-grad)" opacity="0.9"/>
+  <rect x="270" y="810" width="160" height="80" fill="none" stroke="#707868" stroke-width="4"/>
+  <rect x="480" y="810" width="160" height="80" fill="url(#win-grad)" opacity="0.65"/>
+  <rect x="480" y="810" width="160" height="80" fill="none" stroke="#707868" stroke-width="4"/>
+
+  <!-- Label -->
+  <text x="350" y="875" font-family="Georgia, serif" font-size="12" fill="#F0E8D8" text-anchor="middle" letter-spacing="4">DETALLE DE FACHADA · MÓDULO VENTANA</text>
+  <text x="350" y="893" font-family="Georgia, serif" font-size="10" fill="#C8C0B0" text-anchor="middle" letter-spacing="2">04 / EXTERIOR DETAIL · 700 × 900</text>
+</svg>

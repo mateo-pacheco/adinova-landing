@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800" width="800" height="800">
+  <defs>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#D0C8BC" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="800" fill="#F5F0E8"/>
+  <!-- Grid -->
+  <rect width="800" height="800" fill="url(#grid)"/>
+
+  <!-- Outer walls -->
+  <rect x="120" y="120" width="560" height="480" fill="none" stroke="#3A3530" stroke-width="10"/>
+
+  <!-- Interior walls -->
+  <!-- Vertical dividers -->
+  <line x1="320" y1="120" x2="320" y2="420" stroke="#3A3530" stroke-width="8"/>
+  <line x1="560" y1="200" x2="560" y2="600" stroke="#3A3530" stroke-width="8"/>
+  <!-- Horizontal dividers -->
+  <line x1="120" y1="350" x2="320" y2="350" stroke="#3A3530" stroke-width="8"/>
+  <line x1="320" y1="420" x2="560" y2="420" stroke="#3A3530" stroke-width="8"/>
+
+  <!-- Room fills -->
+  <!-- Living room -->
+  <rect x="125" y="125" width="190" height="220" fill="#EDE5D8" opacity="0.7"/>
+  <!-- Kitchen -->
+  <rect x="125" y="355" width="190" height="240" fill="#E8E0D4" opacity="0.7"/>
+  <!-- Master bedroom -->
+  <rect x="325" y="125" width="230" height="290" fill="#EAE2D6" opacity="0.7"/>
+  <!-- Bathroom 1 -->
+  <rect x="325" y="425" width="230" height="170" fill="#E5DDD0" opacity="0.7"/>
+  <!-- Right section -->
+  <rect x="565" y="205" width="110" height="390" fill="#EDE6DA" opacity="0.7"/>
+
+  <!-- Doors (arcs) -->
+  <path d="M320 280 Q280 280 280 240" fill="none" stroke="#3A3530" stroke-width="2.5" stroke-dasharray="4,3"/>
+  <line x1="280" y1="240" x2="280" y2="280" stroke="#3A3530" stroke-width="2.5"/>
+  <line x1="280" y1="280" x2="320" y2="280" stroke="#3A3530" stroke-width="2.5"/>
+
+  <path d="M320 500 Q360 500 360 540" fill="none" stroke="#3A3530" stroke-width="2.5" stroke-dasharray="4,3"/>
+  <line x1="360" y1="540" x2="320" y2="540" stroke="#3A3530" stroke-width="2.5"/>
+  <line x1="320" y1="500" x2="320" y2="540" stroke="#3A3530" stroke-width="2.5"/>
+
+  <!-- Windows (thick blue lines on walls) -->
+  <line x1="160" y1="120" x2="240" y2="120" stroke="#7AAAC0" stroke-width="8"/>
+  <line x1="370" y1="120" x2="500" y2="120" stroke="#7AAAC0" stroke-width="8"/>
+  <line x1="120" y1="400" x2="120" y2="470" stroke="#7AAAC0" stroke-width="8"/>
+  <line x1="680" y1="280" x2="680" y2="420" stroke="#7AAAC0" stroke-width="8"/>
+  <line x1="300" y1="600" x2="480" y2="600" stroke="#7AAAC0" stroke-width="8"/>
+
+  <!-- Furniture - Living room -->
+  <!-- Sofa -->
+  <rect x="140" y="170" width="100" height="45" rx="4" fill="#C0B8A8" stroke="#A8A090" stroke-width="1.5"/>
+  <rect x="140" y="168" width="100" height="14" rx="2" fill="#B0A898"/>
+  <!-- Coffee table -->
+  <rect x="158" y="228" width="64" height="44" rx="2" fill="#D0C8B8" stroke="#B8B0A0" stroke-width="1.5"/>
+  <!-- TV line on wall -->
+  <rect x="132" y="133" width="80" height="10" rx="1" fill="#707068"/>
+
+  <!-- Furniture - Bedroom -->
+  <!-- Bed -->
+  <rect x="365" y="175" width="130" height="100" rx="4" fill="#C8C0B0" stroke="#B0A898" stroke-width="1.5"/>
+  <rect x="365" y="175" width="130" height="28" rx="3" fill="#D0C4B0"/>
+  <!-- Pillows -->
+  <ellipse cx="395" cy="190" rx="18" ry="11" fill="#E0D8CC"/>
+  <ellipse cx="460" cy="190" rx="18" ry="11" fill="#E0D8CC"/>
+  <!-- Nightstands -->
+  <rect x="340" y="195" width="28" height="28" rx="2" fill="#B8B0A0" stroke="#A0988A" stroke-width="1"/>
+  <rect x="493" y="195" width="28" height="28" rx="2" fill="#B8B0A0" stroke="#A0988A" stroke-width="1"/>
+
+  <!-- Furniture - Kitchen -->
+  <!-- Counter L-shape -->
+  <rect x="130" y="358" width="100" height="22" rx="2" fill="#B8B0A4" stroke="#A0988E" stroke-width="1.5"/>
+  <rect x="130" y="380" width="22" height="100" rx="2" fill="#B8B0A4" stroke="#A0988E" stroke-width="1.5"/>
+  <!-- Table -->
+  <rect x="180" y="450" width="70" height="50" rx="3" fill="#C8C0B0" stroke="#B0A898" stroke-width="1.5"/>
+  <circle cx="195" cy="458" r="6" fill="#D8D0C4"/>
+  <circle cx="235" cy="458" r="6" fill="#D8D0C4"/>
+  <circle cx="195" cy="492" r="6" fill="#D8D0C4"/>
+  <circle cx="235" cy="492" r="6" fill="#D8D0C4"/>
+
+  <!-- Bathroom -->
+  <!-- Tub -->
+  <rect x="335" y="438" width="70" height="45" rx="8" fill="#D0E0E8" stroke="#A8C0CC" stroke-width="1.5"/>
+  <!-- Toilet -->
+  <ellipse cx="510" cy="458" rx="18" ry="22" fill="#E0E8EC" stroke="#B8C8D0" stroke-width="1.5"/>
+  <!-- Sink -->
+  <ellipse cx="460" cy="480" rx="15" ry="12" fill="#D0E0E8" stroke="#A8C0CC" stroke-width="1.5"/>
+
+  <!-- North arrow -->
+  <circle cx="730" cy="90" r="28" fill="none" stroke="#3A3530" stroke-width="1.5"/>
+  <polygon points="730,68 724,100 730,96 736,100" fill="#3A3530"/>
+  <text x="730" y="112" font-family="Georgia, serif" font-size="11" fill="#3A3530" text-anchor="middle">N</text>
+
+  <!-- Scale bar -->
+  <line x1="140" y1="740" x2="340" y2="740" stroke="#3A3530" stroke-width="2"/>
+  <line x1="140" y1="735" x2="140" y2="745" stroke="#3A3530" stroke-width="2"/>
+  <line x1="240" y1="735" x2="240" y2="745" stroke="#3A3530" stroke-width="2"/>
+  <line x1="340" y1="735" x2="340" y2="745" stroke="#3A3530" stroke-width="2"/>
+  <text x="190" y="758" font-family="Georgia, serif" font-size="10" fill="#5A5248" text-anchor="middle">5 m</text>
+  <text x="290" y="758" font-family="Georgia, serif" font-size="10" fill="#5A5248" text-anchor="middle">10 m</text>
+
+  <!-- Title block -->
+  <rect x="460" y="700" width="300" height="70" fill="none" stroke="#3A3530" stroke-width="1"/>
+  <line x1="460" y1="722" x2="760" y2="722" stroke="#3A3530" stroke-width="0.8"/>
+  <text x="610" y="716" font-family="Georgia, serif" font-size="11" fill="#3A3530" text-anchor="middle" letter-spacing="2">PLANTA BAJA · ESC 1:50</text>
+  <text x="610" y="738" font-family="Georgia, serif" font-size="10" fill="#5A5248" text-anchor="middle">RESIDENCIA UNIFAMILIAR</text>
+  <text x="610" y="756" font-family="Georgia, serif" font-size="9" fill="#7A7268" text-anchor="middle" letter-spacing="1">03 / PLANO ARQUITECTÓNICO · 800 × 800</text>
+</svg>

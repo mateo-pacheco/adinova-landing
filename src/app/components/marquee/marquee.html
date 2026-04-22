@@ -1,0 +1,32 @@
+﻿<section class="px-6 pb-14 text-white lg:px-10 lg:pb-20">
+  <div
+    class="mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] py-4 sm:py-5"
+  >
+    <div class="marquee-track flex w-max items-stretch">
+      @for (loop of [0, 1]; track loop) {
+        <div class="flex items-stretch">
+          @for (item of items; track item.title) {
+            <article
+              class="premium-card mx-2 w-[16.5rem] shrink-0 overflow-hidden rounded-[1.2rem] border border-white/8 bg-white/[0.07] sm:mx-3 sm:w-[20rem]"
+            >
+              <img [src]="item.image" [alt]="item.label" class="h-36 w-full object-cover sm:h-44" />
+
+              <div class="space-y-3 border-t border-white/10 p-4">
+                <p class="text-[11px] uppercase tracking-[0.28em] text-[#36A8A8]">
+                  {{ item.label }}
+                </p>
+                <div class="flex items-center justify-between gap-4">
+                  <p class="text-xs uppercase tracking-[0.22em] text-white">{{ item.title }}</p>
+                  <span class="glow-dot h-1.5 w-1.5 shrink-0 rounded-full bg-[#36A8A8]"></span>
+                </div>
+              </div>
+            </article>
+          }
+        </div>
+      }
+    </div>
+  </div>
+</section>
+
+
+

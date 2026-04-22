@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" width="900" height="600">
+  <defs>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F0EBE2"/>
+      <stop offset="100%" stop-color="#E0D8CC"/>
+    </linearGradient>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#C8B898"/>
+      <stop offset="100%" stop-color="#A89878"/>
+    </linearGradient>
+    <linearGradient id="lightbeam" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFF8E8" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#FFF8E8" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="blur-soft">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+
+  <!-- Background wall -->
+  <rect width="900" height="600" fill="url(#wall)"/>
+
+  <!-- Floor -->
+  <polygon points="0,420 900,380 900,600 0,600" fill="url(#floor)"/>
+  <!-- Wood floor planks -->
+  <line x1="0" y1="440" x2="900" y2="402" stroke="#B8A888" stroke-width="1.5" opacity="0.5"/>
+  <line x1="0" y1="460" x2="900" y2="424" stroke="#B8A888" stroke-width="1.5" opacity="0.5"/>
+  <line x1="0" y1="480" x2="900" y2="446" stroke="#B8A888" stroke-width="1.5" opacity="0.5"/>
+  <line x1="0" y1="500" x2="900" y2="468" stroke="#B8A888" stroke-width="1.5" opacity="0.5"/>
+  <line x1="0" y1="520" x2="900" y2="490" stroke="#B8A888" stroke-width="1.5" opacity="0.5"/>
+  <line x1="0" y1="540" x2="900" y2="512" stroke="#B8A888" stroke-width="1.5" opacity="0.5"/>
+  <line x1="0" y1="560" x2="900" y2="534" stroke="#B8A888" stroke-width="1.5" opacity="0.5"/>
+  <line x1="0" y1="580" x2="900" y2="556" stroke="#B8A888" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- Left wall -->
+  <polygon points="0,0 220,0 320,420 0,600" fill="#D8D0C4"/>
+  <!-- Right wall -->
+  <polygon points="900,0 680,0 580,380 900,600" fill="#D8D0C4"/>
+
+  <!-- Large window - center back -->
+  <rect x="270" y="40" width="360" height="340" fill="#A8C4D8" opacity="0.4"/>
+  <rect x="270" y="40" width="360" height="340" fill="none" stroke="#C0B8A8" stroke-width="8"/>
+  <!-- Window frame cross -->
+  <line x1="450" y1="40" x2="450" y2="380" stroke="#C0B8A8" stroke-width="5"/>
+  <line x1="270" y1="200" x2="630" y2="200" stroke="#C0B8A8" stroke-width="5"/>
+  <!-- Outdoor view (blurred trees suggestion) -->
+  <ellipse cx="380" cy="140" rx="60" ry="80" fill="#98A888" opacity="0.3" filter="url(#blur-soft)"/>
+  <ellipse cx="520" cy="160" rx="50" ry="70" fill="#88A078" opacity="0.3" filter="url(#blur-soft)"/>
+
+  <!-- Light beam from window -->
+  <polygon points="270,40 630,40 750,420 150,420" fill="url(#lightbeam)" opacity="0.25"/>
+
+  <!-- Sofa (minimal) -->
+  <rect x="180" y="390" width="380" height="90" rx="4" fill="#C8C0B0"/>
+  <rect x="180" y="358" width="380" height="38" rx="3" fill="#D0C8B8"/>
+  <rect x="184" y="362" width="80" height="62" rx="3" fill="#C0B8A8"/>
+  <rect x="476" y="362" width="80" height="62" rx="3" fill="#C0B8A8"/>
+  <!-- Sofa legs -->
+  <rect x="195" y="478" width="14" height="18" fill="#A89880"/>
+  <rect x="548" y="478" width="14" height="18" fill="#A89880"/>
+
+  <!-- Side table -->
+  <rect x="600" y="410" width="90" height="8" rx="2" fill="#B0A890"/>
+  <rect x="618" y="418" width="8" height="60" fill="#A89880"/>
+  <rect x="654" y="418" width="8" height="60" fill="#A89880"/>
+  <!-- Object on table (book) -->
+  <rect x="605" y="398" width="50" height="14" rx="1" fill="#8A9080"/>
+
+  <!-- Floor lamp -->
+  <line x1="760" y1="390" x2="760" y2="510" stroke="#A09080" stroke-width="5"/>
+  <line x1="760" y1="390" x2="800" y2="350" stroke="#A09080" stroke-width="4"/>
+  <ellipse cx="800" cy="344" rx="28" ry="18" fill="#E0D0B0" opacity="0.9"/>
+  <!-- Lamp glow -->
+  <circle cx="800" cy="344" r="40" fill="#FFF8D0" opacity="0.15" filter="url(#blur-soft)"/>
+
+  <!-- Plant (right corner) -->
+  <rect x="58" y="460" width="30" height="40" rx="3" fill="#8A7A68"/>
+  <ellipse cx="73" cy="440" rx="20" ry="30" fill="#6A8858" opacity="0.9"/>
+  <ellipse cx="55" cy="455" rx="15" ry="22" fill="#789068" opacity="0.8"/>
+  <ellipse cx="90" cy="450" rx="16" ry="24" fill="#6A8050" opacity="0.8"/>
+
+  <!-- Label -->
+  <text x="450" y="572" font-family="Georgia, serif" font-size="12" fill="#7A7268" text-anchor="middle" letter-spacing="4">SALA PRINCIPAL · VISTA INTERIOR</text>
+  <text x="450" y="590" font-family="Georgia, serif" font-size="10" fill="#A09888" text-anchor="middle" letter-spacing="2">02 / INTERIOR · 900 × 600</text>
+</svg>
