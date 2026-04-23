@@ -1,67 +1,75 @@
-﻿<section
+<section
   id="inicio"
-  class="hero-container min-h-screen relative w-full"
+  class="hero-container min-h-screen relative w-full overflow-hidden"
 >
   <div class="hero-glow absolute inset-0 pointer-events-none"></div>
   
-  <div class="relative z-10 mx-auto flex h-full w-full max-w-4xl flex-col items-center justify-center px-6 py-10 text-center">
-    <div data-animate class="mb-5">
-      <img
-        src="assets/logo/Logo.webp"
-        alt="ADINOVA"
-        class="hero-logo h-20 w-auto object-contain md:h-28 lg:h-36"
-      />
-    </div>
-
-    <div data-animate class="hero-badge mb-4">
-      <span class="text-[10px] font-medium uppercase tracking-[0.35em] text-[#36A8A8]">Architecture Studio</span>
-    </div>
-
-    <h1 data-animate class="hero-title text-3xl font-light leading-tight text-white md:text-4xl lg:text-5xl">
-      Espacios precisos, sobrios y atemporales.
-    </h1>
-
-    <p data-animate class="hero-description mt-3 max-w-md text-sm text-white/50 md:text-base">
-      Creamos proyectos arquitectonicos con rigor conceptual y sensibilidad material.
-    </p>
-
-    <div data-animate class="hero-actions mt-7 flex flex-col items-center gap-3 sm:flex-row">
-      <a
-        href="#contacto"
-        data-magnetic
-        class="hero-btn-primary rounded-full border border-[#36A8A8]/40 bg-transparent px-7 py-2.5 text-sm font-medium uppercase tracking-[0.22em] text-white transition-all duration-300 hover:border-[#36A8A8]"
-      >
-        Iniciar proyecto
-      </a>
-
-      <a
-        href="#servicios"
-        data-magnetic
-        class="hero-btn-secondary rounded-full border border-white/10 bg-white/5 px-7 py-2.5 text-sm font-medium uppercase tracking-[0.22em] text-white/60 transition-all duration-300 hover:border-white/20 hover:text-white"
-      >
-        Servicios
-      </a>
-    </div>
-
-    <div data-animate class="hero-stats mt-8 flex items-center gap-6 border-t border-white/10 pt-6 md:gap-8">
-      <div class="text-center">
-        <p class="hero-stat-value text-2xl font-light text-white md:text-3xl lg:text-4xl">12+</p>
-        <p class="mt-1 text-[9px] uppercase tracking-[0.2em] text-white/40">Anos</p>
+  <div class="hero-3d-container absolute inset-0 pointer-events-none">
+    <canvas #canvas3d class="hero-canvas"></canvas>
+  </div>
+  
+  <div class="relative z-10 mx-auto flex h-full w-full flex-col items-center justify-center px-5 py-8 sm:px-8 md:flex-row md:px-10 lg:px-16">
+    <div class="hero-content w-full text-center md:w-1/2 md:text-left lg:w-5/12">
+      <div class="mb-4 sm:mb-5">
+        <img
+          src="assets/logo/Logo.webp"
+          alt="ADINOVA"
+          class="hero-logo mx-auto h-16 w-auto object-contain sm:h-20 md:mx-0 md:h-24 lg:h-28 xl:h-32"
+        />
       </div>
-      
-      <div class="h-8 w-px bg-white/10"></div>
-      
-      <div class="text-center">
-        <p class="hero-stat-value text-2xl font-light text-white md:text-3xl lg:text-4xl">48</p>
-        <p class="mt-1 text-[9px] uppercase tracking-[0.2em] text-white/40">Proyectos</p>
+
+      <div class="hero-badge mb-3 sm:mb-4">
+        <span class="text-[9px] font-medium uppercase tracking-[0.32em] text-[#36A8A8] sm:text-[10px]">Architecture Studio</span>
       </div>
-      
-      <div class="h-8 w-px bg-white/10"></div>
-      
-      <div class="text-center">
-        <p class="hero-stat-value text-2xl font-light text-white md:text-3xl lg:text-4xl">03</p>
-        <p class="mt-1 text-[9px] uppercase tracking-[0.2em] text-white/40">Ciudades</p>
+
+      <h1 class="hero-title text-2xl font-light leading-tight text-white sm:text-3xl md:text-3xl lg:text-4xl xl:text-5xl">
+        Espacios precisos, sobrios y atemporales.
+      </h1>
+
+      <p class="hero-description mt-2 sm:mt-3 max-w-sm text-xs text-white/50 sm:text-sm md:mx-0 md:max-w-md">
+        Creamos proyectos arquitectonicos con rigor conceptual y sensibilidad material.
+      </p>
+
+      <div class="hero-actions mt-5 sm:mt-6 flex flex-col items-center gap-2.5 sm:flex-row md:items-start">
+        <a
+          href="#contacto"
+          data-magnetic
+          class="hero-btn-primary rounded-full border border-[#36A8A8]/40 bg-transparent px-5 py-2 text-xs font-medium uppercase tracking-[0.2em] text-white transition-all duration-300 hover:border-[#36A8A8] sm:px-6 sm:text-sm"
+        >
+          Iniciar proyecto
+        </a>
+
+        <a
+          href="#servicios"
+          data-magnetic
+          class="hero-btn-secondary rounded-full border border-white/10 bg-white/5 px-5 py-2 text-xs font-medium uppercase tracking-[0.2em] text-white/60 transition-all duration-300 hover:border-white/20 hover:text-white sm:px-6 sm:text-sm"
+        >
+          Servicios
+        </a>
+      </div>
+
+      <div class="hero-stats mt-6 sm:mt-7 flex items-center justify-center gap-4 sm:gap-5 border-t border-white/10 pt-5 sm:pt-6 md:justify-start lg:gap-6">
+        <div class="text-center">
+          <p class="hero-stat-value text-xl font-light text-white sm:text-2xl lg:text-3xl">12+</p>
+          <p class="mt-0.5 text-[8px] uppercase tracking-[0.18em] text-white/40 sm:text-[9px]">Anos</p>
+        </div>
+        
+        <div class="h-6 sm:h-7 w-px bg-white/10"></div>
+        
+        <div class="text-center">
+          <p class="hero-stat-value text-xl font-light text-white sm:text-2xl lg:text-3xl">48</p>
+          <p class="mt-0.5 text-[8px] uppercase tracking-[0.18em] text-white/40 sm:text-[9px]">Proyectos</p>
+        </div>
+        
+        <div class="h-6 sm:h-7 w-px bg-white/10"></div>
+        
+        <div class="text-center">
+          <p class="hero-stat-value text-xl font-light text-white sm:text-2xl lg:text-3xl">03</p>
+          <p class="mt-0.5 text-[8px] uppercase tracking-[0.18em] text-white/40 sm:text-[9px]">Ciudades</p>
+        </div>
       </div>
     </div>
+
+    <div class="hidden md:block md:w-1/2 lg:w-7/12"></div>
   </div>
 </section>

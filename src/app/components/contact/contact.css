@@ -2,6 +2,15 @@
   display: block;
 }
 
+.contact-3d-container {
+  opacity: 0.35;
+}
+
+.contact-canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
 .field-shell {
   position: relative;
   display: flex;

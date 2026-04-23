@@ -1,0 +1,52 @@
+{
+  "type": "mesh",
+  "name": "cube",
+  "geometry": {
+    "vertices": [
+      [-1, -1, -1],
+      [ 1, -1, -1],
+      [ 1,  1, -1],
+      [-1,  1, -1],
+      [-1, -1,  1],
+      [ 1, -1,  1],
+      [ 1,  1,  1],
+      [-1,  1,  1]
+    ],
+    "faces": [
+      [0, 1, 2, 3],
+      [4, 5, 6, 7],
+      [0, 1, 5, 4],
+      [2, 3, 7, 6],
+      [0, 3, 7, 4],
+      [1, 2, 6, 5]
+    ],
+    "uvs": [
+      [0, 0],
+      [1, 0],
+      [1, 1],
+      [0, 1]
+    ]
+  },
+  "material": {
+    "type": "MeshStandardMaterial",
+    "color": "#36A8A8",
+    "roughness": 0.4,
+    "metalness": 0.1,
+    "opacity": 1.0,
+    "transparent": false,
+    "side": "DoubleSide"
+  },
+  "transform": {
+    "position": { "x": 0, "y": 0, "z": 0 },
+    "rotation": { "x": 0, "y": 0, "z": 0 },
+    "scale":    { "x": 1, "y": 1, "z": 1 }
+  },
+  "animation": {
+    "autoRotate": true,
+    "rotationSpeed": {
+      "x": 0.005,
+      "y": 0.01,
+      "z": 0
+    }
+  }
+}

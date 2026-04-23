@@ -1,7 +1,8 @@
-import { Component, inject, OnInit, OnDestroy } from '@angular/core';
+import { Component, inject, OnInit, OnDestroy, ElementRef, ViewChild, AfterViewInit, HostListener } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import emailjs from '@emailjs/browser';
 import { environment } from '../../../environments/environment';
+import * as THREE from 'three';
 
 interface ContactItem {
   label: string;
@@ -22,10 +23,23 @@ interface StatusCopy {
   templateUrl: './contact.html',
   styleUrl: './contact.css',
 })
-export class Contact implements OnInit, OnDestroy {
+export class Contact implements OnInit, OnDestroy, AfterViewInit {
+  @ViewChild('canvas3d', { static: true }) canvasRef!: ElementRef<HTMLCanvasElement>;
+  
   private fb = inject(FormBuilder);
   private touchTimeouts = new Map<string, ReturnType<typeof setTimeout>>();
   private validationTimeouts = new Map<string, ReturnType<typeof setTimeout>>();
+  
+  private scene!: THREE.Scene;
+  private camera!: THREE.PerspectiveCamera;
+  private renderer!: THREE.WebGLRenderer;
+  private sphere!: THREE.Mesh;
+  private innerSphere!: THREE.Mesh;
+  private particles!: THREE.Points;
+  private animationId!: number;
+  private scrollProgress = 0;
+  private targetScrollProgress = 0;
+  private time = 0;
 
   protected contactItems: ContactItem[] = [
     { label: 'Correo', value: 'hola@adinova.studio', href: 'mailto:hola@adinova.studio' },
@@ -69,6 +83,159 @@ export class Contact implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.clearAllTimeouts();
+    if (this.animationId) {
+      cancelAnimationFrame(this.animationId);
+    }
+    window.removeEventListener('resize', this.onWindowResize.bind(this));
+    this.renderer.dispose();
+  }
+
+  ngAfterViewInit() {
+    this.initThreeJS();
+    this.animate();
+    window.addEventListener('resize', this.onWindowResize.bind(this));
+  }
+
+  @HostListener('window:scroll')
+  onScroll() {
+    const section = document.getElementById('contacto');
+    if (section) {
+      const rect = section.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const sectionHeight = section.offsetHeight;
+      const scrolled = windowHeight - rect.top;
+      const totalScrollable = windowHeight + sectionHeight;
+      this.targetScrollProgress = Math.max(0, Math.min(1, scrolled / totalScrollable));
+    }
+  }
+
+  private initThreeJS() {
+    const canvas = this.canvasRef.nativeElement;
+    const container = canvas.parentElement!;
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+
+    this.scene = new THREE.Scene();
+
+    this.camera = new THREE.PerspectiveCamera(50, width / height, 0.1, 1000);
+    this.camera.position.z = 5;
+
+    this.renderer = new THREE.WebGLRenderer({
+      canvas,
+      antialias: true,
+      alpha: true,
+    });
+    this.renderer.setSize(width, height);
+    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    this.renderer.setClearColor(0x000000, 0);
+
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+    this.scene.add(ambientLight);
+
+    const mainLight = new THREE.DirectionalLight(0x36A8A8, 1.2);
+    mainLight.position.set(3, 3, 5);
+    this.scene.add(mainLight);
+
+    this.createSphere();
+    this.createParticles();
+  }
+
+  private createSphere() {
+    const geometry = new THREE.SphereGeometry(1.3, 32, 32);
+    
+    const material = new THREE.MeshPhysicalMaterial({
+      color: 0x36A8A8,
+      roughness: 0.1,
+      metalness: 0.9,
+      clearcoat: 1.0,
+      clearcoatRoughness: 0.1,
+      transparent: true,
+      opacity: 0.8,
+    });
+
+    this.sphere = new THREE.Mesh(geometry, material);
+    this.sphere.position.set(2, 0, 0);
+    this.scene.add(this.sphere);
+
+    const innerGeometry = new THREE.SphereGeometry(0.9, 24, 24);
+    const innerMaterial = new THREE.MeshBasicMaterial({
+      color: 0x36A8A8,
+      transparent: true,
+      opacity: 0.15,
+      wireframe: true,
+    });
+    this.innerSphere = new THREE.Mesh(innerGeometry, innerMaterial);
+    this.sphere.add(this.innerSphere);
+  }
+
+  private createParticles() {
+    const particleCount = 60;
+    const positions = new Float32Array(particleCount * 3);
+
+    for (let i = 0; i < particleCount; i++) {
+      positions[i * 3] = (Math.random() - 0.5) * 10;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 8;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 4;
+    }
+
+    const geometry = new THREE.BufferGeometry();
+    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+
+    const material = new THREE.PointsMaterial({
+      color: 0x36A8A8,
+      size: 0.06,
+      transparent: true,
+      opacity: 0.4,
+      sizeAttenuation: true,
+    });
+
+    this.particles = new THREE.Points(geometry, material);
+    this.scene.add(this.particles);
+  }
+
+  private onWindowResize() {
+    const container = this.canvasRef.nativeElement.parentElement!;
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+    
+    this.camera.aspect = width / height;
+    this.camera.updateProjectionMatrix();
+    this.renderer.setSize(width, height);
+  }
+
+  private animate() {
+    this.animationId = requestAnimationFrame(() => this.animate());
+    this.time += 0.008;
+
+    this.scrollProgress += (this.targetScrollProgress - this.scrollProgress) * 0.05;
+
+    const easeProgress = this.easeOutCubic(this.scrollProgress);
+
+    this.sphere.rotation.x = this.time * 0.4;
+    this.sphere.rotation.y = this.time * 0.6;
+    
+    this.innerSphere.rotation.x = -this.time * 0.8;
+    this.innerSphere.rotation.y = -this.time * 1.2;
+
+    this.sphere.position.x = 2 + Math.sin(this.time * 0.3) * 0.15;
+    this.sphere.position.y = Math.cos(this.time * 0.4) * 0.1;
+
+    const scale = 1 - easeProgress * 0.3;
+    this.sphere.scale.setScalar(scale);
+
+    const material = this.sphere.material as THREE.MeshPhysicalMaterial;
+    material.opacity = 0.8 - easeProgress * 0.4;
+
+    this.particles.rotation.y = this.time * 0.06;
+    
+    const particlesMaterial = this.particles.material as THREE.PointsMaterial;
+    particlesMaterial.opacity = 0.4 - easeProgress * 0.2;
+
+    this.renderer.render(this.scene, this.camera);
+  }
+
+  private easeOutCubic(t: number): number {
+    return 1 - Math.pow(1 - t, 3);
   }
 
   private clearAllTimeouts(): void {

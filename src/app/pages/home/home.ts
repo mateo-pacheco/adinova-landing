@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, Renderer2, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, Inject, PLATFORM_ID, ViewChild, AfterViewInit } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Navbar } from '../../components/navbar/navbar';
 import { Footer } from '../../components/footer/footer';
@@ -9,33 +9,33 @@ import { About } from '../../components/about/about';
 import { Contact } from '../../components/contact/contact';
 import { Social } from '../../components/social/social';
 import { Map } from "../../components/map/map";
+import { Preloader } from '../../components/preloader/preloader';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [Navbar, Hero, Marquee, Services, About, Contact, Social, Footer, Map],
+  imports: [Navbar, Hero, Marquee, Services, About, Contact, Social, Footer, Map, Preloader],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
 export class Home implements AfterViewInit {
+  @ViewChild(Preloader) preloader!: Preloader;
+  
   constructor(
-    private renderer: Renderer2,
     @Inject(PLATFORM_ID) private platformId: object
   ) {}
-
-  ngAfterViewInit(): void {
+  
+  ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {
       setTimeout(() => {
-        const main = document.querySelector('main');
-        if (main) {
-          this.renderer.addClass(main, 'fade-in');
-        }
-        
-        const hero = document.querySelector('.hero-container');
-        if (hero) {
-          this.renderer.addClass(hero, 'hero-visible');
-        }
+        document.querySelector('app-root')?.classList.add('loaded');
       }, 100);
+    }
+  }
+  
+  onPreloaderHidden() {
+    if (isPlatformBrowser(this.platformId)) {
+      document.body.classList.add('page-reveal');
     }
   }
 }
