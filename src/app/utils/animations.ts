@@ -28,7 +28,6 @@ export class AnimationsService implements OnDestroy {
       this.initMagneticInteractions();
       this.initTiltInteractions();
       this.initParallax();
-      ScrollTrigger.refresh();
     });
   }
 

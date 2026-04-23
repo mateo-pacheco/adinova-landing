@@ -1,4 +1,13 @@
-﻿:host {
+:host {
   display: block;
+}
+
+.services-3d-container {
+  opacity: 0.5;
+}
+
+.services-canvas {
+  width: 100% !important;
+  height: 100% !important;
 }
 
