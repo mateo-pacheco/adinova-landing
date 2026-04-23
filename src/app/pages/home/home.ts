@@ -20,6 +20,8 @@ import { Preloader } from '../../components/preloader/preloader';
 })
 export class Home implements AfterViewInit {
   @ViewChild(Preloader) preloader!: Preloader;
+  preloaderCompleted = false;
+  pageVisible = false;
   
   constructor(
     @Inject(PLATFORM_ID) private platformId: object
@@ -28,14 +30,32 @@ export class Home implements AfterViewInit {
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {
       setTimeout(() => {
-        document.querySelector('app-root')?.classList.add('loaded');
+        if (this.preloaderCompleted && !this.pageVisible) {
+          this.pageVisible = true;
+        }
       }, 100);
     }
   }
   
   onPreloaderHidden() {
     if (isPlatformBrowser(this.platformId)) {
-      document.body.classList.add('page-reveal');
+      this.preloaderCompleted = true;
+      
+      const hostEl = document.querySelector('app-preloader');
+      if (hostEl) {
+        (hostEl as HTMLElement).style.display = 'none';
+      }
+      
+      this.enablePageContent();
+      this.pageVisible = true;
+      window.scrollTo(0, 0);
+    }
+  }
+
+  private enablePageContent() {
+    const root = document.querySelector('app-root');
+    if (root) {
+      root.classList.add('loaded');
     }
   }
 }
