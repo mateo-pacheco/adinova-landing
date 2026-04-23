@@ -1,6 +1,6 @@
 ﻿<app-preloader (hidden)="onPreloaderHidden()"></app-preloader>
 
-<div class="page-shell flex min-h-screen flex-col" data-animate>
+<div class="page-shell flex min-h-screen flex-col page-content" [class.visible]="pageVisible" data-animate>
   <app-navbar data-animate></app-navbar>
 
   <main class="flex-1" data-animate>

@@ -9,7 +9,7 @@ import * as THREE from 'three';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="preloader" [class.fade-out]="isFadingOut" [style.display]="hostHidden ? 'none' : 'flex'">
+    <div class="preloader" [class.fade-out]="isFadingOut">
       <canvas #canvas3d class="preloader-canvas"></canvas>
       
       <div class="preloader-vignette"></div>
@@ -59,39 +59,6 @@ import * as THREE from 'three';
       align-items: center;
       justify-content: center;
       overflow: hidden;
-    }
-
-    :host.hidden {
-      display: none;
-    }
-    
-    .preloader.hidden {
-      display: none;
-    }
-    
-    .preloader.fade-out {
-      display: block;
-      pointer-events: none;
-      animation: immersiveReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-    
-    @keyframes immersiveReveal {
-      0% { 
-        opacity: 1; 
-        transform: scale(1);
-        clip-path: circle(0% at 50% 50%);
-      }
-      40% { 
-        opacity: 1; 
-        transform: scale(1.02);
-        clip-path: circle(30% at 50% 50%);
-      }
-      100% { 
-        opacity: 0; 
-        transform: scale(1.1);
-        clip-path: circle(150% at 50% 50%);
-        filter: blur(40px);
-      }
     }
     
     .preloader-canvas {
@@ -579,19 +546,8 @@ export class Preloader implements OnInit, AfterViewInit, OnDestroy {
         this.isFadingOut = true;
         
         setTimeout(() => {
-          this.isHidden = true;
-          this.hostHidden = true;
-          this.cdr.detectChanges();
           this.hidden.emit();
-          
-          const hostEl = document.querySelector('app-preloader');
-          if (hostEl?.parentElement) {
-            hostEl.parentElement.removeChild(hostEl);
-          }
-          
-          window.scrollTo(0, 0);
-          document.body.classList.remove('preloader-active');
-        }, 1500);
+        }, 800);
       }
     };
     
