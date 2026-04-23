@@ -9,7 +9,7 @@ import * as THREE from 'three';
   standalone: true,
   imports: [CommonModule],
   template: `
-    <div class="preloader" [class.hidden]="isHidden" [class.fade-out]="isFadingOut">
+    <div class="preloader" [class.fade-out]="isFadingOut" [style.display]="hostHidden ? 'none' : 'flex'">
       <canvas #canvas3d class="preloader-canvas"></canvas>
       
       <div class="preloader-vignette"></div>
@@ -60,14 +60,18 @@ import * as THREE from 'three';
       justify-content: center;
       overflow: hidden;
     }
+
+    :host.hidden {
+      display: none;
+    }
     
     .preloader.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
+      display: none;
     }
     
     .preloader.fade-out {
+      display: block;
+      pointer-events: none;
       animation: immersiveReveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
     
@@ -278,10 +282,27 @@ export class Preloader implements OnInit, AfterViewInit, OnDestroy {
   @Output() hidden = new EventEmitter<void>();
   
   isHidden = false;
+  hostHidden = false;
   isFadingOut = false;
   progress = 0;
   letters = 'ADINOVA'.split('');
   statusText = 'Initializing';
+
+  get hiddenAttr(): boolean {
+    return this.isHidden || this.hostHidden;
+  }
+
+  get hostVisibility(): 'visible' | 'hidden' {
+    return (this.isHidden || this.hostHidden) ? 'hidden' : 'visible';
+  }
+
+  get isCompletelyHidden(): boolean {
+    return this.isHidden || this.hostHidden;
+  }
+
+  get hostDisplay(): string {
+    return (this.isHidden || this.hostHidden) ? 'none' : 'block';
+  }
   
   private scene!: THREE.Scene;
   private camera!: THREE.PerspectiveCamera;
@@ -327,6 +348,13 @@ export class Preloader implements OnInit, AfterViewInit, OnDestroy {
     });
   }
 
+  private hideElement(): void {
+    const el = this.canvasRef?.nativeElement;
+    if (el?.parentElement) {
+      el.parentElement.style.display = 'none';
+    }
+  }
+
   ngOnDestroy() {
     if (this.animationId) {
       cancelAnimationFrame(this.animationId);
@@ -335,6 +363,7 @@ export class Preloader implements OnInit, AfterViewInit, OnDestroy {
     if (this.isBrowser) {
       document.body.classList.remove('preloader-active');
     }
+    this.hideElement();
   }
 
   private initThreeJS() {
@@ -548,9 +577,18 @@ export class Preloader implements OnInit, AfterViewInit, OnDestroy {
         this.statusText = 'Welcome';
         this.cdr.detectChanges();
         this.isFadingOut = true;
+        
         setTimeout(() => {
           this.isHidden = true;
+          this.hostHidden = true;
+          this.cdr.detectChanges();
           this.hidden.emit();
+          
+          const hostEl = document.querySelector('app-preloader');
+          if (hostEl?.parentElement) {
+            hostEl.parentElement.removeChild(hostEl);
+          }
+          
           window.scrollTo(0, 0);
           document.body.classList.remove('preloader-active');
         }, 1500);
@@ -565,7 +603,14 @@ export class Preloader implements OnInit, AfterViewInit, OnDestroy {
     
     setTimeout(() => {
       this.isHidden = true;
+      this.hostHidden = true;
       this.hidden.emit();
+      
+      const hostEl = document.querySelector('app-preloader');
+      if (hostEl?.parentElement) {
+        hostEl.parentElement.removeChild(hostEl);
+      }
+      
       window.scrollTo(0, 0);
       document.body.classList.remove('preloader-active');
     }, 1200);
