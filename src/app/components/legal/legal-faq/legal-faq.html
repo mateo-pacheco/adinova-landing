@@ -1,0 +1,59 @@
+<section id="legal-faq" class="relative px-5 py-10 text-white sm:px-8 sm:py-12 lg:px-10 lg:py-20">
+  <div class="faq-3d-container absolute inset-0 pointer-events-none hidden lg:block">
+    <canvas #canvas3d class="faq-canvas"></canvas>
+  </div>
+  
+  <div class="mx-auto max-w-7xl">
+    <div class="grid gap-5 border-t border-white/10 pt-6 sm:gap-6 sm:pt-8 lg:grid-cols-[1fr_1.5fr] lg:items-end">
+      <div data-scroll-reveal class="max-w-xl">
+        <p class="text-[10px] uppercase tracking-[0.32em] text-[#36A8A8] sm:text-[11px]">FAQ</p>
+        <h2 class="mt-3 text-2xl font-medium leading-tight text-white sm:mt-4 sm:text-3xl lg:text-4xl">
+          Preguntas frecuentes.
+        </h2>
+        <p class="mt-3 text-xs leading-6 text-white/70 sm:text-sm sm:leading-7">
+          Respuestas a las dudas más comunes sobre permisos y asesoría legal arquitectónica.
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-grid mt-12 sm:mt-14 lg:mt-16">
+      @for (faq of faqs; track faq.id; let i = $index) {
+        <article 
+          class="faq-item" 
+          [class.faq-item-expanded]="isExpanded(faq.id)"
+          (click)="toggleFaq(faq.id)"
+        >
+          <div class="faq-header">
+            <span class="faq-number">{{ faq.id }}</span>
+            <h3 class="faq-title">{{ faq.question }}</h3>
+            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              @if (isExpanded(faq.id)) {
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 15l7-7 7 7" />
+              } @else {
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7" />
+              }
+            </svg>
+          </div>
+          
+          @if (isExpanded(faq.id)) {
+            <div class="faq-answer">
+              <p>{{ faq.answer }}</p>
+            </div>
+          }
+        </article>
+      }
+    </div>
+
+    <div class="mt-12 flex justify-center sm:mt-14">
+      <a 
+        href="#legal-proceso"
+        class="faq-cta diseno-cta rounded-full border border-[#36A8A8]/30 bg-[#36A8A8]/10 px-8 py-4 text-[11px] uppercase tracking-[0.2em] text-[#36A8A8] transition-all duration-300 hover:border-[#36A8A8]/50 hover:bg-[#36A8A8]/20 hover:text-white"
+      >
+        Resolver todas mis dudas
+        <svg class="ml-2 h-4 w-4 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
