@@ -1,0 +1,149 @@
+:host {
+  display: block;
+}
+
+.gallery-canvas {
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 0.5;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.testimonio-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: all 300ms ease;
+}
+
+.testimonio-card:hover {
+  border-color: rgba(54, 168, 168, 0.3);
+  transform: translateY(-4px);
+}
+
+.testimonio-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.5rem;
+}
+
+.quote-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.625rem;
+  border: 1px solid rgba(54, 168, 168, 0.25);
+  background: rgba(54, 168, 168, 0.08);
+  color: #36A8A8;
+  margin-bottom: 1rem;
+}
+
+.testimonio-text {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.7;
+  font-style: italic;
+  margin-bottom: 1.25rem;
+}
+
+.testimonio-rating {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.text-yellow-400 {
+  color: #fbbf24;
+}
+
+.text-white-20 {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.testimonio-author {
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.author-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0.25rem;
+}
+
+.author-role {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0.5rem;
+}
+
+.author-project {
+  display: inline-block;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #36A8A8;
+  padding: 0.25rem 0.5rem;
+  background: rgba(54, 168, 168, 0.1);
+  border-radius: 0.25rem;
+}
+
+.gallery-nav-btn {
+  cursor: pointer;
+}
+
+@media (min-width: 640px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .testimonio-text {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  
+  .testimonio-content {
+    padding: 1.25rem;
+  }
+  
+  .testimonio-text {
+    font-size: 0.9rem;
+  }
+  
+  .author-name {
+    font-size: 0.95rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .projects-grid {
+    gap: 1.5rem;
+  }
+  
+  .testimonio-content {
+    padding: 1.5rem;
+  }
+  
+  .testimonio-text {
+    font-size: 1rem;
+  }
+}

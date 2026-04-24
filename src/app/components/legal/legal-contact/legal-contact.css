@@ -1,0 +1,158 @@
+:host {
+  display: block;
+}
+
+.gallery-canvas {
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 0.5;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  overflow: hidden;
+  transition: all 300ms ease;
+}
+
+.project-card:hover {
+  border-color: rgba(54, 168, 168, 0.3);
+  transform: translateY(-4px);
+}
+
+.quote-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(54, 168, 168, 0.25);
+  background: rgba(54, 168, 168, 0.08);
+  color: #36A8A8;
+}
+
+.project-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 1.5rem;
+}
+
+.project-text {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.6;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+.client-info {
+  margin-top: auto;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.client-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+}
+
+.client-role {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 0.25rem;
+}
+
+.contact-input {
+  font-size: 0.875rem;
+}
+
+.contact-input:focus {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.contact-submit {
+  cursor: pointer;
+  font-weight: 500;
+  align-self: flex-start;
+}
+
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.625rem;
+  border: 1px solid rgba(54, 168, 168, 0.25);
+  background: rgba(54, 168, 168, 0.08);
+  color: #36A8A8;
+  flex-shrink: 0;
+}
+
+.gallery-nav-btn {
+  cursor: pointer;
+}
+
+@media (min-width: 640px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .project-card {
+    min-height: 200px;
+  }
+  
+  .project-text {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  
+  .project-card {
+    min-height: 180px;
+  }
+  
+  .project-content {
+    padding: 1.25rem;
+  }
+  
+  .project-text {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .projects-grid {
+    gap: 1.5rem;
+  }
+  
+  .project-card {
+    min-height: 200px;
+  }
+  
+  .project-content {
+    padding: 1.5rem;
+  }
+  
+  .project-text {
+    font-size: 1rem;
+  }
+}

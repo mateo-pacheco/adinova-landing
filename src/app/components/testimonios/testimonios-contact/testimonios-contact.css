@@ -1,0 +1,36 @@
+:host {
+  display: block;
+}
+
+.faq-canvas {
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 0.4;
+}
+
+.contact-input {
+  font-size: 0.875rem;
+}
+
+.contact-input:focus {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.contact-submit {
+  cursor: pointer;
+  font-weight: 500;
+  align-self: flex-start;
+}
+
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.625rem;
+  border: 1px solid rgba(54, 168, 168, 0.25);
+  background: rgba(54, 168, 168, 0.08);
+  color: #36A8A8;
+  flex-shrink: 0;
+}

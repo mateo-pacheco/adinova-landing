@@ -1,0 +1,14 @@
+<app-preloader (hidden)="onPreloaderHidden()"></app-preloader>
+
+<div class="page-shell flex min-h-screen flex-col page-content" [class.visible]="pageVisible" data-animate>
+  <app-navbar data-animate></app-navbar>
+
+  <main class="flex-1" data-animate>
+    <app-construccion-hero></app-construccion-hero>
+    <app-construccion-process></app-construccion-process>
+    <app-construccion-cases></app-construccion-cases>
+    <app-construccion-faq></app-construccion-faq>
+  </main>
+
+  <app-footer></app-footer>
+</div>
