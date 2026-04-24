@@ -72,7 +72,7 @@ export class DisenoProcess implements OnInit, AfterViewInit, OnDestroy {
       description: 'Reunion inicial para explorar necesidades, objetivos y restricciones. Analizamos el contexto, el terreno y las condiciones del lugar.',
       deliverables: ['Briefing consolidado', 'Analisis de sitio', 'Programa arquitectonico', 'Estimacion inicial'],
       duration: '1-2 semanas',
-      icon: `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>`,
+      icon: `<i class="fa-solid fa-magnifying-glass fa-2xl"></i>`,
     },
     {
       step: '02',
@@ -81,7 +81,7 @@ export class DisenoProcess implements OnInit, AfterViewInit, OnDestroy {
       description: 'Desarrollo de propuestas conceptuales. Esquemas volumetricos, estudios de luz y primeras visualizaciones que comunican la intencion del proyecto.',
       deliverables: ['Esquemas volumetricos', 'Renderizados conceptuales', 'Analisis solar', 'Cubicaje preliminar'],
       duration: '2-3 semanas',
-      icon: `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>`,
+      icon: `<i class="fa-solid fa-pen-nib fa-2xl"></i>`,
     },
     {
       step: '03',
@@ -90,7 +90,7 @@ export class DisenoProcess implements OnInit, AfterViewInit, OnDestroy {
       description: 'Refinamiento del diseno con detalles tecnicos, materiales y sistemas constructivos. Coordinacion con disciplinas adicionales.',
       deliverables: ['Planos de diseno', 'Memoria descriptiva', 'Especificaciones', 'Presupuesto detallado'],
       duration: '3-6 semanas',
-      icon: `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>`,
+      icon: `<i class="fa-solid fa-sliders fa-2xl"></i>`,
     },
     {
       step: '04',
@@ -99,7 +99,7 @@ export class DisenoProcess implements OnInit, AfterViewInit, OnDestroy {
       description: 'Elaboracion de planos ejecutivos, especificaciones y documentacion formal para construccion y permisos.',
       deliverables: ['Paquete de planos', 'Especific tecnicas', 'Bases de licitacion', 'Cronograma de obra'],
       duration: '2-4 semanas',
-      icon: `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`,
+      icon: `<i class="fa-solid fa-file-lines fa-2xl"></i>`,
     },
     {
       step: '05',
@@ -108,7 +108,7 @@ export class DisenoProcess implements OnInit, AfterViewInit, OnDestroy {
       description: 'Acompanamiento durante la ejecucion. Visitas de obra, ajustes en campo y control de calidad.',
       deliverables: ['Visitas de supervision', 'Actas de obra', 'Control de cambios', 'Gestion de proveedores'],
       duration: 'Segun cronograma',
-      icon: `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0v2m0-2v-2m-10 2H7m-2-16v2m14 2v2m0-2v-2m-10 2H7m-2-16v2m14 2v2m0-2v-2m-10 2H7" /></svg>`,
+      icon: `<i class="fa-solid fa-hammer fa-2xl"></i>`,
     },
   ];
 

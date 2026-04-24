@@ -71,7 +71,7 @@ export class ConstruccionProcess implements OnInit, AfterViewInit, OnDestroy {
       subtitle: 'Fundaciones',
       duration: '2-4 semanas',
       deliverables: ['Cimentacion superficial', 'Cimentacion profunda', 'Pilotes', 'Zapatas'],
-      icon: `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10V4l8 4m-8 4v10m0-10v4" /></svg>`,
+      icon: `<i class="fa-solid fa-layer-group fa-2xl"></i>`,
     },
     {
       id: '02',
@@ -79,7 +79,7 @@ export class ConstruccionProcess implements OnInit, AfterViewInit, OnDestroy {
       subtitle: 'Metal y concreto',
       duration: '4-8 semanas',
       deliverables: ['Estructura metalica', 'Losa de concreto', 'Columnas', 'Vigas'],
-      icon: `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0v2m0-2v-2m-10 2H7m-2-16v2m14 2v2m0-2v-2m-10 2H7" /></svg>`,
+      icon: `<i class="fa-solid fa-building-columns fa-2xl"></i>`,
     },
     {
       id: '03',
@@ -87,7 +87,7 @@ export class ConstruccionProcess implements OnInit, AfterViewInit, OnDestroy {
       subtitle: 'Muros y obra negra',
       duration: '3-6 semanas',
       deliverables: ['Muros de carga', 'Block estructural', 'Aplanados', 'Castillos'],
-      icon: `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" /></svg>`,
+      icon: `<i class="fa-solid fa-cubes fa-2xl"></i>`,
     },
     {
       id: '04',
@@ -95,7 +95,7 @@ export class ConstruccionProcess implements OnInit, AfterViewInit, OnDestroy {
       subtitle: 'Electricas y hidraulicas',
       duration: '2-4 semanas',
       deliverables: ['Instalacion electrica', 'Plomeria', 'Aire acondicionado', 'Red de datos'],
-      icon: `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>`,
+      icon: `<i class="fa-solid fa-bolt fa-2xl"></i>`,
     },
     {
       id: '05',
@@ -103,7 +103,7 @@ export class ConstruccionProcess implements OnInit, AfterViewInit, OnDestroy {
       subtitle: 'Terminados finales',
       duration: '2-3 semanas',
       deliverables: ['Pintura', 'Canceleria', 'Cocina integral', 'Muebles fijos'],
-      icon: `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>`,
+      icon: `<i class="fa-solid fa-paintbrush fa-2xl"></i>`,
     },
   ];
 
