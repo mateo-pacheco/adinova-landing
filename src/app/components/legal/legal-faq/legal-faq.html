@@ -26,13 +26,7 @@
           <div class="faq-header">
             <span class="faq-number">{{ faq.id }}</span>
             <h3 class="faq-title">{{ faq.question }}</h3>
-            <svg class="faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              @if (isExpanded(faq.id)) {
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 15l7-7 7 7" />
-              } @else {
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7" />
-              }
-            </svg>
+            <i class="faq-icon fa-solid" [class.fa-chevron-down]="!isExpanded(faq.id)" [class.fa-chevron-up]="isExpanded(faq.id)"></i>
           </div>
           
           @if (isExpanded(faq.id)) {
@@ -50,9 +44,7 @@
         class="faq-cta diseno-cta rounded-full border border-[#36A8A8]/30 bg-[#36A8A8]/10 px-8 py-4 text-[11px] uppercase tracking-[0.2em] text-[#36A8A8] transition-all duration-300 hover:border-[#36A8A8]/50 hover:bg-[#36A8A8]/20 hover:text-white"
       >
         Resolver todas mis dudas
-        <svg class="ml-2 h-4 w-4 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-        </svg>
+        <i class="fa-solid fa-arrow-right ml-2"></i>
       </a>
     </div>
   </div>

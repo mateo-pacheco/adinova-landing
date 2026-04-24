@@ -71,7 +71,7 @@ export class LegalProcess implements OnInit, AfterViewInit, OnDestroy {
       subtitle: 'Municipales',
       duration: '2-4 semanas',
       deliverables: ['Licencia de construcción', 'Permiso de obra', 'Autorización municipal', 'Licencia de uso'],
-      icon: `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>`,
+      icon: `<i class="fa-solid fa-file-contract fa-2xl"></i>`,
     },
     {
       id: '02',
@@ -79,7 +79,7 @@ export class LegalProcess implements OnInit, AfterViewInit, OnDestroy {
       subtitle: 'Urbanístico',
       duration: '1-2 semanas',
       deliverables: ['Análisis de zonificación', 'Cumplimiento SMT', 'Reglamentos municipales', 'Normas técnicas'],
-      icon: `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0v2m0-2v-2m-10 2H7m-2-16v2m14 2v2m0-2v-2m-10 2H7" /></svg>`,
+      icon: `<i class="fa-solid fa-scale-balanced fa-2xl"></i>`,
     },
     {
       id: '03',
@@ -87,7 +87,7 @@ export class LegalProcess implements OnInit, AfterViewInit, OnDestroy {
       subtitle: 'Arquitectónica',
       duration: '1 semana',
       deliverables: ['Contratos de construcción', 'Convenios avecenarios', 'Contratos de supervisión', 'Acuerdos con proveedores'],
-      icon: `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`,
+      icon: `<i class="fa-solid fa-file-signature fa-2xl"></i>`,
     },
     {
       id: '04',
@@ -95,7 +95,7 @@ export class LegalProcess implements OnInit, AfterViewInit, OnDestroy {
       subtitle: 'de Proyectos',
       duration: '2-3 semanas',
       deliverables: ['Verificación de permisos', 'Revisión de planos', 'Cumplimiento normativo', 'Dictámenes técnicos'],
-      icon: `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>`,
+      icon: `<i class="fa-solid fa-magnifying-glass-chart fa-2xl"></i>`,
     },
     {
       id: '05',
@@ -103,7 +103,7 @@ export class LegalProcess implements OnInit, AfterViewInit, OnDestroy {
       subtitle: 'en Obra',
       duration: 'Según cronograma',
       deliverables: ['Visitas de supervisión', 'Actas de obra', 'Control de calidad', 'Asesoría legal permanente'],
-      icon: `<svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" /></svg>`,
+      icon: `<i class="fa-solid fa-clipboard-check fa-2xl"></i>`,
     },
   ];
 
