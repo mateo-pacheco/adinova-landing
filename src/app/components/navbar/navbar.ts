@@ -12,9 +12,7 @@ export class Navbar {
 
   protected readonly links = [
     { label: 'Estudio', href: '#estudio' },
-    { label: 'Servicios', href: '#servicios' },
-    { label: 'Proyectos', href: '#proyectos' },
-    { label: 'Contacto', href: '#contacto' },
+    { label: 'Diseño', href: '/diseno' },
   ];
 
   protected toggleMenu(): void {
