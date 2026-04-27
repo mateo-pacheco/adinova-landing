@@ -2,6 +2,15 @@
   display: block;
 }
 
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid #36A8A8;
+  outline-offset: 2px;
+}
+
 .navbar-container {
   position: fixed;
   top: 0;
@@ -21,6 +30,7 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
   transition: all 400ms cubic-bezier(0.25, 0.46, 0.45, 0.94);
   overflow: hidden;
+  padding: 0.5rem 0;
 }
 
 .navbar-container::before {
@@ -89,10 +99,18 @@
 
 .navbar-link {
   position: relative;
-  padding: 0.5rem 0;
-  letter-spacing: 0.22em;
+  padding: 0.4rem 0;
+  letter-spacing: 0.2em;
   color: rgba(255, 255, 255, 0.65);
-  transition: all 300ms ease;
+  transition: color 300ms ease;
+  outline: none;
+  text-decoration: none;
+}
+
+.navbar-link:hover,
+.navbar-link:focus {
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(54, 168, 168, 0.4);
 }
 
 .navbar-link::before {
@@ -152,6 +170,8 @@
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.1),
     0 2px 8px rgba(0, 0, 0, 0.1);
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .navbar-cta::before {

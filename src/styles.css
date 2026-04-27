@@ -1,5 +1,17 @@
 @import 'tailwindcss';
 
+*,
+*::before,
+*::after {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+a:focus,
+button:focus {
+  outline: none;
+}
+
 :root {
   color-scheme: dark;
   --bg: #030303;

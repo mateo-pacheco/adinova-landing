@@ -3,18 +3,18 @@
 >
   <nav class="navbar mx-auto flex max-w-6xl items-center justify-between px-5 py-3 lg:px-6">
     <a href="#inicio" class="navbar-logo flex items-center gap-2" aria-label="Ir al inicio">
-      <img src="assets/logo/Logo-nav.webp" alt="Adinova" class="h-9 w-9 object-contain lg:h-10 lg:w-10" />
+      <img src="assets/logo/Logo-nav.webp" alt="Adinova" class="h-7 w-7 object-contain lg:h-8 lg:w-8" />
       <div class="navbar-brand flex flex-col">
-        <span class="text-sm font-medium uppercase tracking-[0.3em] text-white">Adinova</span>
-        <span class="text-[10px] uppercase tracking-[0.18em] text-white/50">Architecture</span>
+        <span class="text-xs font-medium uppercase tracking-[0.28em] text-white">Adinova</span>
+        <span class="text-[9px] uppercase tracking-[0.16em] text-white/50">Architecture</span>
       </div>
     </a>
 
-    <div class="navbar-links hidden items-center gap-8 lg:flex">
+    <div class="navbar-links hidden items-center gap-6 lg:flex">
       @for (link of links; track link.label) {
         <a
           [href]="link.href"
-          class="navbar-link text-[11px] uppercase tracking-[0.22em] transition-colors duration-300"
+          class="navbar-link text-[10px] uppercase tracking-[0.2em] transition-colors duration-300"
         >
           {{ link.label }}
         </a>
@@ -24,7 +24,7 @@
     <div class="hidden lg:block">
       <a
         href="#contacto"
-        class="navbar-cta rounded-full px-5 py-2 text-[11px] uppercase tracking-[0.2em] transition-all duration-300"
+        class="navbar-cta rounded-full px-4 py-1.5 text-[10px] uppercase tracking-[0.18em] transition-all duration-300"
       >
         Contacto
       </a>
