@@ -1,9 +1,9 @@
 <header
   class="navbar-container"
 >
-  <nav class="navbar mx-auto flex max-w-6xl items-center justify-between px-5 py-4 lg:px-8">
-    <a href="#inicio" class="navbar-logo flex items-center gap-3" aria-label="Ir al inicio">
-      <img src="assets/logo/Logo-nav.webp" alt="Adinova" class="h-10 w-10 object-contain lg:h-11 lg:w-11" />
+  <nav class="navbar mx-auto flex max-w-6xl items-center justify-between px-5 py-3 lg:px-6">
+    <a href="#inicio" class="navbar-logo flex items-center gap-2" aria-label="Ir al inicio">
+      <img src="assets/logo/Logo-nav.webp" alt="Adinova" class="h-9 w-9 object-contain lg:h-10 lg:w-10" />
       <div class="navbar-brand flex flex-col">
         <span class="text-sm font-medium uppercase tracking-[0.3em] text-white">Adinova</span>
         <span class="text-[10px] uppercase tracking-[0.18em] text-white/50">Architecture</span>
@@ -14,7 +14,7 @@
       @for (link of links; track link.label) {
         <a
           [href]="link.href"
-          class="navbar-link text-[11px] uppercase tracking-[0.22em] text-white/60 transition-colors duration-300 hover:text-white"
+          class="navbar-link text-[11px] uppercase tracking-[0.22em] transition-colors duration-300"
         >
           {{ link.label }}
         </a>
@@ -24,7 +24,7 @@
     <div class="hidden lg:block">
       <a
         href="#contacto"
-        class="navbar-cta rounded-full border border-white/10 bg-white/5 px-5 py-2 text-[11px] uppercase tracking-[0.2em] text-white/80 transition-all duration-300 hover:border-[#36A8A8]/50 hover:bg-[#36A8A8]/10 hover:text-white"
+        class="navbar-cta rounded-full px-5 py-2 text-[11px] uppercase tracking-[0.2em] transition-all duration-300"
       >
         Contacto
       </a>
@@ -32,7 +32,7 @@
 
     <button
       type="button"
-      class="navbar-toggle flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-white/70 transition-all duration-300 hover:border-[#36A8A8]/50 hover:text-[#36A8A8] lg:hidden"
+      class="navbar-toggle flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300 lg:hidden"
       (click)="toggleMenu()"
       [attr.aria-expanded]="isMenuOpen()"
       aria-label="Abrir menu"
@@ -50,12 +50,12 @@
   </nav>
 
   @if (isMenuOpen()) {
-    <div class="navbar-mobile border-t border-white/8 bg-[#030303]/95 px-5 py-4 lg:hidden">
+    <div class="navbar-mobile border-t border-white/8 bg-[#0a0a0a]/90 px-5 py-5 lg:hidden">
       <div class="flex flex-col gap-1">
         @for (link of links; track link.label) {
           <a
             [href]="link.href"
-            class="navbar-mobile-link rounded-lg px-4 py-3 text-[12px] uppercase tracking-[0.2em] text-white/60 transition-all duration-200 hover:bg-white/5 hover:text-white"
+            class="navbar-mobile-link rounded-lg px-4 py-3.5 text-[12px] uppercase tracking-[0.2em] transition-all duration-200"
             (click)="closeMenu()"
           >
             {{ link.label }}
@@ -64,7 +64,7 @@
 
         <a
           href="#contacto"
-          class="navbar-mobile-cta mt-2 rounded-lg border border-[#36A8A8]/30 bg-[#36A8A8]/10 px-4 py-3 text-center text-[12px] uppercase tracking-[0.2em] text-[#36A8A8] transition-all duration-200 hover:bg-[#36A8A8]/20"
+          class="navbar-mobile-cta mt-2 rounded-lg border px-4 py-3.5 text-center text-[12px] uppercase tracking-[0.2em] transition-all duration-200"
           (click)="closeMenu()"
         >
           Contacto
