@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://adinova.com/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://adinova.com/"/>
+    <image:image>
+      <image:loc>https://adinova.com/assets/og-image.jpg</image:loc>
+      <image:title>Adinova Architecture Studio - Arquitectura Contemporánea</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://adinova.com/diseno</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://adinova.com/diseno"/>
+  </url>
+  <url>
+    <loc>https://adinova.com/construccion</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://adinova.com/construccion"/>
+  </url>
+  <url>
+    <loc>https://adinova.com/legal</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://adinova.com/legal"/>
+  </url>
+  <url>
+    <loc>https://adinova.com/testimonios</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://adinova.com/testimonios"/>
+  </url>
+</urlset>
