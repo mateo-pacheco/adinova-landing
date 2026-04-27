@@ -1,13 +1,124 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>ADINOVA</title>
+  <title>Adinova | Estudio de Arquitectura Contemporánea en Quito</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Adinova es un estudio de arquitectura contemporánea en Quito. Diseño arquitectónico, construcción y asesoría legal para proyectos residenciales y comerciales. Más de 12 años de experiencia.">
+  <meta name="keywords" content="arquitectura Quito, estudio arquitectura Ecuador, diseño arquitectónico, construcción proyectos, asesoría legal arquitectura, arquitectos Quito">
+  <meta name="author" content="Adinova Architecture Studio">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://adinova.com/">
+  <meta name="theme-color" content="#030303">
+
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"></script>
+  <link rel="apple-touch-icon" href="assets/logo/apple-touch-icon.png">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://adinova.com/">
+  <meta property="og:title" content="Adinova | Estudio de Arquitectura Contemporánea en Quito">
+  <meta property="og:description" content="Estudio de arquitectura contemporánea en Quito. Diseño, construcción y asesoría legal para proyectos residenciales y comerciales con más de 12 años de experiencia.">
+  <meta property="og:image" content="https://adinova.com/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Adinova - Estudio de Arquitectura Contemporánea">
+  <meta property="og:locale" content="es_EC">
+  <meta property="og:site_name" content="Adinova Architecture Studio">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://adinova.com/">
+  <meta name="twitter:title" content="Adinova | Estudio de Arquitectura Contemporánea en Quito">
+  <meta name="twitter:description" content="Estudio de arquitectura contemporánea en Quito. Diseño, construcción y asesoría legal para proyectos residenciales y comerciales.">
+  <meta name="twitter:image" content="https://adinova.com/assets/og-image.jpg">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" media="print" onload="this.media='all'">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js" defer></script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Adinova Architecture Studio",
+    "description": "Estudio de arquitectura contemporánea especializado en diseño arquitectónico, construcción y asesoría legal para proyectos residenciales y comerciales.",
+    "url": "https://adinova.com",
+    "telephone": "+593-XXX-XXXXXX",
+    "email": "info@adinova.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Quito",
+      "addressRegion": "Pichincha",
+      "addressCountry": "EC"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "-0.1807",
+      "longitude": "-78.4678"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "09:00",
+        "closes": "18:00"
+      }
+    ],
+    "image": "https://adinova.com/assets/logo/Logo.webp",
+    "priceRange": "$$$",
+    "areaServed": {
+      "@type": "City",
+      "name": "Quito"
+    },
+    "serviceType": ["Arquitectura", "Diseño de Interiores", "Construcción", "Asesoría Legal"]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Adinova Architecture Studio",
+    "url": "https://adinova.com",
+    "logo": "https://adinova.com/assets/logo/Logo.webp",
+    "description": "Estudio de arquitectura contemporánea con sede en Quito",
+    "foundingDate": "2014",
+    "numberOfEmployees": "12+",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Servicios de Arquitectura",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Diseño Arquitectónico",
+            "description": "Diseño de proyectos arquitectónicos residenciales y comerciales"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Construcción",
+            "description": "Ejecución de proyectos arquitectónicos con estándares de calidad"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Asesoría Legal",
+            "description": "Gestión de permisos y trámites legales para proyectos arquitectónicos"
+          }
+        }
+      ]
+    }
+  }
+  </script>
+
   <script>
     (function() {
       if ('scrollRestoration' in history) {
@@ -27,22 +138,22 @@
       background: #030303;
       margin: 0;
     }
-    
+
     body.preloader-active {
       overflow: auto !important;
     }
-    
+
     app-root {
       display: block;
       min-height: 100vh;
     }
-    
+
     .page-content {
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
-    
+
     .page-content.visible {
       opacity: 1;
       transform: translateY(0);
@@ -53,4 +164,3 @@
   <app-root></app-root>
 </body>
 </html>
-

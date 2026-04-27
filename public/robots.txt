@@ -1,0 +1,27 @@
+# Robots.txt - Adinova Architecture Studio
+# https://adinova.com
+
+User-agent: *
+Allow: /
+
+Sitemap: https://adinova.com/sitemap.xml
+
+# Archivos no indexables
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /dist/
+Disallow: /node_modules/
+
+# Reglas para crawlers específicos
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+# Archivos de recursos
+Allow: /assets/
+Allow: /favicon.ico
