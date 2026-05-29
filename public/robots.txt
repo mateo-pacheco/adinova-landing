@@ -4,7 +4,7 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://adinova.com/sitemap.xml
+Sitemap: https://www.adinova.com/sitemap.xml
 
 # Archivos no indexables
 Disallow: /api/
