@@ -10,7 +10,7 @@
     "deploy": "npm run build && wrangler pages deploy dist/ADINOVA/browser --project-name=adinova",
     "deploy:dev": "npm run build && wrangler pages deploy dist/ADINOVA/browser --project-name=adinova --env=development",
     "sitemap:ping": "node scripts/sitemap-ping.mjs",
-    "sitemap:submit": "node -e \"const u='https://search.google.com/search-console/sitemaps?resource_id=https://www.adinova.com/';console.log('Abre este enlace en tu navegador:');console.log(u);const{execSync:e=require('child_process').execSync}=require('child_process');try{e('start '+u)}catch{}\""
+    "sitemap:submit": "node -e \"const u='https://search.google.com/search-console/sitemaps?resource_id=https://adinovaestudio.com/';console.log('Abre este enlace en tu navegador:');console.log(u);const{execSync:e=require('child_process').execSync}=require('child_process');try{e('start '+u)}catch{}\""
   },
   "private": true,
   "packageManager": "npm@11.11.0",
