@@ -1,7 +1,7 @@
 import https from 'https';
 import http from 'http';
 
-const SITEMAP_URL = 'https://www.adinova.com/sitemap.xml';
+const SITEMAP_URL = 'https://adinovaestudio.com/sitemap.xml';
 
 const pings = [
   { name: 'Google (legacy)', url: `https://www.google.com/ping?sitemap=${encodeURIComponent(SITEMAP_URL)}` },
@@ -42,7 +42,7 @@ if (!anyOk) {
   console.log('⚠ Los endpoints legacy de ping están deprecados.');
   console.log('');
   console.log('✅ Google Search Console (manual):');
-  console.log('   https://search.google.com/search-console/sitemaps?resource_id=https://www.adinova.com/');
+  console.log('   https://search.google.com/search-console/sitemaps?resource_id=https://adinovaestudio.com/');
   console.log('');
   console.log('✅ Bing Webmaster Tools (manual, requiere registro gratis):');
   console.log('   https://www.bing.com/webmasters');
