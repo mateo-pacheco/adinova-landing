@@ -90,104 +90,104 @@ export class DisenoGallery implements OnInit, AfterViewInit, OnDestroy {
   protected readonly projects: Project[] = [
     {
       id: '01',
-      title: 'Casa Torre',
-      subtitle: 'Vivienda unifamiliar de 450m2',
+      title: 'Casa Alto Valle',
+      subtitle: 'Vivienda unifamiliar de 380m2',
       category: 'Residencial',
-      location: 'Ciudad de Mexico',
+      location: 'Cumbaya, Quito',
       image: 'assets/mock/01-hero-facade.svg',
       year: '2024',
-      client: 'Familia Martinez',
-      challenge: 'Maximizar views y privacidad en lote medianero',
-      result: 'Espacio fluido con patio interno y terrazas',
+      client: 'Familia Herrera',
+      challenge: 'Aprovechar vista al valle en pendiente pronunciada',
+      result: 'Tres volumenes escalonados con terraza panoramica',
       metrics: {
-        area: '450m2',
-        tiempo: '8 meses',
-        presupuesto: '$4.2M'
+        area: '380m2',
+        tiempo: '10 meses',
+        presupuesto: '$320K'
       }
     },
     {
       id: '02',
-      title: 'Oficinas Spectrum',
-      subtitle: 'Espacio corporativo de 1,200m2',
+      title: 'Oficinas UIO Corporate',
+      subtitle: 'Espacio corporativo de 850m2',
       category: 'Comercial',
-      location: 'Monterrey',
+      location: 'La Carolina, Quito',
       image: 'assets/mock/04-facade-detail.svg',
       year: '2024',
-      client: 'Tech Solutions MX',
-      challenge: 'Crear identidad de marca en espacio corporativo',
-      result: 'Ambiente colaborativo con zonas definidas',
+      client: 'Grupo Fides',
+      challenge: 'Unificar dos plantas con identidad de marca',
+      result: 'Oficina abierta con nucleo de colaboracion central',
       metrics: {
-        area: '1,200m2',
-        tiempo: '6 meses',
-        eficiencia: '+35%'
+        area: '850m2',
+        tiempo: '5 meses',
+        capacidad: '80 personas'
       }
     },
     {
       id: '03',
-      title: 'Loft Centro',
-      subtitle: 'Renovacion de departamento 120m2',
+      title: 'Restaurante Tierra',
+      subtitle: 'Remodelacion gastronomica 240m2',
       category: 'Interiorismo',
-      location: 'Ciudad de Mexico',
+      location: 'Tumbaco, Quito',
       image: 'assets/mock/02-interior-living.svg',
-      year: '2023',
-      client: 'Ing. Ramirez',
-      challenge: 'Renovar espacio envejecimiento con presupuesto limitado',
-      result: 'Ambiente moderno sin obra major',
+      year: '2024',
+      client: 'Chef Martinez',
+      challenge: 'Integrar cocina abierta y comedor en espacio reducido',
+      result: 'Ambiente rustico-contemporaneo con capacidad para 80 comensales',
       metrics: {
-        area: '120m2',
-        tiempo: '3 meses',
-        ahorro: '40%'
+        area: '240m2',
+        tiempo: '4 meses',
+        comensales: '80'
       }
     },
     {
       id: '04',
-      title: 'Villa Gardens',
-      subtitle: 'Casa de campo 650m2',
+      title: 'Residencia El Bosque',
+      subtitle: 'Casa unifamiliar de 520m2',
       category: 'Residencial',
-      location: 'Guadalajara',
+      location: 'Carcelen, Quito',
       image: 'assets/mock/03-floor-plan.svg',
       year: '2023',
-      client: 'Familia Gomez',
-      challenge: 'Integrar naturaleza con espacios de estar',
-      result: 'Arquitectura biophilic con jardin interior',
+      client: 'Familia Torres',
+      challenge: 'Maximizar iluminacion natural en lote entre medianeras',
+      result: 'Doble altura con lucernario y jardin interior',
       metrics: {
-        area: '650m2',
-        tiempo: '10 meses',
-        verde: '200m2'
+        area: '520m2',
+        tiempo: '12 meses',
+        iluminacion: '80% natural'
       }
     },
     {
       id: '05',
-      title: 'Showroom Moda',
-      subtitle: 'Tienda retail 280m2',
+      title: 'Clinica Dental Sonrisa',
+      subtitle: 'Consultorio odontologico 180m2',
       category: 'Comercial',
-      location: 'Ciudad de Mexico',
+      location: 'Quito',
       image: 'assets/mock/05-site-plan.svg',
       year: '2023',
-      client: 'Moda Urbana',
-      challenge: 'Crear experiencia de compra memorable',
-      result: 'Flujo natural con zona de prueba amplia',
+      client: 'Dra. Patricia Jimenez',
+      challenge: 'Distribuir 5 consultorios en espacio lineal',
+      result: 'Flujo eficiente con sala de espera y area de esterilizacion',
       metrics: {
-        area: '280m2',
-        tiempo: '4 meses',
-        ventas: '+50%'
+        area: '180m2',
+        tiempo: '3 meses',
+        consultorios: '5'
       }
     },
     {
       id: '06',
-      title: 'Penthouse Vista',
-      subtitle: 'Departamento penthouse 320m2',
+      title: 'Casa de Campo Volcan',
+      subtitle: 'Vivienda vacacional de 280m2',
       category: 'Residencial',
-      location: 'Ciudad de Mexico',
+      location: 'Banos, Tungurahua',
       image: 'assets/mock/06-section-cut.svg',
-      year: '2022',
-      client: 'Lic. Hernandez',
-      challenge: 'Renovar completamente vista a la ciudad',
-      result: 'Ventanales floor-to-ceiling y terraza integrada',
+      year: '2023',
+      client: 'Familia Vasconez',
+      challenge: 'Construir en terreno volcanico con vista al volcan',
+      result: 'Casa minimalista con muros de piedra local y gran ventanal',
       metrics: {
-        area: '320m2',
-        tiempo: '5 meses',
-        views: '180'
+        area: '280m2',
+        tiempo: '8 meses',
+        altitud: '2,200 msnm'
       }
     },
   ];

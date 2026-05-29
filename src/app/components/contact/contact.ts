@@ -51,7 +51,8 @@ export class Contact implements OnInit, OnDestroy, AfterViewInit {
 
   protected schedules = [
     'Lunes a viernes / 09:00 - 18:00',
-    'Reuniones presenciales y virtuales',
+    'Sabados / 10:00 - 14:00 (cita previa)',
+    'Reuniones presenciales y virtuales en todo Ecuador',
   ];
 
   protected contactForm: FormGroup;
@@ -67,6 +68,9 @@ export class Contact implements OnInit, OnDestroy, AfterViewInit {
     'Arquitectura comercial',
     'Interiorismo',
     'Diseno conceptual',
+    'Direccion de obra',
+    'Planificacion espacial',
+    'Gestion de permisos y licencias',
   ];
 
   constructor(

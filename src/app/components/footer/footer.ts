@@ -12,12 +12,13 @@ export class Footer {
     { label: 'Inicio', href: '#inicio' },
     { label: 'Estudio', href: '#estudio' },
     { label: 'Servicios', href: '#servicios' },
-    { label: 'Ubicacion', href: '#ubicacion' },
+    { label: 'Proyectos', href: '#proyectos' },
     { label: 'Contacto', href: '#contacto' },
   ];
 
   protected readonly contacts = [
     { label: 'hola@adinova.studio', href: 'mailto:hola@adinova.studio' },
-    { label: '+593 99 123 4567', href: 'tel:+593991234567' },
+    { label: '+593 98 765 4321', href: 'tel:+593987654321' },
+    { label: 'Quito, Ecuador', href: '#' },
   ];
 }

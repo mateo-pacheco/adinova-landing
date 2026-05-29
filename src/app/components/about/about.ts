@@ -38,32 +38,45 @@ export class About implements OnInit, AfterViewInit, OnDestroy {
     {
       title: 'Claridad espacial',
       description:
-        'Cada decision responde a una logica funcional, visual y constructiva. Espacios que funcionan sin多余的.',
+        'Cada decision responde a una logica funcional, visual y constructiva. Espacios que fluyen con naturalidad y proposito.',
     },
     {
-      title: 'Materialidad sobria',
+      title: 'Materialidad honesta',
       description:
-        'Trabajamos con texturas honestas, luz natural y proporciones que envejecen con dignidad.',
+        'Trabajamos con texturas autenticas, luz natural y proporciones que envejecen con dignidad. Sin revestimientos innecesarios.',
     },
     {
       title: 'Precision tecnica',
       description:
-        'El diseno y la ejecucion se articulan con criterio. Control continuo de cada detalle constructivo.',
+        'El diseno y la ejecucion se articulan con rigor. Control continuo de cada detalle constructivo desde el concepto hasta la entrega.',
+    },
+    {
+      title: 'Contexto y lugar',
+      description:
+        'Cada proyecto nace del dialogo con su entorno. Clima, topografia, cultura y paisaje definen las decisiones arquitectonicas.',
     },
   ];
 
   protected readonly team = [
     {
       name: 'Andrea Molina',
-      role: 'Arquitecta principal',
+      role: 'Arquitecta principal y socia fundadora',
     },
     {
       name: 'Daniel Vela',
-      role: 'Director de proyecto',
+      role: 'Director de proyectos',
     },
     {
       name: 'Sofia Cardenas',
-      role: 'Especialista en interiores',
+      role: 'Disenadora de interiores senior',
+    },
+    {
+      name: 'Mateo Espinosa',
+      role: 'Arquitecto tecnico y supervisor de obra',
+    },
+    {
+      name: 'Carolina Vasconez',
+      role: 'Coordinadora de diseno y modelado BIM',
     },
   ];
 
