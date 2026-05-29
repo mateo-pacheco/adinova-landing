@@ -309,8 +309,12 @@ export class Preloader implements OnInit, AfterViewInit, OnDestroy {
     if (!this.isBrowser) return;
     
     this.ngZone.runOutsideAngular(() => {
-      this.initThreeJS();
-      this.animate();
+      try {
+        this.initThreeJS();
+        this.animate();
+      } catch (e) {
+        console.warn('Preloader 3D init skipped:', e);
+      }
       this.simulateLoading();
     });
   }

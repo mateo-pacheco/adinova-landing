@@ -1,8 +1,8 @@
 <app-preloader (hidden)="onPreloaderHidden()"></app-preloader>
 
-<div class="page-shell flex min-h-screen flex-col page-content" [class.visible]="pageVisible" data-animate>
-  <app-navbar data-animate></app-navbar>
+<app-navbar data-animate></app-navbar>
 
+<div class="page-shell flex min-h-screen flex-col page-content" [class.visible]="pageVisible">
   <main class="flex-1" data-animate>
     <app-testimonios-hero></app-testimonios-hero>
     <app-testimonios-grid></app-testimonios-grid>

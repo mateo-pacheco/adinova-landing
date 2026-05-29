@@ -1,9 +1,10 @@
 import { Component, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })
@@ -11,11 +12,11 @@ export class Navbar {
   protected readonly isMenuOpen = signal(false);
 
   protected readonly links = [
-    { label: 'Estudio', href: '#estudio' },
-    { label: 'Diseño', href: '/diseno' },
-    { label: 'Construccion', href: '/construccion' },
-    { label: 'Legal', href: '/legal' },
-    { label: 'Testimonios', href: '/testimonios' },
+    { label: 'Estudio', href: '#estudio', route: null },
+    { label: 'Diseño', href: null, route: '/diseno' },
+    { label: 'Construccion', href: null, route: '/construccion' },
+    { label: 'Legal', href: null, route: '/legal' },
+    { label: 'Testimonios', href: null, route: '/testimonios' },
   ];
 
   protected toggleMenu(): void {
