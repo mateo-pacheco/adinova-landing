@@ -1,4 +1,5 @@
-import { Component, inject, OnInit, OnDestroy, ElementRef, ViewChild, AfterViewInit, HostListener } from '@angular/core';
+import { Component, Inject, inject, OnInit, OnDestroy, ElementRef, ViewChild, AfterViewInit, HostListener, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import emailjs from '@emailjs/browser';
 import { environment } from '../../../environments/environment';
@@ -27,6 +28,7 @@ export class Contact implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('canvas3d', { static: true }) canvasRef!: ElementRef<HTMLCanvasElement>;
   
   private fb = inject(FormBuilder);
+  private isBrowser: boolean;
   private touchTimeouts = new Map<string, ReturnType<typeof setTimeout>>();
   private validationTimeouts = new Map<string, ReturnType<typeof setTimeout>>();
   
@@ -67,7 +69,10 @@ export class Contact implements OnInit, OnDestroy, AfterViewInit {
     'Diseno conceptual',
   ];
 
-  constructor() {
+  constructor(
+    @Inject(PLATFORM_ID) platformId: object
+  ) {
+    this.isBrowser = isPlatformBrowser(platformId);
     this.contactForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
       email: ['', [Validators.required, Validators.email, Validators.maxLength(150)]],
@@ -83,6 +88,7 @@ export class Contact implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnDestroy(): void {
     this.clearAllTimeouts();
+    if (!this.isBrowser) return;
     if (this.animationId) {
       cancelAnimationFrame(this.animationId);
     }
@@ -91,6 +97,7 @@ export class Contact implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    if (!this.isBrowser) return;
     this.initThreeJS();
     this.animate();
     window.addEventListener('resize', this.onWindowResize.bind(this));
