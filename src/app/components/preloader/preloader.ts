@@ -323,6 +323,7 @@ export class Preloader implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    if (!this.isBrowser) return;
     if (this.animationId) {
       cancelAnimationFrame(this.animationId);
     }

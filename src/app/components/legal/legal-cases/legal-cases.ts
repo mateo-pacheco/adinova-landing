@@ -69,6 +69,7 @@ export class LegalCases implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    if (!this.isBrowser) return;
     if (this.animationId) {
       cancelAnimationFrame(this.animationId);
     }
