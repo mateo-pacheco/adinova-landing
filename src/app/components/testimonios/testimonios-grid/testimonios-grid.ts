@@ -78,56 +78,56 @@ export class TestimoniosGrid implements OnInit, AfterViewInit, OnDestroy {
   protected readonly testimonios: Testimonio[] = [
     {
       id: '01',
-      name: 'Ing. Roberto Martinez',
-      role: 'Director General',
-      company: 'Grupo Constructor MX',
-      text: 'El equipo de Adinova supero nuestras expectativas. La obra se entrego en tiempo y forma, con una calidad excepcional. Su profesionalismo y compromiso son invaluables.',
-      projectType: 'Proyecto comercial',
+      name: 'Arq. Sofia Proano',
+      role: 'Socia Directora',
+      company: 'Estudio Proano Arquitectos',
+      text: 'Trabajar con Adinova fue una experiencia excepcional. Entienden la arquitectura desde una perspectiva integral y su capacidad de ejecucion supero nuestras expectativas. Un equipo con criterio y sensibilidad.',
+      projectType: 'Oficinas corporativas UIO',
       rating: 5
     },
     {
       id: '02',
-      name: 'Lic. Ana Garcia',
-      role: 'CEO',
-      company: 'Moda Urbana SA',
-      text: 'Transformaron completamente nuestro espacio comercial. El diseno y la ejecución fueron impecables. Nuestro equipo quedo encantado con el resultado.',
-      projectType: 'Proyecto retail',
+      name: 'Ing. Pablo Montufar',
+      role: 'Gerente de Proyectos',
+      company: 'Grupo Inmobiliario Fides',
+      text: 'Llevamos tres proyectos conjuntos y el nivel de detalle en cada entrega es consistente. Cumplen cronogramas, respetan presupuestos y la calidad constructiva es de primer nivel.',
+      projectType: 'Desarrollo residencial',
       rating: 5
     },
     {
       id: '03',
-      name: 'Arq. Carlos Hernandez',
-      role: 'Director de Proyectos',
-      company: 'Desarrollos Vistta',
-      text: 'Como arquitecto, soy muy exigentes. Adinova cumplio con todos los estandares de calidad que buscabamos. La comunicacion durante todo el proceso fue excelente.',
-      projectType: 'Proyecto residencial',
-      rating: 5
-    },
-    {
-      id: '04',
-      name: 'Sra. Maria Lopez',
+      name: 'Maria Fernanda Crespo',
       role: 'Propietaria',
-      company: 'Casa Habitacion',
-      text: 'Construyeron nuestra casa de ensuenno. Cada detalle estuvo parfaito. El equipo fue muy patient y atendio todas nuestras peticiones.',
+      company: 'Residencia Alto Valle',
+      text: 'Confiamos en Adinova para nuestra casa familiar y el resultado supero lo que imaginabamos. Cada espacio fue pensado para nuestra rutina diaria. La luz natural y los materiales hacen la diferencia.',
       projectType: 'Vivienda unifamiliar',
       rating: 5
     },
     {
+      id: '04',
+      name: 'Diego Andrade',
+      role: 'CEO',
+      company: 'Restaurante Tierra',
+      text: 'Transformaron un local comun en un espacio con alma. El diseno de interiores logro exactamente la atmosfera que buscabamos para nuestro restaurante. Los comensales notan la diferencia.',
+      projectType: 'Diseno de interiores',
+      rating: 5
+    },
+    {
       id: '05',
-      name: 'Ing. Fernando Ruiz',
-      role: 'Gerente de Planta',
-      company: 'Industrias QM',
-      text: 'La construccion de nuestra planta industrial fue menangani con gran profesionalismo. Cumplieron con los plazos ajustados que teniamos. Totalmente recomendados.',
-      projectType: 'Proyecto industrial',
+      name: 'Ing. Gabriela Valdivieso',
+      role: 'Directora de Operaciones',
+      company: 'Centro Logistico Sur',
+      text: 'Para nuestra nave industrial necesitabamos eficiencia ante todo. Adinova diseno los flujos de trabajo y la distribucion optimizando cada metro cuadrado. Proyecto entregado antes del plazo.',
+      projectType: 'Nave industrial',
       rating: 5
     },
     {
       id: '06',
-      name: 'Dr. Juan Perez',
+      name: 'Dr. Esteban Rosero',
       role: 'Director Medico',
-      company: 'Clinica San Jose',
-      text: 'Nuestra clinica quedo parfait. El equipo entiende las necesidades especificas del sector salud. Cumplieron con todas las normatividades requeridas.',
-      projectType: 'Proyecto de salud',
+      company: 'Hospital General Sur',
+      text: 'Un proyecto hospitalario requiere conocimientos tecnicos muy especificos. Adinova demostro total comprension de las normas sanitarias y flujos clinicos. El resultado es un hospital funcional y acogedor.',
+      projectType: 'Centro de salud',
       rating: 5
     },
   ];
