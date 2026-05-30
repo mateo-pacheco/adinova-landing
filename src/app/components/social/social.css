@@ -2,3 +2,39 @@
   display: block;
 }
 
+.social-icon-box {
+  width: 32px;
+  height: 32px;
+}
+
+.social-icon {
+  font-size: 13px;
+}
+
+.social-name {
+  font-size: 13px;
+}
+
+.social-handle {
+  font-size: 10px;
+}
+
+@media (min-width: 640px) {
+  .social-icon-box {
+    width: 36px;
+    height: 36px;
+  }
+
+  .social-icon {
+    font-size: 14px;
+  }
+
+  .social-name {
+    font-size: 14px;
+  }
+
+  .social-handle {
+    font-size: 11px;
+  }
+}
+
