@@ -17,28 +17,28 @@
         </div>
       </article>
 
-      <div class="grid gap-4 sm:grid-cols-2">
+      <div class="grid gap-4 max-sm:grid-cols-1 sm:grid-cols-2">
         @for (item of items; track item.name) {
           <a
             [href]="item.href"
             target="_blank"
             rel="noreferrer"
-            class="group premium-card rounded-[1.6rem] border border-white/10 bg-white/[0.04] p-5 transition duration-300 hover:border-[#36A8A8]/30 hover:bg-white/[0.06]"
+            class="group premium-card rounded-[1.6rem] border border-white/10 bg-white/[0.04] p-4 transition duration-300 hover:border-[#36A8A8]/30 hover:bg-white/[0.06] sm:p-5"
           >
             <div class="flex items-center justify-between">
-              <div class="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 text-white transition duration-300 group-hover:border-[#36A8A8]/30 group-hover:text-[#36A8A8]">
+              <div class="social-icon-box flex items-center justify-center rounded-full border border-white/10 text-white transition duration-300 group-hover:border-[#36A8A8]/30 group-hover:text-[#36A8A8]">
                 @switch (item.name) {
                   @case ('Facebook') {
-                    <i class="fa-brands fa-facebook-f text-sm"></i>
+                    <i class="fa-brands fa-facebook-f social-icon"></i>
                   }
                   @case ('Instagram') {
-                    <i class="fa-brands fa-instagram text-sm"></i>
+                    <i class="fa-brands fa-instagram social-icon"></i>
                   }
                   @case ('LinkedIn') {
-                    <i class="fa-brands fa-linkedin-in text-sm"></i>
+                    <i class="fa-brands fa-linkedin-in social-icon"></i>
                   }
                   @case ('TikTok') {
-                    <i class="fa-brands fa-tiktok text-sm"></i>
+                    <i class="fa-brands fa-tiktok social-icon"></i>
                   }
                 }
               </div>
@@ -46,8 +46,8 @@
               <span class="glow-dot h-1.5 w-1.5 rounded-full bg-[#36A8A8]"></span>
             </div>
 
-            <p class="mt-8 text-sm uppercase tracking-[0.24em] text-white">{{ item.name }}</p>
-            <p class="mt-3 text-[11px] uppercase tracking-[0.22em] text-white/70">{{ item.handle }}</p>
+            <p class="social-name mt-5 uppercase tracking-[0.24em] text-white sm:mt-6">{{ item.name }}</p>
+            <p class="social-handle mt-2 uppercase tracking-[0.22em] text-white/70 sm:mt-3">{{ item.handle }}</p>
           </a>
         }
       </div>
