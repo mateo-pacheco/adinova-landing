@@ -44,9 +44,9 @@ export class Contact implements OnInit, OnDestroy, AfterViewInit {
   private time = 0;
 
   protected contactItems: ContactItem[] = [
-    { label: 'Correo', value: 'hola@adinova.studio', href: 'mailto:hola@adinova.studio' },
-    { label: 'Telefono', value: '+593 99 000 0000', href: 'tel:+593990000000' },
-    { label: 'Ubicacion', value: 'Quito, Ecuador', href: '#' },
+    { label: 'Correo', value: 'adinovaarq@gmail.com', href: 'mailto:adinovaarq@gmail.com' },
+    { label: 'Telefono', value: '+593 98 409 0397', href: 'tel:+593984090397' },
+    { label: 'Ubicacion', value: 'Luis Cordero 9-55 y Simon Bolivar, Ofic. #16', href: '#' },
   ];
 
   protected schedules = [

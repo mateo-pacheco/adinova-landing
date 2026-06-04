@@ -17,8 +17,8 @@ export class Footer {
   ];
 
   protected readonly contacts = [
-    { label: 'hola@adinova.studio', href: 'mailto:hola@adinova.studio' },
-    { label: '+593 98 765 4321', href: 'tel:+593987654321' },
-    { label: 'Quito, Ecuador', href: '#' },
+    { label: 'adinovaarq@gmail.com', href: 'mailto:adinovaarq@gmail.com' },
+    { label: '+593 98 409 0397', href: 'tel:+593984090397' },
+    { label: 'Cuenca, Ecuador', href: '#' },
   ];
 }

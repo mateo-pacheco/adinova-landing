@@ -12,32 +12,32 @@ export class Marquee {
     {
       title: 'Arquitectura residencial',
       label: 'Casa Alto Valle',
-      image: 'assets/mock/01-hero-facade.svg',
+      image: 'assets/img/01.webp',
     },
     {
       title: 'Arquitectura comercial',
       label: 'Oficinas UIO',
-      image: 'assets/mock/02-interior-living.svg',
+      image: 'assets/img/02.webp',
     },
     {
       title: 'Interiorismo',
       label: 'Restaurante Tierra',
-      image: 'assets/mock/03-floor-plan.svg',
+      image: 'assets/img/03.webp',
     },
     {
       title: 'Direccion de obra',
       label: 'Conjunto San Luis',
-      image: 'assets/mock/04-facade-detail.svg',
+      image: 'assets/img/04.webp',
     },
     {
       title: 'Diseno conceptual',
       label: 'Centro Logistico',
-      image: 'assets/mock/05-site-plan.svg',
+      image: 'assets/img/05.webp',
     },
     {
       title: 'Planificacion espacial',
       label: 'Hacienda El Rosal',
-      image: 'assets/mock/06-section-cut.svg',
+      image: 'assets/img/06.webp',
     },
   ];
 }
