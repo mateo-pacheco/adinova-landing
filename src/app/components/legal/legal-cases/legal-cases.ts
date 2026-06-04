@@ -84,7 +84,7 @@ export class LegalCases implements OnInit, AfterViewInit, OnDestroy {
       subtitle: 'Edificio de 18 niveles',
       category: 'Comercial',
       location: 'Quito',
-      image: 'assets/mock/01-hero-facade.svg',
+      image: 'assets/img/01.webp',
       area: '15,200 m2',
       permit: 'Licencia de construccion municipal',
       year: '2024'
@@ -95,7 +95,7 @@ export class LegalCases implements OnInit, AfterViewInit, OnDestroy {
       subtitle: 'Conjunto residencial 65 viviendas',
       category: 'Vivienda',
       location: 'Cumbaya',
-      image: 'assets/mock/04-facade-detail.svg',
+      image: 'assets/img/04.webp',
       area: '9,800 m2',
       permit: 'Cambio de uso de suelo y aprobacion de planos',
       year: '2024'
@@ -106,7 +106,7 @@ export class LegalCases implements OnInit, AfterViewInit, OnDestroy {
       subtitle: 'Centro de distribucion y bodegas',
       category: 'Industrial',
       location: 'Guayaquil',
-      image: 'assets/mock/05-site-plan.svg',
+      image: 'assets/img/05.webp',
       area: '18,500 m2',
       permit: 'Licencia ambiental y permiso de construccion',
       year: '2023'
@@ -117,7 +117,7 @@ export class LegalCases implements OnInit, AfterViewInit, OnDestroy {
       subtitle: 'Centro comercial 65 locales',
       category: 'Comercial',
       location: 'Valle de los Chillos',
-      image: 'assets/mock/03-floor-plan.svg',
+      image: 'assets/img/03.webp',
       area: '25,000 m2',
       permit: 'Licencia multiple y factibilidad de servicios',
       year: '2023'
@@ -128,7 +128,7 @@ export class LegalCases implements OnInit, AfterViewInit, OnDestroy {
       subtitle: 'Restauracion de inmueble patrimonial',
       category: 'Vivienda',
       location: 'Cayambe',
-      image: 'assets/mock/06-section-cut.svg',
+      image: 'assets/img/06.webp',
       area: '1,200 m2',
       permit: 'Permiso de intervencion patrimonial',
       year: '2022'
@@ -139,7 +139,7 @@ export class LegalCases implements OnInit, AfterViewInit, OnDestroy {
       subtitle: 'Centro medico de especialidades',
       category: 'Salud',
       location: 'Quito',
-      image: 'assets/mock/02-interior-living.svg',
+      image: 'assets/img/02.webp',
       area: '8,500 m2',
       permit: 'Permiso sanitario y licencia de construccion',
       year: '2022'

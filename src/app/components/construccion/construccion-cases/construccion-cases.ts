@@ -84,7 +84,7 @@ export class ConstruccionCases implements OnInit, AfterViewInit, OnDestroy {
       subtitle: 'Torre corporativa de 18 niveles',
       category: 'Comercial',
       location: 'Quito',
-      image: 'assets/mock/01-hero-facade.svg',
+      image: 'assets/img/01.webp',
       area: '15,200 m2',
       duration: '22 meses',
       year: '2024'
@@ -95,7 +95,7 @@ export class ConstruccionCases implements OnInit, AfterViewInit, OnDestroy {
       subtitle: 'Urbanizacion de 65 viviendas',
       category: 'Vivienda',
       location: 'Cumbaya, Quito',
-      image: 'assets/mock/04-facade-detail.svg',
+      image: 'assets/img/04.webp',
       area: '9,800 m2',
       duration: '16 meses',
       year: '2024'
@@ -106,7 +106,7 @@ export class ConstruccionCases implements OnInit, AfterViewInit, OnDestroy {
       subtitle: 'Bodegas industriales y patio de maniobras',
       category: 'Industrial',
       location: 'Guayaquil',
-      image: 'assets/mock/05-site-plan.svg',
+      image: 'assets/img/05.webp',
       area: '18,500 m2',
       duration: '10 meses',
       year: '2023'
@@ -117,7 +117,7 @@ export class ConstruccionCases implements OnInit, AfterViewInit, OnDestroy {
       subtitle: 'Centro comercial 65 locales',
       category: 'Comercial',
       location: 'Valle de los Chillos',
-      image: 'assets/mock/03-floor-plan.svg',
+      image: 'assets/img/03.webp',
       area: '25,000 m2',
       duration: '14 meses',
       year: '2023'
@@ -128,7 +128,7 @@ export class ConstruccionCases implements OnInit, AfterViewInit, OnDestroy {
       subtitle: 'Restauracion de hacienda patrimonial',
       category: 'Vivienda',
       location: 'Cayambe',
-      image: 'assets/mock/06-section-cut.svg',
+      image: 'assets/img/06.webp',
       area: '1,200 m2',
       duration: '12 meses',
       year: '2022'
@@ -139,7 +139,7 @@ export class ConstruccionCases implements OnInit, AfterViewInit, OnDestroy {
       subtitle: 'Centro medico de especialidades',
       category: 'Salud',
       location: 'Quito',
-      image: 'assets/mock/02-interior-living.svg',
+      image: 'assets/img/02.webp',
       area: '8,500 m2',
       duration: '18 meses',
       year: '2022'

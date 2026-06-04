@@ -11,23 +11,18 @@ export class Social {
   protected readonly items = [
     {
       name: 'Facebook',
-      handle: '/adinova.studio',
-      href: 'https://facebook.com',
+      handle: '/adinovaestudioarquitectonico',
+      href: 'https://www.facebook.com/profile.php?id=100083355670332',
     },
     {
       name: 'Instagram',
-      handle: '@adinova.studio',
-      href: 'https://instagram.com',
-    },
-    {
-      name: 'LinkedIn',
-      handle: '/company/adinova',
-      href: 'https://linkedin.com',
+      handle: '@adinovaestudioarquitectonico',
+      href: 'https://www.instagram.com/adinovaestudioarquitectonico/',
     },
     {
       name: 'TikTok',
-      handle: '@adinova.studio',
-      href: 'https://tiktok.com',
+      handle: '@adinovaarq',
+      href: 'https://www.tiktok.com/@adinovaarq',
     },
   ];
 }
