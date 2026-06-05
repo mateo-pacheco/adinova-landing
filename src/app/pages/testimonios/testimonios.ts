@@ -1,10 +1,11 @@
-import { Component, Inject, PLATFORM_ID, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, Inject, PLATFORM_ID, ViewChild, AfterViewInit, OnInit, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Navbar } from '../../components/navbar/navbar';
 import { Footer } from '../../components/footer/footer';
 import { Preloader } from '../../components/preloader/preloader';
 import { TestimoniosHero } from '../../components/testimonios/testimonios-hero/testimonios-hero';
 import { TestimoniosGrid } from '../../components/testimonios/testimonios-grid/testimonios-grid';
+import { SeoService } from '../../shared/seo.service';
 
 @Component({
   selector: 'app-testimonios',
@@ -13,14 +14,23 @@ import { TestimoniosGrid } from '../../components/testimonios/testimonios-grid/t
   templateUrl: './testimonios.html',
   styleUrl: './testimonios.css',
 })
-export class Testimonios implements AfterViewInit {
+export class Testimonios implements OnInit, AfterViewInit {
   @ViewChild(Preloader) preloader!: Preloader;
   preloaderCompleted = false;
   pageVisible = false;
+  private seo = inject(SeoService);
   
   constructor(
     @Inject(PLATFORM_ID) private platformId: object
   ) {}
+
+  ngOnInit() {
+    this.seo.updateSeoTags({
+      title: 'Testimonios y Clientes',
+      description: 'Conoce la experiencia de nuestros clientes. Más de 12 años diseñando y construyendo sueños arquitectónicos en Quito con excelencia.',
+      canonical: 'https://adinovaestudio.com/testimonios'
+    });
+  }
   
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {
