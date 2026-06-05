@@ -1,4 +1,4 @@
-import { Component, Inject, PLATFORM_ID, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, Inject, PLATFORM_ID, ViewChild, AfterViewInit, OnInit, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Navbar } from '../../components/navbar/navbar';
 import { Footer } from '../../components/footer/footer';
@@ -7,6 +7,7 @@ import { LegalHero } from '../../components/legal/legal-hero/legal-hero';
 import { LegalProcess } from '../../components/legal/legal-process/legal-process';
 import { LegalCases } from '../../components/legal/legal-cases/legal-cases';
 import { LegalFaq } from '../../components/legal/legal-faq/legal-faq';
+import { SeoService } from '../../shared/seo.service';
 
 @Component({
   selector: 'app-legal',
@@ -15,14 +16,23 @@ import { LegalFaq } from '../../components/legal/legal-faq/legal-faq';
   templateUrl: './legal.html',
   styleUrl: './legal.css',
 })
-export class Legal implements AfterViewInit {
+export class Legal implements OnInit, AfterViewInit {
   @ViewChild(Preloader) preloader!: Preloader;
   preloaderCompleted = false;
   pageVisible = false;
+  private seo = inject(SeoService);
   
   constructor(
     @Inject(PLATFORM_ID) private platformId: object
   ) {}
+
+  ngOnInit() {
+    this.seo.updateSeoTags({
+      title: 'Asesoría Legal Arquitectónica',
+      description: 'Gestión de trámites, permisos y asesoría legal para proyectos arquitectónicos en Quito. Seguridad jurídica para tus inversiones inmobiliarias.',
+      canonical: 'https://adinovaestudio.com/legal'
+    });
+  }
   
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {

@@ -1,4 +1,4 @@
-import { Component, Inject, PLATFORM_ID, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, Inject, PLATFORM_ID, ViewChild, AfterViewInit, OnInit, inject } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Navbar } from '../../components/navbar/navbar';
 import { Footer } from '../../components/footer/footer';
@@ -6,6 +6,7 @@ import { Preloader } from '../../components/preloader/preloader';
 import { DisenoHero } from '../../components/diseno/diseno-hero/diseno-hero';
 import { DisenoGallery } from '../../components/diseno/diseno-gallery/diseno-gallery';
 import { DisenoProcess } from '../../components/diseno/diseno-process/diseno-process';
+import { SeoService } from '../../shared/seo.service';
 
 @Component({
   selector: 'app-diseno',
@@ -14,14 +15,23 @@ import { DisenoProcess } from '../../components/diseno/diseno-process/diseno-pro
   templateUrl: './diseno.html',
   styleUrl: './diseno.css',
 })
-export class Diseno implements AfterViewInit {
+export class Diseno implements OnInit, AfterViewInit {
   @ViewChild(Preloader) preloader!: Preloader;
   preloaderCompleted = false;
   pageVisible = false;
+  private seo = inject(SeoService);
   
   constructor(
     @Inject(PLATFORM_ID) private platformId: object
   ) {}
+
+  ngOnInit() {
+    this.seo.updateSeoTags({
+      title: 'Diseño Arquitectónico',
+      description: 'Servicios de diseño arquitectónico y de interiores en Quito. Transformamos ideas en espacios funcionales y estéticos con visión contemporánea.',
+      canonical: 'https://adinovaestudio.com/diseno'
+    });
+  }
   
   ngAfterViewInit() {
     if (isPlatformBrowser(this.platformId)) {

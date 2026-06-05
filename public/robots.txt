@@ -1,5 +1,5 @@
 # Robots.txt - Adinova Architecture Studio
-# https://adinova.com
+# https://adinovaestudio.com
 
 User-agent: *
 Allow: /
