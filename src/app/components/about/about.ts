@@ -59,24 +59,32 @@ export class About implements OnInit, AfterViewInit, OnDestroy {
 
   protected readonly team = [
     {
-      name: 'Andrea Molina',
-      role: 'Arquitecta principal y socia fundadora',
+      name: 'Erick Ramiro Farez Paguay',
+      role: 'Gerente - Representante legal de Adinova',
     },
     {
-      name: 'Daniel Vela',
-      role: 'Director de proyectos',
+      name: 'Daniel Pedro Chicaiza Quituisaca',
+      role: 'Jefe de Construccion - Encargado de los procesos en obra',
     },
     {
-      name: 'Sofia Cardenas',
-      role: 'Disenadora de interiores senior',
+      name: 'Pablo Andres Patiño Campoverde',
+      role: 'Jefe de Topografia - Medicion de terrenos en campo',
     },
     {
-      name: 'Mateo Espinosa',
-      role: 'Arquitecto tecnico y supervisor de obra',
+      name: 'Sami Dayanna Vacacela Naranjo',
+      role: 'Arquitecta Junior - Dibujante de proyectos arquitectonicos',
     },
     {
-      name: 'Carolina Vasconez',
-      role: 'Coordinadora de diseno y modelado BIM',
+      name: 'Britany Lizbeth Gaon Lopez',
+      role: 'Abogada - Tramite de procesos legales en derecho patrimonial',
+    },
+    {
+      name: 'Ivan Joel Pardo Castro',
+      role: 'Marketing Digital - Gestion de campañas y redes sociales',
+    },
+    {
+      name: 'Kevin Anibal Brito Sarmiento',
+      role: 'Arquitecto - Dibujante de proyectos arquitectonicos',
     },
   ];
 

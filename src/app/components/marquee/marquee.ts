@@ -16,7 +16,7 @@ export class Marquee {
     },
     {
       title: 'Arquitectura comercial',
-      label: 'Oficinas UIO',
+      label: 'Oficinas Cuenca',
       image: 'assets/img/02.webp',
     },
     {

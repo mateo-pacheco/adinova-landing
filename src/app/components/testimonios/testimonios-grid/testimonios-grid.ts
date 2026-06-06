@@ -82,7 +82,7 @@ export class TestimoniosGrid implements OnInit, AfterViewInit, OnDestroy {
       role: 'Socia Directora',
       company: 'Estudio Proano Arquitectos',
       text: 'Trabajar con Adinova fue una experiencia excepcional. Entienden la arquitectura desde una perspectiva integral y su capacidad de ejecucion supero nuestras expectativas. Un equipo con criterio y sensibilidad.',
-      projectType: 'Oficinas corporativas UIO',
+      projectType: 'Oficinas corporativas Cuenca',
       rating: 5
     },
     {

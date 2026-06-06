@@ -27,7 +27,7 @@ export class Testimonios implements OnInit, AfterViewInit {
   ngOnInit() {
     this.seo.updateSeoTags({
       title: 'Testimonios y Clientes',
-      description: 'Conoce la experiencia de nuestros clientes. Más de 12 años diseñando y construyendo sueños arquitectónicos en Quito con excelencia.',
+      description: 'Conoce la experiencia de nuestros clientes. Más de 6 años diseñando y construyendo sueños arquitectónicos en Cuenca con excelencia.',
       canonical: 'https://adinovaestudio.com/testimonios'
     });
   }

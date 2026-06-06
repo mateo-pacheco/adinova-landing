@@ -22,7 +22,7 @@ export class Social {
     {
       name: 'TikTok',
       handle: '@adinovaarq',
-      href: 'https://www.tiktok.com/@adinovaarq',
+      href: 'https://www.tiktok.com/@adinovaarq?_r=1&_t=ZS-96sRdeOBdzz',
     },
   ];
 }

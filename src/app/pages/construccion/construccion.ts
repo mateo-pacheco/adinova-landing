@@ -29,7 +29,7 @@ export class Construccion implements OnInit, AfterViewInit {
   ngOnInit() {
     this.seo.updateSeoTags({
       title: 'Construcción y Obra',
-      description: 'Expertos en ejecución de obras arquitectónicas en Quito. Calidad, precisión y cumplimiento de plazos en cada proyecto de construcción.',
+      description: 'Expertos en ejecución de obras arquitectónicas en Cuenca. Calidad, precisión y cumplimiento de plazos en cada proyecto de construcción.',
       canonical: 'https://adinovaestudio.com/construccion'
     });
   }
