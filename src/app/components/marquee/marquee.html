@@ -1,8 +1,14 @@
 ﻿<section class="px-6 pb-14 text-white lg:px-10 lg:pb-20">
   <div
-    class="mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] py-4 sm:py-5"
+    class="marquee-container group relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] py-4 sm:py-5"
+    (mouseenter)="onEnter()"
+    (mouseleave)="onLeave()"
   >
-    <div class="marquee-track flex w-max items-stretch">
+    <div
+      #track
+      class="marquee-track flex w-max items-stretch"
+      [class.marquee-paused]="paused"
+    >
       @for (loop of [0, 1]; track loop) {
         <div class="flex items-stretch">
           @for (item of items; track item.title) {
@@ -25,8 +31,27 @@
         </div>
       }
     </div>
+
+    <button
+      type="button"
+      (click)="prev()"
+      class="marquee-btn marquee-btn-left"
+      aria-label="Anterior"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15 18l-6-6 6-6"/>
+      </svg>
+    </button>
+
+    <button
+      type="button"
+      (click)="next()"
+      class="marquee-btn marquee-btn-right"
+      aria-label="Siguiente"
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 18l6-6-6-6"/>
+      </svg>
+    </button>
   </div>
 </section>
-
-
-

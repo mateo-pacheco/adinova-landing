@@ -42,10 +42,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 600;
-  letter-spacing: -0.02em;
-}
+h1 { font-weight: 500 !important; letter-spacing: -0.03em !important; }
+h2 { font-weight: 500 !important; letter-spacing: -0.02em !important; }
+h3 { font-weight: 500 !important; }
+h4, h5, h6 { font-weight: 500; letter-spacing: -0.02em; }
 
 b, strong {
   font-weight: 500;
@@ -127,10 +127,3 @@ button, .btn, .cta, [class*="btn"], [class*="button"] {
   border-radius: 8px;
 }
 
-main > *:nth-child(odd) {
-  background: #0a0a0a;
-}
-
-main > *:nth-child(even) {
-  background: #0f0f0f;
-}

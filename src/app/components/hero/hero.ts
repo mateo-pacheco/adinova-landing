@@ -104,6 +104,9 @@ export class Hero implements OnInit, AfterViewInit, OnDestroy {
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2));
     this.renderer.setClearColor(0x000000, 0);
 
+    canvas.style.opacity = '1';
+    canvas.style.filter = 'brightness(2.0) saturate(1.5)';
+
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
     this.scene.add(ambientLight);
 
