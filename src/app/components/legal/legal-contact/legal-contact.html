@@ -49,30 +49,73 @@
         <h3 class="text-xl font-medium text-white lg:text-2xl">Iniciar una consulta</h3>
         <p class="mt-2 text-sm text-white/60">Cuéntanos sobre tu proyecto o necesidad legal.</p>
         
-        <form class="mt-6 flex flex-col gap-4">
-          <input 
-            type="text" 
-            placeholder="Nombre completo"
-            class="contact-input rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/40 transition-all focus:border-[#36A8A8] focus:outline-none"
-          />
-          <input 
-            type="email" 
-            placeholder="Correo electrónico"
-            class="contact-input rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/40 transition-all focus:border-[#36A8A8] focus:outline-none"
-          />
-          <input 
-            type="tel" 
-            placeholder="Teléfono"
-            class="contact-input rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/40 transition-all focus:border-[#36A8A8] focus:outline-none"
-          />
-          <textarea 
-            placeholder="¿Cómo podemos ayudarte?"
-            rows="4"
-            class="contact-input rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/40 transition-all focus:border-[#36A8A8] focus:outline-none resize-none"
-          ></textarea>
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="mt-6 flex flex-col gap-4">
+          <div>
+            <input 
+              type="text" 
+              formControlName="name"
+              placeholder="Nombre completo"
+              aria-label="Nombre completo"
+              aria-required="true"
+              (focus)="onFieldFocus('name')"
+              (blur)="onFieldBlur('name')"
+              class="contact-input rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/40 transition-all focus:border-[#36A8A8] focus:outline-none w-full"
+            />
+            @if (isFieldInvalid('name')) {
+              <p class="mt-1 text-xs text-red-400">{{ getErrorMessage('name') }}</p>
+            }
+          </div>
+          <div>
+            <input 
+              type="email" 
+              formControlName="email"
+              placeholder="Correo electrónico"
+              aria-label="Correo electrónico"
+              aria-required="true"
+              (focus)="onFieldFocus('email')"
+              (blur)="onFieldBlur('email')"
+              class="contact-input rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/40 transition-all focus:border-[#36A8A8] focus:outline-none w-full"
+            />
+            @if (isFieldInvalid('email')) {
+              <p class="mt-1 text-xs text-red-400">{{ getErrorMessage('email') }}</p>
+            }
+          </div>
+          <div>
+            <input 
+              type="tel" 
+              formControlName="phone"
+              placeholder="Teléfono"
+              aria-label="Teléfono"
+              (focus)="onFieldFocus('phone')"
+              (blur)="onFieldBlur('phone')"
+              class="contact-input rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/40 transition-all focus:border-[#36A8A8] focus:outline-none w-full"
+            />
+          </div>
+          <div>
+            <textarea 
+              formControlName="message"
+              placeholder="¿Cómo podemos ayudarte?"
+              rows="4"
+              aria-label="Mensaje"
+              aria-required="true"
+              (focus)="onFieldFocus('message')"
+              (blur)="onFieldBlur('message')"
+              class="contact-input rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/40 transition-all focus:border-[#36A8A8] focus:outline-none resize-none w-full"
+            ></textarea>
+            @if (isFieldInvalid('message')) {
+              <p class="mt-1 text-xs text-red-400">{{ getErrorMessage('message') }}</p>
+            }
+          </div>
           
-          <button type="submit" class="contact-submit rounded-full bg-[#36A8A8] px-6 py-3 text-[11px] uppercase tracking-[0.2em] text-white transition-all hover:bg-[#2d8f8f]">
-            Enviar mensaje
+          @if (submitStatus === 'success') {
+            <p class="text-sm text-green-400">Mensaje enviado correctamente. Te contactaremos pronto.</p>
+          }
+          @if (submitStatus === 'error') {
+            <p class="text-sm text-red-400">Error al enviar. Intentalo nuevamente.</p>
+          }
+          
+          <button type="submit" [disabled]="isSubmitting" class="contact-submit rounded-full bg-[#36A8A8] px-6 py-3 text-[11px] uppercase tracking-[0.2em] text-white transition-all hover:bg-[#2d8f8f] disabled:opacity-50">
+            {{ isSubmitting ? 'Enviando...' : 'Enviar mensaje' }}
           </button>
         </form>
       </div>

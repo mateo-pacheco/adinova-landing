@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, OnDestroy, ViewChild, AfterViewInit, NgZone, HostListener } from '@angular/core';
+﻿import { Component, ElementRef, OnInit, OnDestroy, ViewChild, AfterViewInit, NgZone, HostListener } from '@angular/core';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import * as THREE from 'three';
@@ -33,6 +33,7 @@ export class LegalCases implements OnInit, AfterViewInit, OnDestroy {
   private animationId!: number;
   private time = 0;
   private isBrowser: boolean;
+  private boundResize = this.onWindowResize.bind(this);
   private scrollProgress = 0;
   private targetScrollProgress = 0;
 
@@ -49,9 +50,13 @@ export class LegalCases implements OnInit, AfterViewInit, OnDestroy {
     if (!this.isBrowser) return;
     
     this.ngZone.runOutsideAngular(() => {
-      this.initThreeJS();
-      this.animate();
-      window.addEventListener('resize', this.onWindowResize.bind(this));
+      try {
+        this.initThreeJS();
+        this.animate();
+        window.addEventListener('resize', this.boundResize);
+      } catch (e) {
+        console.warn('3D initialization skipped:', e);
+      }
     });
   }
 
@@ -73,8 +78,8 @@ export class LegalCases implements OnInit, AfterViewInit, OnDestroy {
     if (this.animationId) {
       cancelAnimationFrame(this.animationId);
     }
-    window.removeEventListener('resize', this.onWindowResize.bind(this));
-    this.renderer.dispose();
+    window.removeEventListener('resize', this.boundResize);
+    this.renderer?.dispose();
   }
 
   protected readonly projects: Project[] = [
@@ -148,7 +153,8 @@ export class LegalCases implements OnInit, AfterViewInit, OnDestroy {
 
   private initThreeJS() {
     const canvas = this.canvasRef.nativeElement;
-    const container = canvas.parentElement!;
+    const container = canvas.parentElement;
+    if (!container) return;
     const width = container.clientWidth;
     const height = container.clientHeight;
 
@@ -241,7 +247,8 @@ export class LegalCases implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private onWindowResize() {
-    const container = this.canvasRef.nativeElement.parentElement!;
+    const container = this.canvasRef.nativeElement.parentElement;
+    if (!container) return;
     const width = container.clientWidth;
     const height = container.clientHeight;
     
@@ -257,18 +264,18 @@ export class LegalCases implements OnInit, AfterViewInit, OnDestroy {
     this.scrollProgress += (this.targetScrollProgress - this.scrollProgress) * 0.05;
 
     this.floatingShapes.forEach((shape, i) => {
-      const data = shape.userData as { [key: string]: any };
-      shape.rotation.x += data['rotSpeed'];
-      shape.rotation.y += data['rotSpeed'] * 1.3;
-      shape.rotation.z += data['rotSpeed'] * 0.7;
+      const d = shape.userData as any;
+      shape.rotation.x += d['rotSpeed'];
+      shape.rotation.y += d['rotSpeed'] * 1.3;
+      shape.rotation.z += d['rotSpeed'] * 0.7;
       
-      const floatY = Math.sin(this.time * data['speed'] + data['offset']) * data['floatRange'];
-      const floatX = Math.cos(this.time * data['speed'] * 0.6 + data['offset']) * data['floatRange'] * 0.5;
-      const floatZ = Math.sin(this.time * data['speed'] * 0.8 + data['offset'] * 2) * data['floatRange'] * 0.3;
+      const floatY = Math.sin(this.time * d['speed'] + d['offset']) * d['floatRange'];
+      const floatX = Math.cos(this.time * d['speed'] * 0.6 + d['offset']) * d['floatRange'] * 0.5;
+      const floatZ = Math.sin(this.time * d['speed'] * 0.8 + d['offset'] * 2) * d['floatRange'] * 0.3;
       
-      shape.position.x = data['originalPos'].x + floatX;
-      shape.position.y = data['originalPos'].y + floatY;
-      shape.position.z = data['originalPos'].z + floatZ;
+      shape.position.x = d['originalPos'].x + floatX;
+      shape.position.y = d['originalPos'].y + floatY;
+      shape.position.z = d['originalPos'].z + floatZ;
     });
 
     this.particles.rotation.y = this.time * 0.04;
@@ -284,3 +291,4 @@ export class LegalCases implements OnInit, AfterViewInit, OnDestroy {
     return 1 - Math.pow(1 - t, 3);
   }
 }
+

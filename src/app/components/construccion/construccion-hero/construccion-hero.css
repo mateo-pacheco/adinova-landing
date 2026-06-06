@@ -27,3 +27,10 @@
 .diseno-cta-outline {
   text-decoration: none;
 }
+
+.construccion-canvas { filter: brightness(1.6) saturate(1.2); }
+.stat-card {
+  background: rgba(255,255,255,0.03) !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+  border-radius: 16px !important;
+}

@@ -10,5 +10,6 @@ export const routes: Routes = [
     {path: 'diseno', component: Diseno},
     {path: 'legal', component: Legal},
     {path: 'construccion', component: Construccion},
-    {path: 'testimonios', component: Testimonios}
+    {path: 'testimonios', component: Testimonios},
+    {path: '**', redirectTo: '', pathMatch: 'full'}
 ];

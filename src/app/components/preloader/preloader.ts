@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, OnDestroy, ViewChild, AfterViewInit, NgZone, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+﻿import { Component, ElementRef, OnInit, OnDestroy, ViewChild, AfterViewInit, NgZone, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { CommonModule } from '@angular/common';
@@ -319,7 +319,7 @@ export class Preloader implements OnInit, AfterViewInit, OnDestroy {
     if (this.animationId) {
       cancelAnimationFrame(this.animationId);
     }
-    this.renderer.dispose();
+    this.renderer?.dispose();
     if (this.isBrowser) {
       document.body.classList.remove('preloader-active');
     }

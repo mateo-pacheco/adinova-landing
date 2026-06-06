@@ -1,4 +1,5 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+﻿import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
 import { Legal } from './legal';
 
@@ -8,7 +9,7 @@ describe('Legal', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Legal],
+      imports: [Legal], providers: [provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Legal);
@@ -20,3 +21,4 @@ describe('Legal', () => {
     expect(component).toBeTruthy();
   });
 });
+

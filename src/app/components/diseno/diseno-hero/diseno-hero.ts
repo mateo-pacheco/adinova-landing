@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, OnDestroy, ViewChild, AfterViewInit, HostListener, NgZone } from '@angular/core';
+﻿import { Component, ElementRef, OnInit, OnDestroy, ViewChild, AfterViewInit, HostListener, NgZone } from '@angular/core';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import * as THREE from 'three';
@@ -24,6 +24,8 @@ export class DisenoHero implements OnInit, AfterViewInit, OnDestroy {
   private animationId!: number;
   private time = 0;
   private isBrowser: boolean;
+  private boundResize = this.onWindowResize.bind(this);
+  private boundMouseMove = this.onDocumentMouseMove.bind(this);
   private mouseX = 0;
   private mouseY = 0;
   private targetMouseX = 0;
@@ -44,10 +46,14 @@ export class DisenoHero implements OnInit, AfterViewInit, OnDestroy {
     if (!this.isBrowser) return;
     
     this.ngZone.runOutsideAngular(() => {
-      this.initThreeJS();
-      this.animate();
-      window.addEventListener('resize', this.onWindowResize.bind(this));
-      document.addEventListener('mousemove', this.onDocumentMouseMove.bind(this));
+      try {
+        this.initThreeJS();
+        this.animate();
+        window.addEventListener('resize', this.boundResize);
+        document.addEventListener('mousemove', this.boundMouseMove);
+      } catch (e) {
+        console.warn('3D initialization skipped:', e);
+      }
     });
   }
 
@@ -69,14 +75,15 @@ export class DisenoHero implements OnInit, AfterViewInit, OnDestroy {
     if (this.animationId) {
       cancelAnimationFrame(this.animationId);
     }
-    window.removeEventListener('resize', this.onWindowResize.bind(this));
-    document.removeEventListener('mousemove', this.onDocumentMouseMove.bind(this));
-    this.renderer.dispose();
+    window.removeEventListener('resize', this.boundResize);
+    document.removeEventListener('mousemove', this.boundMouseMove);
+    this.renderer?.dispose();
   }
 
   private initThreeJS() {
     const canvas = this.canvasRef.nativeElement;
-    const container = canvas.parentElement!;
+    const container = canvas.parentElement;
+    if (!container) return;
     const width = container.clientWidth;
     const height = container.clientHeight;
 
@@ -217,7 +224,8 @@ export class DisenoHero implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private onWindowResize() {
-    const container = this.canvasRef.nativeElement.parentElement!;
+    const container = this.canvasRef.nativeElement.parentElement;
+    if (!container) return;
     const width = container.clientWidth;
     const height = container.clientHeight;
     
@@ -239,7 +247,7 @@ export class DisenoHero implements OnInit, AfterViewInit, OnDestroy {
     this.mouseY += (this.targetMouseY - this.mouseY) * 0.05;
     this.scrollProgress += (this.targetScrollProgress - this.scrollProgress) * 0.05;
 
-    const easeProgression = this.easeOutCubic(this.scrollProgress);
+    const easeProgress = this.easeOutCubic(this.scrollProgress);
     const slowTime = this.time * 0.5;
 
     this.mainShape.rotation.x = slowTime * 0.4 + this.mouseY * 0.15;
@@ -249,30 +257,30 @@ export class DisenoHero implements OnInit, AfterViewInit, OnDestroy {
     this.innerShape.rotation.x = slowTime * 0.8;
     this.innerShape.rotation.y = slowTime * 1.2;
 
-    const mainScale = 1 - easeProgression * 0.5;
+    const mainScale = 1 - easeProgress * 0.5;
     this.mainShape.scale.setScalar(mainScale);
 
     const startX = 2;
     const endX = -1;
-    this.mainShape.position.x = startX + (endX - startX) * easeProgression + Math.sin(this.time) * 0.1;
+    this.mainShape.position.x = startX + (endX - startX) * easeProgress + Math.sin(this.time) * 0.1;
     this.mainShape.position.y = Math.sin(this.time * 0.5) * 0.15;
 
     const material = this.mainShape.material as THREE.MeshPhysicalMaterial;
-    material.opacity = 0.9 - easeProgression * 0.6;
+    material.opacity = 0.9 - easeProgress * 0.6;
 
     this.particles.rotation.y = this.time * 0.05 + this.mouseX * 0.1;
     this.particles.rotation.x = this.time * 0.02 + this.mouseY * 0.1;
 
     this.floatingShapes.forEach((shape, i) => {
-      const data = shape.userData as { [key: string]: any };
-      shape.rotation.x += data['rotSpeed'];
-      shape.rotation.y += data['rotSpeed'] * 0.7;
+      const d = shape.userData as any;
+      shape.rotation.x += d['rotSpeed'];
+      shape.rotation.y += d['rotSpeed'] * 0.7;
       
-      const floatY = Math.sin(this.time * data['speed'] + data['offset']) * 0.3;
-      const floatX = Math.cos(this.time * data['speed'] * 0.7 + data['offset']) * 0.2;
+      const floatY = Math.sin(this.time * d['speed'] + d['offset']) * 0.3;
+      const floatX = Math.cos(this.time * d['speed'] * 0.7 + d['offset']) * 0.2;
       
-      shape.position.x = data['originalPos'].x + floatX;
-      shape.position.y = data['originalPos'].y + floatY;
+      shape.position.x = d['originalPos'].x + floatX;
+      shape.position.y = d['originalPos'].y + floatY;
     });
 
     if (!window.matchMedia('(max-width: 768px)').matches) {
@@ -288,3 +296,5 @@ export class DisenoHero implements OnInit, AfterViewInit, OnDestroy {
     return 1 - Math.pow(1 - t, 3);
   }
 }
+
+

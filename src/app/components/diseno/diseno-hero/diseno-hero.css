@@ -27,3 +27,14 @@
 .diseno-cta-outline {
   text-decoration: none;
 }
+
+.diseno-stat-card, .stat-card {
+  background: rgba(255,255,255,0.03) !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+  border-radius: 16px !important;
+}
+.diseno-stat-value, .stat-value {
+  font-weight: 300 !important;
+  letter-spacing: -0.02em !important;
+}
+.diseno-canvas { filter: brightness(1.6) saturate(1.2); }

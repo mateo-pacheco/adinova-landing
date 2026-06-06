@@ -50,6 +50,23 @@ export class SeoService {
     }
 
     this.updateCanonicalUrl(url);
+    this.generateJsonLd({ name: siteName, url });
+  }
+
+  private generateJsonLd(config: { name: string; url: string }): void {
+    if (!isPlatformBrowser(this.platformId)) return;
+    const existing = this.document.querySelector('script[type="application/ld+json"]');
+    if (existing) existing.remove();
+    const script = this.document.createElement('script');
+    script.setAttribute('type', 'application/ld+json');
+    script.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: config.name,
+      url: config.url,
+      logo: config.url + 'logo.png',
+    });
+    this.document.head.appendChild(script);
   }
 
   private updateCanonicalUrl(url: string) {

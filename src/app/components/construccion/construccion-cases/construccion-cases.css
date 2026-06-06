@@ -186,3 +186,24 @@
     font-size: 1.25rem;
   }
 }
+
+.project-card {
+  background: rgba(255,255,255,0.03) !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+  border-radius: 20px !important;
+  overflow: hidden !important;
+  transition: all 0.25s ease !important;
+}
+.project-card:hover {
+  border-color: rgba(43,191,179,0.2) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.4) !important;
+}
+.project-card img {
+  border-radius: 12px !important;
+  filter: brightness(0.9) saturate(0.9) !important;
+  transition: filter 0.3s ease !important;
+}
+.project-card:hover img {
+  filter: brightness(1.0) saturate(1.1) !important;
+}
