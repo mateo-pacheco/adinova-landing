@@ -29,8 +29,8 @@
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 0.625rem;
-  border: 1px solid rgba(54, 168, 168, 0.25);
-  background: rgba(54, 168, 168, 0.08);
-  color: #36A8A8;
+  border: 1px solid var(--color-accent);
+  background: var(--color-accent-subtle);
+  color: var(--color-accent);
   flex-shrink: 0;
 }
