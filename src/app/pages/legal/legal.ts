@@ -29,7 +29,7 @@ export class Legal implements OnInit, AfterViewInit {
   ngOnInit() {
     this.seo.updateSeoTags({
       title: 'Asesoría Legal Arquitectónica',
-      description: 'Gestión de trámites, permisos y asesoría legal para proyectos arquitectónicos en Quito. Seguridad jurídica para tus inversiones inmobiliarias.',
+      description: 'Gestión de trámites, permisos y asesoría legal para proyectos arquitectónicos en Cuenca. Seguridad jurídica para tus inversiones inmobiliarias.',
       canonical: 'https://adinovaestudio.com/legal'
     });
   }

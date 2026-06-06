@@ -17,16 +17,16 @@
 .project-card {
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 1rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
   overflow: hidden;
-  transition: all 300ms ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .project-card:hover {
-  border-color: rgba(54, 168, 168, 0.3);
-  transform: translateY(-4px);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .quote-icon {
@@ -36,9 +36,9 @@
   width: 3rem;
   height: 3rem;
   border-radius: 0.75rem;
-  border: 1px solid rgba(54, 168, 168, 0.25);
-  background: rgba(54, 168, 168, 0.08);
-  color: #36A8A8;
+  border: 1px solid var(--color-accent);
+  background: var(--color-accent-subtle);
+  color: var(--color-accent);
 }
 
 .project-content {
@@ -50,27 +50,30 @@
 
 .project-text {
   font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--color-text-primary);
   line-height: 1.6;
   font-style: italic;
+  font-weight: 300;
   margin-bottom: 1.5rem;
 }
 
 .client-info {
   margin-top: auto;
   padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--color-border);
 }
 
 .client-name {
   font-size: 1rem;
   font-weight: 600;
-  color: white;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
 }
 
 .client-role {
   font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--color-text-secondary);
+  font-weight: 300;
   margin-top: 0.25rem;
 }
 
@@ -95,9 +98,9 @@
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 0.625rem;
-  border: 1px solid rgba(54, 168, 168, 0.25);
-  background: rgba(54, 168, 168, 0.08);
-  color: #36A8A8;
+  border: 1px solid var(--color-accent);
+  background: var(--color-accent-subtle);
+  color: var(--color-accent);
   flex-shrink: 0;
 }
 
@@ -110,11 +113,11 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
-  
+
   .project-card {
     min-height: 200px;
   }
-  
+
   .project-text {
     font-size: 1rem;
   }
@@ -125,15 +128,15 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 1.25rem;
   }
-  
+
   .project-card {
     min-height: 180px;
   }
-  
+
   .project-content {
     padding: 1.25rem;
   }
-  
+
   .project-text {
     font-size: 0.9rem;
   }
@@ -143,15 +146,15 @@
   .projects-grid {
     gap: 1.5rem;
   }
-  
+
   .project-card {
     min-height: 200px;
   }
-  
+
   .project-content {
     padding: 1.5rem;
   }
-  
+
   .project-text {
     font-size: 1rem;
   }

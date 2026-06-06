@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, OnDestroy, ViewChild, AfterViewInit, HostListener, NgZone } from '@angular/core';
+﻿import { Component, ElementRef, OnInit, OnDestroy, ViewChild, AfterViewInit, HostListener, NgZone } from '@angular/core';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import * as THREE from 'three';
@@ -21,6 +21,7 @@ export class LegalProcess implements OnInit, AfterViewInit, OnDestroy {
   private animationId!: number;
   private time = 0;
   private isBrowser: boolean;
+  private boundResize = this.onWindowResize.bind(this);
   private scrollProgress = 0;
   private targetScrollProgress = 0;
 
@@ -37,9 +38,13 @@ export class LegalProcess implements OnInit, AfterViewInit, OnDestroy {
     if (!this.isBrowser) return;
     
     this.ngZone.runOutsideAngular(() => {
-      this.initThreeJS();
-      this.animate();
-      window.addEventListener('resize', this.onWindowResize.bind(this));
+      try {
+        this.initThreeJS();
+        this.animate();
+        window.addEventListener('resize', this.boundResize);
+      } catch (e) {
+        console.warn('3D initialization skipped:', e);
+      }
     });
   }
 
@@ -61,8 +66,8 @@ export class LegalProcess implements OnInit, AfterViewInit, OnDestroy {
     if (this.animationId) {
       cancelAnimationFrame(this.animationId);
     }
-    window.removeEventListener('resize', this.onWindowResize.bind(this));
-    this.renderer.dispose();
+    window.removeEventListener('resize', this.boundResize);
+    this.renderer?.dispose();
   }
 
   protected readonly services = [
@@ -110,7 +115,8 @@ export class LegalProcess implements OnInit, AfterViewInit, OnDestroy {
 
   private initThreeJS() {
     const canvas = this.canvasRef.nativeElement;
-    const container = canvas.parentElement!;
+    const container = canvas.parentElement;
+    if (!container) return;
     const width = container.clientWidth;
     const height = container.clientHeight;
 
@@ -204,7 +210,8 @@ export class LegalProcess implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private onWindowResize() {
-    const container = this.canvasRef.nativeElement.parentElement!;
+    const container = this.canvasRef.nativeElement.parentElement;
+    if (!container) return;
     const width = container.clientWidth;
     const height = container.clientHeight;
     
@@ -221,9 +228,9 @@ export class LegalProcess implements OnInit, AfterViewInit, OnDestroy {
 
     this.flowLines.forEach((line, index) => {
       const positions = line.geometry.attributes['position'].array as Float32Array;
-      const originalPositions = line.userData['originalPositions'];
-      const offset = line.userData['offset'];
-      const speed = line.userData['speed'];
+      const originalPositions = line.userData['originalPositions'] as THREE.Vector3[];
+      const offset = line.userData['offset'] as number;
+      const speed = line.userData['speed'] as number;
       const segments = positions.length / 3;
 
       for (let i = 0; i < segments; i++) {
@@ -255,3 +262,4 @@ export class LegalProcess implements OnInit, AfterViewInit, OnDestroy {
     return 1 - Math.pow(1 - t, 3);
   }
 }
+

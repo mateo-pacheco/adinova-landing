@@ -1,6 +1,6 @@
 {
   "name": "adinova",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -27,6 +27,7 @@
     "@emailjs/browser": "^4.4.1",
     "@types/leaflet": "^1.9.21",
     "@types/three": "^0.184.0",
+    "compression": "^1.8.1",
     "express": "^5.1.0",
     "gsap": "^3.15.0",
     "leaflet": "^1.9.4",
@@ -39,6 +40,7 @@
     "@angular/cli": "^21.2.13",
     "@angular/compiler-cli": "^21.2.13",
     "@tailwindcss/postcss": "^4.1.12",
+    "@types/compression": "^1.8.1",
     "@types/express": "^5.0.1",
     "@types/node": "^20.17.19",
     "jsdom": "^28.0.0",

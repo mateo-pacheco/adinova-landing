@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, OnDestroy, ViewChild, AfterViewInit, NgZone, HostListener } from '@angular/core';
+﻿import { Component, ElementRef, OnInit, OnDestroy, ViewChild, AfterViewInit, NgZone, HostListener } from '@angular/core';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import * as THREE from 'three';
@@ -33,6 +33,7 @@ export class LegalCases implements OnInit, AfterViewInit, OnDestroy {
   private animationId!: number;
   private time = 0;
   private isBrowser: boolean;
+  private boundResize = this.onWindowResize.bind(this);
   private scrollProgress = 0;
   private targetScrollProgress = 0;
 
@@ -49,9 +50,13 @@ export class LegalCases implements OnInit, AfterViewInit, OnDestroy {
     if (!this.isBrowser) return;
     
     this.ngZone.runOutsideAngular(() => {
-      this.initThreeJS();
-      this.animate();
-      window.addEventListener('resize', this.onWindowResize.bind(this));
+      try {
+        this.initThreeJS();
+        this.animate();
+        window.addEventListener('resize', this.boundResize);
+      } catch (e) {
+        console.warn('3D initialization skipped:', e);
+      }
     });
   }
 
@@ -73,8 +78,8 @@ export class LegalCases implements OnInit, AfterViewInit, OnDestroy {
     if (this.animationId) {
       cancelAnimationFrame(this.animationId);
     }
-    window.removeEventListener('resize', this.onWindowResize.bind(this));
-    this.renderer.dispose();
+    window.removeEventListener('resize', this.boundResize);
+    this.renderer?.dispose();
   }
 
   protected readonly projects: Project[] = [
@@ -83,7 +88,7 @@ export class LegalCases implements OnInit, AfterViewInit, OnDestroy {
       title: 'Torre Metropolitana',
       subtitle: 'Edificio de 18 niveles',
       category: 'Comercial',
-      location: 'Quito',
+      location: 'Cuenca',
       image: 'assets/img/01.webp',
       area: '15,200 m2',
       permit: 'Licencia de construccion municipal',
@@ -91,10 +96,10 @@ export class LegalCases implements OnInit, AfterViewInit, OnDestroy {
     },
     {
       id: '02',
-      title: 'Urbanizacion El Valle',
+      title: 'Urbanizacion Azogues',
       subtitle: 'Conjunto residencial 65 viviendas',
       category: 'Vivienda',
-      location: 'Cumbaya',
+      location: 'Azogues',
       image: 'assets/img/04.webp',
       area: '9,800 m2',
       permit: 'Cambio de uso de suelo y aprobacion de planos',
@@ -102,10 +107,10 @@ export class LegalCases implements OnInit, AfterViewInit, OnDestroy {
     },
     {
       id: '03',
-      title: 'Parque Logistico GYE',
+      title: 'Parque Logistico Biblián',
       subtitle: 'Centro de distribucion y bodegas',
       category: 'Industrial',
-      location: 'Guayaquil',
+      location: 'Biblián',
       image: 'assets/img/05.webp',
       area: '18,500 m2',
       permit: 'Licencia ambiental y permiso de construccion',
@@ -113,10 +118,10 @@ export class LegalCases implements OnInit, AfterViewInit, OnDestroy {
     },
     {
       id: '04',
-      title: 'Plaza Comercial UIO',
+      title: 'Plaza Comercial Gualaceo',
       subtitle: 'Centro comercial 65 locales',
       category: 'Comercial',
-      location: 'Valle de los Chillos',
+      location: 'Gualaceo',
       image: 'assets/img/03.webp',
       area: '25,000 m2',
       permit: 'Licencia multiple y factibilidad de servicios',
@@ -124,10 +129,10 @@ export class LegalCases implements OnInit, AfterViewInit, OnDestroy {
     },
     {
       id: '05',
-      title: 'Hacienda Patrimonial',
+      title: 'Hacienda Santa Isabel',
       subtitle: 'Restauracion de inmueble patrimonial',
       category: 'Vivienda',
-      location: 'Cayambe',
+      location: 'Santa Isabel',
       image: 'assets/img/06.webp',
       area: '1,200 m2',
       permit: 'Permiso de intervencion patrimonial',
@@ -135,10 +140,10 @@ export class LegalCases implements OnInit, AfterViewInit, OnDestroy {
     },
     {
       id: '06',
-      title: 'Hospital General Sur',
+      title: 'Hospital Paute',
       subtitle: 'Centro medico de especialidades',
       category: 'Salud',
-      location: 'Quito',
+      location: 'Paute',
       image: 'assets/img/02.webp',
       area: '8,500 m2',
       permit: 'Permiso sanitario y licencia de construccion',
@@ -148,7 +153,8 @@ export class LegalCases implements OnInit, AfterViewInit, OnDestroy {
 
   private initThreeJS() {
     const canvas = this.canvasRef.nativeElement;
-    const container = canvas.parentElement!;
+    const container = canvas.parentElement;
+    if (!container) return;
     const width = container.clientWidth;
     const height = container.clientHeight;
 
@@ -241,7 +247,8 @@ export class LegalCases implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private onWindowResize() {
-    const container = this.canvasRef.nativeElement.parentElement!;
+    const container = this.canvasRef.nativeElement.parentElement;
+    if (!container) return;
     const width = container.clientWidth;
     const height = container.clientHeight;
     
@@ -257,18 +264,18 @@ export class LegalCases implements OnInit, AfterViewInit, OnDestroy {
     this.scrollProgress += (this.targetScrollProgress - this.scrollProgress) * 0.05;
 
     this.floatingShapes.forEach((shape, i) => {
-      const data = shape.userData as { [key: string]: any };
-      shape.rotation.x += data['rotSpeed'];
-      shape.rotation.y += data['rotSpeed'] * 1.3;
-      shape.rotation.z += data['rotSpeed'] * 0.7;
+      const d = shape.userData as any;
+      shape.rotation.x += d['rotSpeed'];
+      shape.rotation.y += d['rotSpeed'] * 1.3;
+      shape.rotation.z += d['rotSpeed'] * 0.7;
       
-      const floatY = Math.sin(this.time * data['speed'] + data['offset']) * data['floatRange'];
-      const floatX = Math.cos(this.time * data['speed'] * 0.6 + data['offset']) * data['floatRange'] * 0.5;
-      const floatZ = Math.sin(this.time * data['speed'] * 0.8 + data['offset'] * 2) * data['floatRange'] * 0.3;
+      const floatY = Math.sin(this.time * d['speed'] + d['offset']) * d['floatRange'];
+      const floatX = Math.cos(this.time * d['speed'] * 0.6 + d['offset']) * d['floatRange'] * 0.5;
+      const floatZ = Math.sin(this.time * d['speed'] * 0.8 + d['offset'] * 2) * d['floatRange'] * 0.3;
       
-      shape.position.x = data['originalPos'].x + floatX;
-      shape.position.y = data['originalPos'].y + floatY;
-      shape.position.z = data['originalPos'].z + floatZ;
+      shape.position.x = d['originalPos'].x + floatX;
+      shape.position.y = d['originalPos'].y + floatY;
+      shape.position.z = d['originalPos'].z + floatZ;
     });
 
     this.particles.rotation.y = this.time * 0.04;
@@ -284,3 +291,4 @@ export class LegalCases implements OnInit, AfterViewInit, OnDestroy {
     return 1 - Math.pow(1 - t, 3);
   }
 }
+

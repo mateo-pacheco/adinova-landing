@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, viewChild } from '@angular/core';
 
 @Component({
   selector: 'app-marquee',
@@ -8,6 +8,11 @@ import { Component } from '@angular/core';
   styleUrl: './marquee.css',
 })
 export class Marquee {
+  readonly track = viewChild<ElementRef<HTMLDivElement>>('track');
+
+  protected paused = false;
+  protected translateX = 0;
+
   protected readonly items = [
     {
       title: 'Arquitectura residencial',
@@ -16,7 +21,7 @@ export class Marquee {
     },
     {
       title: 'Arquitectura comercial',
-      label: 'Oficinas UIO',
+      label: 'Oficinas Cuenca',
       image: 'assets/img/02.webp',
     },
     {
@@ -40,4 +45,38 @@ export class Marquee {
       image: 'assets/img/06.webp',
     },
   ];
+
+  prev() {
+    const el = this.track()?.nativeElement;
+    if (!el) return;
+    this.paused = true;
+    const step = el.querySelector('article')?.getBoundingClientRect().width ?? 300;
+    const gap = 12;
+    this.translateX = Math.min(this.translateX + step + gap, 0);
+    el.style.setProperty('transform', `translateX(${this.translateX}px)`, 'important');
+  }
+
+  next() {
+    const el = this.track()?.nativeElement;
+    if (!el) return;
+    this.paused = true;
+    const step = el.querySelector('article')?.getBoundingClientRect().width ?? 300;
+    const gap = 12;
+    const trackWidth = el.scrollWidth / 2;
+    const maxScroll = trackWidth - el.parentElement!.clientWidth;
+    this.translateX = Math.max(this.translateX - step - gap, -maxScroll);
+    el.style.setProperty('transform', `translateX(${this.translateX}px)`, 'important');
+  }
+
+  onEnter() {
+    this.paused = true;
+  }
+
+  onLeave() {
+    this.paused = false;
+    const el = this.track()?.nativeElement;
+    if (el) {
+      el.style.removeProperty('transform');
+    }
+  }
 }

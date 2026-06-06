@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, OnDestroy, ViewChild, AfterViewInit, NgZone, HostListener } from '@angular/core';
+﻿import { Component, ElementRef, OnInit, OnDestroy, ViewChild, AfterViewInit, NgZone, HostListener } from '@angular/core';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import * as THREE from 'three';
@@ -39,6 +39,7 @@ export class DisenoGallery implements OnInit, AfterViewInit, OnDestroy {
   private animationId!: number;
   private time = 0;
   private isBrowser: boolean;
+  private boundResize = this.onWindowResize.bind(this);
   private scrollProgress = 0;
   private targetScrollProgress = 0;
 
@@ -55,9 +56,13 @@ export class DisenoGallery implements OnInit, AfterViewInit, OnDestroy {
     if (!this.isBrowser) return;
     
     this.ngZone.runOutsideAngular(() => {
-      this.initThreeJS();
-      this.animate();
-      window.addEventListener('resize', this.onWindowResize.bind(this));
+      try {
+        this.initThreeJS();
+        this.animate();
+        window.addEventListener('resize', this.boundResize);
+      } catch (e) {
+        console.warn('3D initialization skipped:', e);
+      }
     });
   }
 
@@ -79,8 +84,8 @@ export class DisenoGallery implements OnInit, AfterViewInit, OnDestroy {
     if (this.animationId) {
       cancelAnimationFrame(this.animationId);
     }
-    window.removeEventListener('resize', this.onWindowResize.bind(this));
-    this.renderer.dispose();
+    window.removeEventListener('resize', this.boundResize);
+    this.renderer?.dispose();
   }
 
   protected objectKeys(obj: object): string[] {
@@ -93,7 +98,7 @@ export class DisenoGallery implements OnInit, AfterViewInit, OnDestroy {
       title: 'Casa Alto Valle',
       subtitle: 'Vivienda unifamiliar de 380m2',
       category: 'Residencial',
-      location: 'Cumbaya, Quito',
+      location: 'Cuenca',
       image: 'assets/img/01.webp',
       year: '2024',
       client: 'Familia Herrera',
@@ -107,10 +112,10 @@ export class DisenoGallery implements OnInit, AfterViewInit, OnDestroy {
     },
     {
       id: '02',
-      title: 'Oficinas UIO Corporate',
+      title: 'Oficinas Cuenca Corporate',
       subtitle: 'Espacio corporativo de 850m2',
       category: 'Comercial',
-      location: 'La Carolina, Quito',
+      location: 'Azogues',
       image: 'assets/img/04.webp',
       year: '2024',
       client: 'Grupo Fides',
@@ -127,7 +132,7 @@ export class DisenoGallery implements OnInit, AfterViewInit, OnDestroy {
       title: 'Restaurante Tierra',
       subtitle: 'Remodelacion gastronomica 240m2',
       category: 'Interiorismo',
-      location: 'Tumbaco, Quito',
+      location: 'Gualaceo',
       image: 'assets/img/02.webp',
       year: '2024',
       client: 'Chef Martinez',
@@ -144,7 +149,7 @@ export class DisenoGallery implements OnInit, AfterViewInit, OnDestroy {
       title: 'Residencia El Bosque',
       subtitle: 'Casa unifamiliar de 520m2',
       category: 'Residencial',
-      location: 'Carcelen, Quito',
+      location: 'Paute',
       image: 'assets/img/03.webp',
       year: '2023',
       client: 'Familia Torres',
@@ -161,7 +166,7 @@ export class DisenoGallery implements OnInit, AfterViewInit, OnDestroy {
       title: 'Clinica Dental Sonrisa',
       subtitle: 'Consultorio odontologico 180m2',
       category: 'Comercial',
-      location: 'Quito',
+      location: 'Santa Isabel',
       image: 'assets/img/05.webp',
       year: '2023',
       client: 'Dra. Patricia Jimenez',
@@ -175,10 +180,10 @@ export class DisenoGallery implements OnInit, AfterViewInit, OnDestroy {
     },
     {
       id: '06',
-      title: 'Casa de Campo Volcan',
+      title: 'Casa de Campo Biblian',
       subtitle: 'Vivienda vacacional de 280m2',
       category: 'Residencial',
-      location: 'Banos, Tungurahua',
+      location: 'Biblián',
       image: 'assets/img/06.webp',
       year: '2023',
       client: 'Familia Vasconez',
@@ -194,7 +199,8 @@ export class DisenoGallery implements OnInit, AfterViewInit, OnDestroy {
 
   private initThreeJS() {
     const canvas = this.canvasRef.nativeElement;
-    const container = canvas.parentElement!;
+    const container = canvas.parentElement;
+    if (!container) return;
     const width = container.clientWidth;
     const height = container.clientHeight;
 
@@ -287,7 +293,8 @@ export class DisenoGallery implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private onWindowResize() {
-    const container = this.canvasRef.nativeElement.parentElement!;
+    const container = this.canvasRef.nativeElement.parentElement;
+    if (!container) return;
     const width = container.clientWidth;
     const height = container.clientHeight;
     
@@ -302,19 +309,19 @@ export class DisenoGallery implements OnInit, AfterViewInit, OnDestroy {
 
     this.scrollProgress += (this.targetScrollProgress - this.scrollProgress) * 0.05;
 
-    this.floatingShapes.forEach((shape, i) => {
-      const data = shape.userData as { [key: string]: any };
-      shape.rotation.x += data['rotSpeed'];
-      shape.rotation.y += data['rotSpeed'] * 1.3;
-      shape.rotation.z += data['rotSpeed'] * 0.7;
+    this.floatingShapes.forEach((shape) => {
+      const d = shape.userData as any;
+      shape.rotation.x += d['rotSpeed'];
+      shape.rotation.y += d['rotSpeed'] * 1.3;
+      shape.rotation.z += d['rotSpeed'] * 0.7;
       
-      const floatY = Math.sin(this.time * data['speed'] + data['offset']) * data['floatRange'];
-      const floatX = Math.cos(this.time * data['speed'] * 0.6 + data['offset']) * data['floatRange'] * 0.5;
-      const floatZ = Math.sin(this.time * data['speed'] * 0.8 + data['offset'] * 2) * data['floatRange'] * 0.3;
+      const floatY = Math.sin(this.time * d['speed'] + d['offset']) * d['floatRange'];
+      const floatX = Math.cos(this.time * d['speed'] * 0.6 + d['offset']) * d['floatRange'] * 0.5;
+      const floatZ = Math.sin(this.time * d['speed'] * 0.8 + d['offset'] * 2) * d['floatRange'] * 0.3;
       
-      shape.position.x = data['originalPos'].x + floatX;
-      shape.position.y = data['originalPos'].y + floatY;
-      shape.position.z = data['originalPos'].z + floatZ;
+      shape.position.x = d['originalPos'].x + floatX;
+      shape.position.y = d['originalPos'].y + floatY;
+      shape.position.z = d['originalPos'].z + floatZ;
     });
 
     this.particles.rotation.y = this.time * 0.04;
@@ -330,3 +337,4 @@ export class DisenoGallery implements OnInit, AfterViewInit, OnDestroy {
     return 1 - Math.pow(1 - t, 3);
   }
 }
+

@@ -1,17 +1,25 @@
-import { Component, ElementRef, OnInit, OnDestroy, ViewChild, AfterViewInit, NgZone } from '@angular/core';
+﻿import { Component, ElementRef, OnInit, OnDestroy, ViewChild, AfterViewInit, NgZone } from '@angular/core';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import emailjs from '@emailjs/browser';
+import { environment } from '../../../../environments/environment';
 import * as THREE from 'three';
 
 @Component({
   selector: 'app-legal-contact',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './legal-contact.html',
   styleUrl: './legal-contact.css',
 })
 export class LegalContact implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('canvas3d', { static: true }) canvasRef!: ElementRef<HTMLCanvasElement>;
+
+  private fb = new FormBuilder();
+  protected contactForm: FormGroup;
+  protected isSubmitting = false;
+  protected submitStatus: 'idle' | 'success' | 'error' = 'idle';
 
   private scene!: THREE.Scene;
   private camera!: THREE.PerspectiveCamera;
@@ -21,6 +29,7 @@ export class LegalContact implements OnInit, AfterViewInit, OnDestroy {
   private animationId!: number;
   private time = 0;
   private isBrowser: boolean;
+  private boundResize = this.onWindowResize.bind(this);
   private scrollProgress = 0;
   private targetScrollProgress = 0;
 
@@ -29,6 +38,12 @@ export class LegalContact implements OnInit, AfterViewInit, OnDestroy {
     @Inject(PLATFORM_ID) platformId: object
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
+    this.contactForm = this.fb.group({
+      name: ['', [Validators.required, Validators.minLength(2)]],
+      email: ['', [Validators.required, Validators.email]],
+      phone: [''],
+      message: ['', [Validators.required, Validators.minLength(10)]],
+    });
   }
 
   ngOnInit() {}
@@ -37,9 +52,13 @@ export class LegalContact implements OnInit, AfterViewInit, OnDestroy {
     if (!this.isBrowser) return;
     
     this.ngZone.runOutsideAngular(() => {
-      this.initThreeJS();
-      this.animate();
-      window.addEventListener('resize', this.onWindowResize.bind(this));
+      try {
+        this.initThreeJS();
+        this.animate();
+        window.addEventListener('resize', this.boundResize);
+      } catch (e) {
+        console.warn('3D initialization skipped:', e);
+      }
     });
   }
 
@@ -48,8 +67,70 @@ export class LegalContact implements OnInit, AfterViewInit, OnDestroy {
     if (this.animationId) {
       cancelAnimationFrame(this.animationId);
     }
-    window.removeEventListener('resize', this.onWindowResize.bind(this));
-    this.renderer.dispose();
+    window.removeEventListener('resize', this.boundResize);
+    this.renderer?.dispose();
+  }
+
+  isFieldInvalid(field: string): boolean {
+    const control = this.contactForm.get(field);
+    return !!(control && control.invalid && control.touched);
+  }
+
+  getErrorMessage(field: string): string {
+    const control = this.contactForm.get(field);
+    if (!control || !control.errors || !control.touched) return '';
+    if (control.errors['required']) {
+      const labels: Record<string, string> = {
+        name: 'El nombre es obligatorio',
+        email: 'El correo es obligatorio',
+        message: 'El mensaje es obligatorio',
+      };
+      return labels[field] || 'Este campo es obligatorio';
+    }
+    if (control.errors['email']) return 'Ingresa un correo valido';
+    if (control.errors['minlength']) return 'Minimo ' + control.errors['minlength'].requiredLength + ' caracteres';
+    return '';
+  }
+
+  onFieldFocus(field: string): void {}
+  onFieldBlur(field: string): void {
+    this.contactForm.get(field)?.markAsTouched();
+  }
+
+  async onSubmit(): Promise<void> {
+    if (this.contactForm.invalid) {
+      Object.keys(this.contactForm.controls).forEach(key => {
+        this.contactForm.get(key)?.markAsTouched();
+      });
+      return;
+    }
+    this.isSubmitting = true;
+    this.submitStatus = 'idle';
+    try {
+      const form = this.contactForm.value;
+      await emailjs.send(
+        environment.emailjs.serviceId,
+        environment.emailjs.templateId,
+        {
+          name: (form.name || '').trim(),
+          email: (form.email || '').trim().toLowerCase(),
+          phone: (form.phone || '').trim() || 'No especificado',
+          message: (form.message || '').trim(),
+        },
+        environment.emailjs.publicKey
+      );
+      this.submitStatus = 'success';
+      this.contactForm.reset();
+      Object.keys(this.contactForm.controls).forEach(key => {
+        this.contactForm.get(key)?.markAsUntouched();
+      });
+      setTimeout(() => this.submitStatus = 'idle', 5000);
+    } catch {
+      this.submitStatus = 'error';
+      setTimeout(() => this.submitStatus = 'idle', 5000);
+    } finally {
+      this.isSubmitting = false;
+    }
   }
 
   protected readonly clients = [
@@ -75,7 +156,8 @@ export class LegalContact implements OnInit, AfterViewInit, OnDestroy {
 
   private initThreeJS() {
     const canvas = this.canvasRef.nativeElement;
-    const container = canvas.parentElement!;
+    const container = canvas.parentElement;
+    if (!container) return;
     const width = container.clientWidth;
     const height = container.clientHeight;
 
@@ -168,7 +250,8 @@ export class LegalContact implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private onWindowResize() {
-    const container = this.canvasRef.nativeElement.parentElement!;
+    const container = this.canvasRef.nativeElement.parentElement;
+    if (!container) return;
     const width = container.clientWidth;
     const height = container.clientHeight;
     
@@ -184,18 +267,18 @@ export class LegalContact implements OnInit, AfterViewInit, OnDestroy {
     this.scrollProgress += (this.targetScrollProgress - this.scrollProgress) * 0.05;
 
     this.floatingShapes.forEach((shape, i) => {
-      const data = shape.userData as { [key: string]: any };
-      shape.rotation.x += data['rotSpeed'];
-      shape.rotation.y += data['rotSpeed'] * 1.3;
-      shape.rotation.z += data['rotSpeed'] * 0.7;
+      const d = shape.userData as any;
+      shape.rotation.x += d['rotSpeed'];
+      shape.rotation.y += d['rotSpeed'] * 1.3;
+      shape.rotation.z += d['rotSpeed'] * 0.7;
       
-      const floatY = Math.sin(this.time * data['speed'] + data['offset']) * data['floatRange'];
-      const floatX = Math.cos(this.time * data['speed'] * 0.6 + data['offset']) * data['floatRange'] * 0.5;
-      const floatZ = Math.sin(this.time * data['speed'] * 0.8 + data['offset'] * 2) * data['floatRange'] * 0.3;
+      const floatY = Math.sin(this.time * d['speed'] + d['offset']) * d['floatRange'];
+      const floatX = Math.cos(this.time * d['speed'] * 0.6 + d['offset']) * d['floatRange'] * 0.5;
+      const floatZ = Math.sin(this.time * d['speed'] * 0.8 + d['offset'] * 2) * d['floatRange'] * 0.3;
       
-      shape.position.x = data['originalPos'].x + floatX;
-      shape.position.y = data['originalPos'].y + floatY;
-      shape.position.z = data['originalPos'].z + floatZ;
+      shape.position.x = d['originalPos'].x + floatX;
+      shape.position.y = d['originalPos'].y + floatY;
+      shape.position.z = d['originalPos'].z + floatZ;
     });
 
     this.particles.rotation.y = this.time * 0.04;
@@ -211,3 +294,5 @@ export class LegalContact implements OnInit, AfterViewInit, OnDestroy {
     return 1 - Math.pow(1 - t, 3);
   }
 }
+
+

@@ -28,7 +28,7 @@ export class Diseno implements OnInit, AfterViewInit {
   ngOnInit() {
     this.seo.updateSeoTags({
       title: 'Diseño Arquitectónico',
-      description: 'Servicios de diseño arquitectónico y de interiores en Quito. Transformamos ideas en espacios funcionales y estéticos con visión contemporánea.',
+      description: 'Servicios de diseño arquitectónico y de interiores en Cuenca. Transformamos ideas en espacios funcionales y estéticos con visión contemporánea.',
       canonical: 'https://adinovaestudio.com/diseno'
     });
   }

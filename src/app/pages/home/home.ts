@@ -31,8 +31,8 @@ export class Home implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.seo.updateSeoTags({
-      title: 'Estudio de Arquitectura Contemporánea en Quito',
-      description: 'Adinova es un estudio de arquitectura contemporánea en Quito. Diseño arquitectónico, construcción y asesoría legal para proyectos residenciales y comerciales.',
+      title: 'Estudio de Arquitectura Contemporánea en Cuenca',
+      description: 'Adinova es un estudio de arquitectura contemporánea en Cuenca. Diseño arquitectónico, construcción y asesoría legal para proyectos residenciales y comerciales.',
       canonical: 'https://adinovaestudio.com/'
     });
   }

@@ -1,4 +1,5 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+﻿import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 
 import { Diseno } from './diseno';
 
@@ -8,7 +9,7 @@ describe('Diseno', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Diseno],
+      imports: [Diseno], providers: [provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Diseno);
@@ -20,3 +21,4 @@ describe('Diseno', () => {
     expect(component).toBeTruthy();
   });
 });
+

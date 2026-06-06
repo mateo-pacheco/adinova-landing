@@ -9,16 +9,26 @@
 }
 
 .diseno-stat-card {
-  transition: all 300ms ease;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .diseno-stat-card:hover {
-  border-color: rgba(54, 168, 168, 0.2);
-  background: rgba(54, 168, 168, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
 }
 
 .diseno-cta {
   text-decoration: none;
+}
+
+.legal-canvas { filter: brightness(1.6) saturate(1.2); }
+.stat-card {
+  background: rgba(255,255,255,0.03) !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+  border-radius: 16px !important;
 }
 
 .diseno-cta-outline {

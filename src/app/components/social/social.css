@@ -1,40 +1,32 @@
-﻿:host {
-  display: block;
+﻿:host { display: block; }
+.social-item {
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 16px;
+  background: rgba(255,255,255,0.02);
+  transition: all 0.2s ease;
 }
-
+.social-item:hover {
+  border-color: rgba(43,191,179,0.25);
+  background: rgba(43,191,179,0.04);
+  transform: translateY(-2px);
+}
 .social-icon-box {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(43,191,179,0.08);
+  border: 1px solid rgba(43,191,179,0.15);
 }
-
-.social-icon {
-  font-size: 13px;
-}
-
+.social-icon { font-size: 14px; color: #2BBFB3; }
 .social-name {
-  font-size: 13px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.75);
+  letter-spacing: 0.01em;
 }
-
 .social-handle {
-  font-size: 10px;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.02em;
 }
-
-@media (min-width: 640px) {
-  .social-icon-box {
-    width: 36px;
-    height: 36px;
-  }
-
-  .social-icon {
-    font-size: 14px;
-  }
-
-  .social-name {
-    font-size: 14px;
-  }
-
-  .social-handle {
-    font-size: 11px;
-  }
-}
-

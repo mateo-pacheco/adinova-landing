@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, OnDestroy, ViewChild, AfterViewInit, NgZone, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+﻿import { Component, ElementRef, OnInit, OnDestroy, ViewChild, AfterViewInit, NgZone, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { CommonModule } from '@angular/common';
@@ -59,31 +59,40 @@ import * as THREE from 'three';
       align-items: center;
       justify-content: center;
       overflow: hidden;
+      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    
+
+    .preloader.fade-out {
+      opacity: 0;
+      pointer-events: none;
+    }
+
     .preloader-canvas {
       position: absolute;
       inset: 0;
       width: 100% !important;
       height: 100% !important;
+      filter: brightness(2.2) saturate(1.6) !important;
     }
-    
+
     .preloader-vignette {
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at center, transparent 0%, rgba(3, 3, 3, 0.4) 70%, rgba(3, 3, 3, 0.9) 100%);
+      background: radial-gradient(ellipse at center, transparent 20%, rgba(3,3,3,0.5) 70%, rgba(3,3,3,0.95) 100%);
       pointer-events: none;
+      z-index: 1;
     }
-    
+
     .preloader-noise {
       position: absolute;
       inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-      opacity: 0.04;
+      opacity: 0.03;
       mix-blend-mode: overlay;
       pointer-events: none;
+      z-index: 2;
     }
-    
+
     .preloader-content {
       position: relative;
       z-index: 10;
@@ -92,151 +101,130 @@ import * as THREE from 'three';
       flex-direction: column;
       align-items: center;
     }
-    
+
     .preloader-logo-container {
       display: flex;
-      gap: 0.1em;
-      margin-bottom: 0.75rem;
+      gap: 0.05em;
+      margin-bottom: 0.6rem;
     }
-    
+
     .preloader-letter {
-      font-size: clamp(2rem, 6vw, 3.5rem);
-      font-weight: 200;
-      letter-spacing: 0.35em;
-      color: #fff;
+      font-size: clamp(2.8rem, 7vw, 5rem);
+      font-weight: 100;
+      letter-spacing: 0.45em;
+      color: rgba(255,255,255,0.95);
       opacity: 0;
       transform: translateY(30px);
-      animation: letterReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      animation: letterReveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      font-family: -apple-system, "SF Pro Display", BlinkMacSystemFont, "Helvetica Neue", sans-serif;
     }
-    
+
     @keyframes letterReveal {
-      0% { opacity: 0; transform: translateY(30px) scale(0.9); }
+      0% { opacity: 0; transform: translateY(24px) scale(0.95); }
       100% { opacity: 1; transform: translateY(0) scale(1); }
     }
-    
+
     .preloader-tagline {
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       font-weight: 400;
-      letter-spacing: 0.5em;
+      letter-spacing: 0.55em;
       text-transform: uppercase;
-      color: rgba(54, 168, 168, 0.8);
-      margin-bottom: 3rem;
+      color: rgba(43,191,179,0.7);
+      margin-bottom: 3.5rem;
       opacity: 0;
-      animation: fadeIn 1s ease 0.8s forwards;
+      animation: fadeIn 1s ease 0.9s forwards;
+      font-family: -apple-system, "SF Pro Display", BlinkMacSystemFont, "Helvetica Neue", sans-serif;
     }
-    
+
     @keyframes fadeIn {
       to { opacity: 1; }
     }
-    
+
     .preloader-loader {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 1rem;
     }
-    
+
     .preloader-track {
       position: relative;
-      width: clamp(180px, 40vw, 280px);
+      width: clamp(160px, 35vw, 240px);
       height: 1px;
-      background: rgba(54, 168, 168, 0.15);
-      border-radius: 1px;
+      background: rgba(43,191,179,0.12);
       overflow: visible;
     }
-    
+
     .preloader-progress {
       position: absolute;
       top: 0;
       left: 0;
       height: 100%;
-      background: linear-gradient(90deg, rgba(54, 168, 168, 0.5), #36A8A8);
-      border-radius: 1px;
+      background: linear-gradient(90deg, rgba(43,191,179,0.3), #2BBFB3);
       transition: width 0.15s ease-out;
-      box-shadow: 0 0 15px rgba(54, 168, 168, 0.5);
+      box-shadow: 0 0 12px rgba(43,191,179,0.6), 0 0 24px rgba(43,191,179,0.2);
     }
-    
+
     .preloader-glow {
       position: absolute;
       top: 50%;
-      width: 60px;
-      height: 60px;
-      background: radial-gradient(circle, rgba(54, 168, 168, 0.4) 0%, transparent 70%);
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, rgba(43,191,179,0.35) 0%, transparent 70%);
       transform: translate(-50%, -50%);
       pointer-events: none;
-      animation: glowPulse 1.5s ease-in-out infinite;
+      animation: glowPulse 2s ease-in-out infinite;
     }
-    
+
     @keyframes glowPulse {
-      0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
-      50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2); }
+      0%, 100% { opacity: 0.4; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 0.9; transform: translate(-50%, -50%) scale(1.3); }
     }
-    
+
     .preloader-percent {
-      font-size: 0.6rem;
-      font-weight: 400;
-      letter-spacing: 0.3em;
-      color: rgba(255, 255, 255, 0.4);
-      font-variant-numeric: tabular-nums;
-    }
-    
-    .preloader-status {
-      margin-top: 1.5rem;
-      font-size: 0.55rem;
+      font-size: 0.58rem;
       font-weight: 300;
-      letter-spacing: 0.25em;
+      letter-spacing: 0.35em;
+      color: rgba(255,255,255,0.3);
+      font-variant-numeric: tabular-nums;
+      font-family: -apple-system, BlinkMacSystemFont, monospace;
+    }
+
+    .preloader-status {
+      margin-top: 1.75rem;
+      font-size: 0.52rem;
+      font-weight: 300;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.25);
+      color: rgba(255,255,255,0.2);
       opacity: 0;
       animation: fadeIn 0.5s ease 1s forwards;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     }
-    
+
     .preloader-corner {
       position: absolute;
-      width: 30px;
-      height: 30px;
-      border-color: rgba(54, 168, 168, 0.3);
+      width: 24px;
+      height: 24px;
+      border-color: rgba(43,191,179,0.25);
       border-style: solid;
       border-width: 0;
       opacity: 0;
-      animation: cornerReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+      animation: cornerReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
     }
-    
-    .preloader-corner-tl {
-      top: 40px;
-      left: 40px;
-      border-top-width: 1px;
-      border-left-width: 1px;
-    }
-    
-    .preloader-corner-tr {
-      top: 40px;
-      right: 40px;
-      border-top-width: 1px;
-      border-right-width: 1px;
-    }
-    
-    .preloader-corner-bl {
-      bottom: 40px;
-      left: 40px;
-      border-bottom-width: 1px;
-      border-left-width: 1px;
-    }
-    
-    .preloader-corner-br {
-      bottom: 40px;
-      right: 40px;
-      border-bottom-width: 1px;
-      border-right-width: 1px;
-    }
-    
+
+    .preloader-corner-tl { top: 36px; left: 36px; border-top-width: 1px; border-left-width: 1px; }
+    .preloader-corner-tr { top: 36px; right: 36px; border-top-width: 1px; border-right-width: 1px; }
+    .preloader-corner-bl { bottom: 36px; left: 36px; border-bottom-width: 1px; border-left-width: 1px; }
+    .preloader-corner-br { bottom: 36px; right: 36px; border-bottom-width: 1px; border-right-width: 1px; }
+
     @keyframes cornerReveal {
-      0% { opacity: 0; transform: scale(0.8); }
+      0% { opacity: 0; transform: scale(0.7); }
       100% { opacity: 1; transform: scale(1); }
     }
-    
+
     @media (max-width: 640px) {
-      .preloader-corner { width: 20px; height: 20px; }
+      .preloader-corner { width: 16px; height: 16px; }
       .preloader-corner-tl, .preloader-corner-tr { top: 20px; }
       .preloader-corner-bl, .preloader-corner-br { bottom: 20px; }
       .preloader-corner-tl, .preloader-corner-bl { left: 20px; }
@@ -331,7 +319,7 @@ export class Preloader implements OnInit, AfterViewInit, OnDestroy {
     if (this.animationId) {
       cancelAnimationFrame(this.animationId);
     }
-    this.renderer.dispose();
+    this.renderer?.dispose();
     if (this.isBrowser) {
       document.body.classList.remove('preloader-active');
     }

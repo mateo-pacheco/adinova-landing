@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, OnDestroy, ViewChild, AfterViewInit, NgZone } from '@angular/core';
+﻿import { Component, ElementRef, OnInit, OnDestroy, ViewChild, AfterViewInit, NgZone } from '@angular/core';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { signal } from '@angular/core';
@@ -21,6 +21,7 @@ export class ConstruccionFaq implements OnInit, AfterViewInit, OnDestroy {
   private animationId!: number;
   private time = 0;
   private isBrowser: boolean;
+  private boundResize = this.onWindowResize.bind(this);
 
   constructor(
     private ngZone: NgZone,
@@ -35,9 +36,13 @@ export class ConstruccionFaq implements OnInit, AfterViewInit, OnDestroy {
     if (!this.isBrowser) return;
     
     this.ngZone.runOutsideAngular(() => {
-      this.initThreeJS();
-      this.animate();
-      window.addEventListener('resize', this.onWindowResize.bind(this));
+      try {
+        this.initThreeJS();
+        this.animate();
+        window.addEventListener('resize', this.boundResize);
+      } catch (e) {
+        console.warn('3D initialization skipped:', e);
+      }
     });
   }
 
@@ -46,8 +51,8 @@ export class ConstruccionFaq implements OnInit, AfterViewInit, OnDestroy {
     if (this.animationId) {
       cancelAnimationFrame(this.animationId);
     }
-    window.removeEventListener('resize', this.onWindowResize.bind(this));
-    this.renderer.dispose();
+    window.removeEventListener('resize', this.boundResize);
+    this.renderer?.dispose();
   }
 
   protected readonly expandedId = signal<string | null>(null);
@@ -55,33 +60,18 @@ export class ConstruccionFaq implements OnInit, AfterViewInit, OnDestroy {
   protected readonly faqs = [
     {
       id: '01',
-      question: '¿Cuánto tiempo toma construir una obra arquitectónica?',
-      answer: 'El tiempo varía según el tamaño y complejidad. Una vivienda puede tomar 6-10 meses, mientras que edificios comerciales pueden requerir 12-24 meses. Entregamos un cronograma detallado al inicio.',
+      question: '¿Cuáles son los servicios que ofrecemos?',
+      answer: 'Ofrecemos servicios integrales en Arquitectura (Diseño y Planificación), Construcción de proyectos y Asesoría Legal especializada en trámites municipales y derecho patrimonial.',
     },
     {
       id: '02',
-      question: '¿Cómo garantizan la calidad de la construcción?',
-      answer: 'Contamos con supervisores calificados, materiales certificados, pruebas de resistencia de concreto y cumplimiento de normatividad. Cada etapa es inspeccionada y documentada.',
+      question: '¿Dónde estamos ubicados?',
+      answer: 'Nuestra oficina se encuentra en Cuenca, en la calle Luis Cordero 9-55 y Simón Bolivar, Oficina #16.',
     },
     {
       id: '03',
-      question: '¿El presupuesto incluye todos los materiales?',
-      answer: 'Sí, el presupuesto incluye materiales, mano de obra, equipo y acabados especificados. Entregamos un desglose detallado antes de iniciar la obra.',
-    },
-    {
-      id: '04',
-      question: '¿Qué pasa si necesito cambios durante la obra?',
-      answer: 'Cualquier cambio se analiza, se cotiza y se aprueba antes de ejecutarse. Entregamos estimaciones de costo y tiempo adicional con transparencia.',
-    },
-    {
-      id: '05',
-      question: '¿Ofrecen garantía de la obra terminada?',
-      answer: 'Sí, otorgamos garantía estructural de 5 años y garantía de acabados de 1 año en todas nuestras obras ejecutadas.',
-    },
-    {
-      id: '06',
-      question: '¿Cómo Controlan el presupuesto durante la obra?',
-      answer: 'Realizamos reuniones semanales de avance, entregas de estimaciones detalladas y control de gastos. El presupuesto se respeta salvo modificaciones solicitadas por el cliente.',
+      question: 'Horarios de atención',
+      answer: 'Atendemos de Lunes a viernes de 09:00 a 18:00. Los sábados atendemos de 10:00 a 14:00 mediante cita previa.',
     },
   ];
 
@@ -100,7 +90,8 @@ export class ConstruccionFaq implements OnInit, AfterViewInit, OnDestroy {
 
   private initThreeJS() {
     const canvas = this.canvasRef.nativeElement;
-    const container = canvas.parentElement!;
+    const container = canvas.parentElement;
+    if (!container) return;
     const width = container.clientWidth;
     const height = container.clientHeight;
 
@@ -156,7 +147,8 @@ export class ConstruccionFaq implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private onWindowResize() {
-    const container = this.canvasRef.nativeElement.parentElement!;
+    const container = this.canvasRef.nativeElement.parentElement;
+    if (!container) return;
     const width = container.clientWidth;
     const height = container.clientHeight;
     

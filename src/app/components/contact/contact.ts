@@ -1,6 +1,7 @@
-import { Component, Inject, inject, OnInit, OnDestroy, ElementRef, ViewChild, AfterViewInit, HostListener, PLATFORM_ID } from '@angular/core';
+﻿import { Component, Inject, inject, OnInit, OnDestroy, ElementRef, ViewChild, AfterViewInit, HostListener, PLATFORM_ID, NgZone } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
+import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subject, takeUntil } from 'rxjs';
 import emailjs from '@emailjs/browser';
 import { environment } from '../../../environments/environment';
 import * as THREE from 'three';
@@ -29,6 +30,8 @@ export class Contact implements OnInit, OnDestroy, AfterViewInit {
   
   private fb = inject(FormBuilder);
   private isBrowser: boolean;
+  private destroy$ = new Subject<void>();
+  private boundResize = this.onWindowResize.bind(this);
   private touchTimeouts = new Map<string, ReturnType<typeof setTimeout>>();
   private validationTimeouts = new Map<string, ReturnType<typeof setTimeout>>();
   
@@ -46,7 +49,7 @@ export class Contact implements OnInit, OnDestroy, AfterViewInit {
   protected contactItems: ContactItem[] = [
     { label: 'Correo', value: 'adinovaarq@gmail.com', href: 'mailto:adinovaarq@gmail.com' },
     { label: 'Telefono', value: '+593 98 409 0397', href: 'tel:+593984090397' },
-    { label: 'Ubicacion', value: 'Luis Cordero 9-55 y Simon Bolivar, Ofic. #16', href: '#' },
+    { label: 'Ubicacion', value: 'Luis Cordero 9-55 y Simon Bolivar, Ofic. #16', href: 'https://maps.app.goo.gl/HLxuPuiyU563Tr9w6' },
   ];
 
   protected schedules = [
@@ -74,6 +77,7 @@ export class Contact implements OnInit, OnDestroy, AfterViewInit {
   ];
 
   constructor(
+    private ngZone: NgZone,
     @Inject(PLATFORM_ID) platformId: object
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
@@ -91,20 +95,28 @@ export class Contact implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
     this.clearAllTimeouts();
     if (!this.isBrowser) return;
     if (this.animationId) {
       cancelAnimationFrame(this.animationId);
     }
-    window.removeEventListener('resize', this.onWindowResize.bind(this));
-    this.renderer.dispose();
+    window.removeEventListener('resize', this.boundResize);
+    this.renderer?.dispose();
   }
 
   ngAfterViewInit() {
     if (!this.isBrowser) return;
-    this.initThreeJS();
-    this.animate();
-    window.addEventListener('resize', this.onWindowResize.bind(this));
+    this.ngZone.runOutsideAngular(() => {
+      try {
+        this.initThreeJS();
+        this.animate();
+        window.addEventListener('resize', this.boundResize);
+      } catch (e) {
+        console.warn('3D initialization skipped:', e);
+      }
+    });
   }
 
   @HostListener('window:scroll')
@@ -122,7 +134,8 @@ export class Contact implements OnInit, OnDestroy, AfterViewInit {
 
   private initThreeJS() {
     const canvas = this.canvasRef.nativeElement;
-    const container = canvas.parentElement!;
+    const container = canvas.parentElement;
+    if (!container) return;
     const width = container.clientWidth;
     const height = container.clientHeight;
 
@@ -205,7 +218,8 @@ export class Contact implements OnInit, OnDestroy, AfterViewInit {
   }
 
   private onWindowResize() {
-    const container = this.canvasRef.nativeElement.parentElement!;
+    const container = this.canvasRef.nativeElement.parentElement;
+    if (!container) return;
     const width = container.clientWidth;
     const height = container.clientHeight;
     
@@ -261,7 +275,7 @@ export class Contact implements OnInit, OnDestroy, AfterViewInit {
       const control = this.contactForm.get(field);
       if (!control) return;
 
-      control.valueChanges.subscribe(() => {
+      control.valueChanges.pipe(takeUntil(this.destroy$)).subscribe(() => {
         if (control.dirty && !this.dirtyFields.has(field)) {
           this.dirtyFields.add(field);
         }

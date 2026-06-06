@@ -19,6 +19,6 @@ export class Footer {
   protected readonly contacts = [
     { label: 'adinovaarq@gmail.com', href: 'mailto:adinovaarq@gmail.com' },
     { label: '+593 98 409 0397', href: 'tel:+593984090397' },
-    { label: 'Cuenca, Ecuador', href: '#' },
+    { label: 'Luis Cordero 9-55 y Simon Bolivar, Ofic. #16', href: 'https://maps.app.goo.gl/HLxuPuiyU563Tr9w6' },
   ];
 }

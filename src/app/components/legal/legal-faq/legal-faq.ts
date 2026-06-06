@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, OnDestroy, ViewChild, AfterViewInit, NgZone } from '@angular/core';
+﻿import { Component, ElementRef, OnInit, OnDestroy, ViewChild, AfterViewInit, NgZone } from '@angular/core';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { signal } from '@angular/core';
@@ -21,6 +21,7 @@ export class LegalFaq implements OnInit, AfterViewInit, OnDestroy {
   private animationId!: number;
   private time = 0;
   private isBrowser: boolean;
+  private boundResize = this.onWindowResize.bind(this);
 
   protected readonly expandedId = signal<string | null>(null);
 
@@ -37,9 +38,13 @@ export class LegalFaq implements OnInit, AfterViewInit, OnDestroy {
     if (!this.isBrowser) return;
     
     this.ngZone.runOutsideAngular(() => {
-      this.initThreeJS();
-      this.animate();
-      window.addEventListener('resize', this.onWindowResize.bind(this));
+      try {
+        this.initThreeJS();
+        this.animate();
+        window.addEventListener('resize', this.boundResize);
+      } catch (e) {
+        console.warn('3D initialization skipped:', e);
+      }
     });
   }
 
@@ -48,40 +53,35 @@ export class LegalFaq implements OnInit, AfterViewInit, OnDestroy {
     if (this.animationId) {
       cancelAnimationFrame(this.animationId);
     }
-    window.removeEventListener('resize', this.onWindowResize.bind(this));
-    this.renderer.dispose();
+    window.removeEventListener('resize', this.boundResize);
+    this.renderer?.dispose();
   }
 
   protected readonly faqs = [
     {
       id: '01',
-      question: '¿Cuánto tiempo toma obtener una licencia de construcción?',
-      answer: 'El tiempo varía según el municipio y tipo de proyecto. Typicamentee entre 4 a 12 semanas para proyectos residenciales, y hasta 6 meses para proyectos comerciales de gran escala. Nosotros gestionamos todo el proceso para que sea lo más ágil posible.',
+      question: '¿Cuáles son los servicios que ofrecemos?',
+      answer: 'Ofrecemos asesoría legal arquitectónica, gestión de permisos de construcción, regularización de excedentes, declaratorias de propiedad horizontal, y trámites de escrituración y derechos sucesorios.',
     },
     {
       id: '02',
-      question: '¿Qué documentos necesito para iniciar un proyecto?',
-      answer: 'Los documentos básicos incluyen: propiedad del terreno, identificación del propietario, planos arquitectónicos, memoria descriptiva, y en algunos casos estudios de impacto ambiental o tráfico. Te orientamos específicamente para tu proyecto.',
+      question: '¿Dónde estamos ubicados?',
+      answer: 'Nuestra oficina principal se encuentra en Luis Cordero 9-55 y Simón Bolívar, Ofic. #16, en la ciudad de Cuenca. También brindamos atención virtual para proyectos en todo el país.',
     },
     {
       id: '03',
-      question: '¿Pueden modificar el uso de suelo de mi propiedad?',
-      answer: 'Sí, es posible mediante un trámite de cambio de uso de suelo ante el municipio. El proceso depende de la zonificación actual y los reglamentos locales. Realizamos el análisis para viabilidad antes de iniciar.',
+      question: 'Horarios de atención',
+      answer: 'Atendemos de lunes a viernes de 09:00 a 18:00. Los sábados atendemos de 10:00 a 14:00 mediante cita previa.',
     },
     {
       id: '04',
-      question: '¿Qué sucede si construyo sin permiso?',
-      answer: 'Construir sin licencia puede resultar en multas, suspensión de obra, demolición, o problemas legales al momento de escriturar. Siempre recomendamos obtener los permisos antes de iniciar construcción.',
+      question: 'Costo de los trámites',
+      answer: 'El costo depende de la complejidad del proceso legal o técnico y de las tasas municipales vigentes. Proporcionamos un presupuesto detallado tras la primera consulta.',
     },
     {
       id: '05',
-      question: '¿Ofrecen supervisión durante toda la obra?',
-      answer: 'Sí, unsericio de supervisión legal incluye visitas periódicas, verificación de cumplimiento de especificaciones, revisión de actas de avance y asesoría continua durante todo el proceso constructivo.',
-    },
-    {
-      id: '06',
-      question: '¿Cómo saber si mi proyecto cumple la normatividad?',
-      answer: 'Realizamos un análisis completo de zonificación, usos de suelo, restricciones municipales y normas técnicas aplicables a tu proyecto antes de iniciar cualquier trámite.',
+      question: '¿Cómo puedo arreglar mis Escrituras y Derechos?',
+      answer: 'Realizamos procesos de derecho patrimonial, posesiones efectivas y trámites legales para la regularización de propiedades y derechos sucesorios. Agenda una asesoría para analizar tu caso.',
     },
   ];
 
@@ -100,7 +100,8 @@ export class LegalFaq implements OnInit, AfterViewInit, OnDestroy {
 
   private initThreeJS() {
     const canvas = this.canvasRef.nativeElement;
-    const container = canvas.parentElement!;
+    const container = canvas.parentElement;
+    if (!container) return;
     const width = container.clientWidth;
     const height = container.clientHeight;
 
@@ -156,7 +157,8 @@ export class LegalFaq implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private onWindowResize() {
-    const container = this.canvasRef.nativeElement.parentElement!;
+    const container = this.canvasRef.nativeElement.parentElement;
+    if (!container) return;
     const width = container.clientWidth;
     const height = container.clientHeight;
     

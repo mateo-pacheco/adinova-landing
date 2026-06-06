@@ -29,7 +29,7 @@
       @for (project of projects; track project.id) {
         <article class="project-card">
           <div class="project-image">
-            <img [src]="project.image" [alt]="project.title" />
+            <img [src]="project.image" [alt]="project.title" loading="lazy" />
           </div>
           
           <div class="project-content">

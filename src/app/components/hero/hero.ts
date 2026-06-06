@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, OnDestroy, ViewChild, AfterViewInit, HostListener, NgZone } from '@angular/core';
+﻿import { Component, ElementRef, OnInit, OnDestroy, ViewChild, AfterViewInit, HostListener, NgZone } from '@angular/core';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import * as THREE from 'three';
@@ -32,6 +32,8 @@ export class Hero implements OnInit, AfterViewInit, OnDestroy {
   private windowHalfY = 0;
   private time = 0;
   private isBrowser: boolean;
+  private boundResize = this.onWindowResize.bind(this);
+  private boundMouseMove = this.onDocumentMouseMove.bind(this);
 
   constructor(
     private ngZone: NgZone,
@@ -46,10 +48,14 @@ export class Hero implements OnInit, AfterViewInit, OnDestroy {
     if (!this.isBrowser) return;
     
     this.ngZone.runOutsideAngular(() => {
-      this.initThreeJS();
-      this.animate();
-      window.addEventListener('resize', this.onWindowResize.bind(this));
-      document.addEventListener('mousemove', this.onDocumentMouseMove.bind(this));
+      try {
+        this.initThreeJS();
+        this.animate();
+        window.addEventListener('resize', this.boundResize);
+        document.addEventListener('mousemove', this.boundMouseMove);
+      } catch (e) {
+        console.warn('3D initialization skipped:', e);
+      }
     });
   }
 
@@ -71,14 +77,15 @@ export class Hero implements OnInit, AfterViewInit, OnDestroy {
     if (this.animationId) {
       cancelAnimationFrame(this.animationId);
     }
-    window.removeEventListener('resize', this.onWindowResize.bind(this));
-    document.removeEventListener('mousemove', this.onDocumentMouseMove.bind(this));
-    this.renderer.dispose();
+    window.removeEventListener('resize', this.boundResize);
+    document.removeEventListener('mousemove', this.boundMouseMove);
+    this.renderer?.dispose();
   }
 
   private initThreeJS() {
     const canvas = this.canvasRef.nativeElement;
-    const container = canvas.parentElement!;
+    const container = canvas.parentElement;
+    if (!container) return;
     const width = container.clientWidth;
     const height = container.clientHeight;
     this.windowHalfX = width / 2;
@@ -103,6 +110,9 @@ export class Hero implements OnInit, AfterViewInit, OnDestroy {
     this.renderer.setSize(width, height);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2));
     this.renderer.setClearColor(0x000000, 0);
+
+    canvas.style.opacity = '1';
+    canvas.style.filter = 'brightness(2.0) saturate(1.5)';
 
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
     this.scene.add(ambientLight);
@@ -286,7 +296,8 @@ export class Hero implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private onWindowResize() {
-    const container = this.canvasRef.nativeElement.parentElement!;
+    const container = this.canvasRef.nativeElement.parentElement;
+    if (!container) return;
     const width = container.clientWidth;
     const height = container.clientHeight;
     this.windowHalfX = width / 2;
