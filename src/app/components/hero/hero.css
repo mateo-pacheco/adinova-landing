@@ -94,3 +94,45 @@
   letter-spacing: -0.02em !important;
   font-size: 1.75rem !important;
 }
+
+@media (max-width: 768px) {
+  .hero-3d-container {
+    opacity: 0.5 !important;
+    filter: brightness(1.2) saturate(1.1) contrast(0.9) !important;
+  }
+
+  .hero-title {
+    font-size: clamp(1.6rem, 7vw, 2.4rem) !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+  }
+
+  .hero-logo {
+    height: 48px !important;
+    width: auto !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  .hero-btn-primary,
+  .hero-btn-secondary {
+    width: 100% !important;
+    text-align: center !important;
+    justify-content: center !important;
+    padding: 14px 20px !important;
+  }
+
+  .hero-description {
+    font-size: 0.82rem !important;
+    text-align: center !important;
+    color: rgba(255,255,255,0.55) !important;
+  }
+
+  .hero-badge {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  .hero-container {
+    padding-top: 60px !important;
+  }
+}
