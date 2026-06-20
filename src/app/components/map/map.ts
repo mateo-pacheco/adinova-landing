@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-map',
@@ -7,4 +7,11 @@ import { Component } from '@angular/core';
   templateUrl: './map.html',
   styleUrl: './map.css',
 })
-export class Map {}
+export class Map {
+  mapActive = signal(false);
+
+  activateMap(event?: Event) {
+    event?.preventDefault();
+    this.mapActive.set(true);
+  }
+}
