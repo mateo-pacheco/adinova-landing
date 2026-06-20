@@ -22,8 +22,8 @@ button:focus-visible,
   --color-border: rgba(255, 255, 255, 0.07);
   --color-text-primary: rgba(255, 255, 255, 0.88);
   --color-text-secondary: rgba(255, 255, 255, 0.42);
-  --color-accent: #2BBFB3;
-  --color-accent-subtle: rgba(43, 191, 179, 0.12);
+  --color-accent: #36A8A8;
+  --color-accent-subtle: rgba(54, 168, 168, 0.12);
 }
 
 html {
@@ -70,7 +70,7 @@ body::before {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(43, 191, 179, 0.05) 0%, transparent 70%);
+  background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(54, 168, 168, 0.05) 0%, transparent 70%);
   z-index: 0;
 }
 

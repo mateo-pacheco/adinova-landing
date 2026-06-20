@@ -48,8 +48,8 @@ export class Contact implements OnInit, OnDestroy, AfterViewInit {
 
   protected contactItems: ContactItem[] = [
     { label: 'Correo', value: 'adinovaarq@gmail.com', href: 'mailto:adinovaarq@gmail.com' },
-    { label: 'Telefono', value: '+593 98 409 0397', href: 'tel:+593984090397' },
-    { label: 'Ubicacion', value: 'Luis Cordero 9-55 y Simon Bolivar, Ofic. #16', href: 'https://maps.app.goo.gl/HLxuPuiyU563Tr9w6' },
+    { label: 'Teléfono', value: '+593 98 409 0397', href: 'tel:+593984090397' },
+    { label: 'Ubicación', value: 'Luis Cordero 9-55 y Simón Bolívar, Ofic. #16', href: 'https://maps.app.goo.gl/HLxuPuiyU563Tr9w6' },
   ];
 
   protected schedules = [
@@ -70,10 +70,10 @@ export class Contact implements OnInit, OnDestroy, AfterViewInit {
     'Arquitectura residencial',
     'Arquitectura comercial',
     'Interiorismo',
-    'Diseno conceptual',
-    'Direccion de obra',
-    'Planificacion espacial',
-    'Gestion de permisos y licencias',
+    'Diseño conceptual',
+    'Dirección de obra',
+    'Planificación espacial',
+    'Gestión de permisos y licencias',
   ];
 
   constructor(
@@ -363,18 +363,18 @@ export class Contact implements OnInit, OnDestroy, AfterViewInit {
     }
 
     if (control.errors['email']) {
-      return 'Ingresa un correo valido';
+      return 'Ingresa un correo válido';
     }
 
     if (control.errors['minlength']) {
       const min = control.errors['minlength'].requiredLength;
-      if (field === 'name') return `Minimo ${min} caracteres`;
-      if (field === 'message') return `Minimo ${min} caracteres para enviar`;
-      return `Minimo ${min} caracteres`;
+      if (field === 'name') return `Mínimo ${min} caracteres`;
+      if (field === 'message') return `Mínimo ${min} caracteres para enviar`;
+return `Mínimo ${min} caracteres`;
     }
 
     if (control.errors['maxlength']) {
-      return 'Excediste el limite de caracteres';
+      return 'Excediste el límite de caracteres';
     }
 
     if (control.errors['pattern']) {
@@ -400,7 +400,7 @@ export class Contact implements OnInit, OnDestroy, AfterViewInit {
     if (this.submitStatus === 'error') {
       return {
         title: 'No se pudo enviar',
-        copy: 'Hubo un problema al procesar tu mensaje. Intentalo nuevamente en unos segundos.',
+        copy: 'Hubo un problema al procesar tu mensaje. Inténtalo nuevamente en unos segundos.',
         tone: 'error',
       };
     }

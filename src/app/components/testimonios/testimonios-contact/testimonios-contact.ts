@@ -84,8 +84,8 @@ export class TestimoniosContact implements OnInit, AfterViewInit, OnDestroy {
       };
       return labels[field] || 'Este campo es obligatorio';
     }
-    if (control.errors['email']) return 'Ingresa un correo valido';
-    if (control.errors['minlength']) return 'Minimo ' + control.errors['minlength'].requiredLength + ' caracteres';
+    if (control.errors['email']) return 'Ingresa un correo válido';
+    if (control.errors['minlength']) return 'Mínimo ' + control.errors['minlength'].requiredLength + ' caracteres';
     return '';
   }
 

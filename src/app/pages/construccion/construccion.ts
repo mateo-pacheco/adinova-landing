@@ -1,8 +1,6 @@
-import { Component, Inject, PLATFORM_ID, ViewChild, AfterViewInit, OnInit, inject } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit, inject } from '@angular/core';
 import { Navbar } from '../../components/navbar/navbar';
 import { Footer } from '../../components/footer/footer';
-import { Preloader } from '../../components/preloader/preloader';
 import { ConstruccionHero } from '../../components/construccion/construccion-hero/construccion-hero';
 import { ConstruccionProcess } from '../../components/construccion/construccion-process/construccion-process';
 import { ConstruccionCases } from '../../components/construccion/construccion-cases/construccion-cases';
@@ -12,57 +10,19 @@ import { SeoService } from '../../shared/seo.service';
 @Component({
   selector: 'app-construccion',
   standalone: true,
-  imports: [Navbar, Footer, Preloader, ConstruccionHero, ConstruccionProcess, ConstruccionCases, ConstruccionFaq],
+  imports: [Navbar, Footer, ConstruccionHero, ConstruccionProcess, ConstruccionCases, ConstruccionFaq],
   templateUrl: './construccion.html',
   styleUrl: './construccion.css',
 })
-export class Construccion implements OnInit, AfterViewInit {
-  @ViewChild(Preloader) preloader!: Preloader;
-  preloaderCompleted = false;
-  pageVisible = false;
+export class Construccion implements OnInit {
   private seo = inject(SeoService);
-  
-  constructor(
-    @Inject(PLATFORM_ID) private platformId: object
-  ) {}
 
   ngOnInit() {
     this.seo.updateSeoTags({
-      title: 'Construcción y Obra',
-      description: 'Expertos en ejecución de obras arquitectónicas en Cuenca. Calidad, precisión y cumplimiento de plazos en cada proyecto de construcción.',
+      title: 'Construcción de Obras Arquitectónicas en Cuenca',
+      description: 'Expertos en construcción y ejecución de obras arquitectónicas en Cuenca. Calidad, precisión y cumplimiento de plazos. Remodelaciones, ampliaciones y obra nueva. Solicita tu presupuesto sin compromiso.',
+      keywords: 'construcción Cuenca, obras arquitectónicas, remodelaciones Cuenca, construcción residencial, presupuesto construcción',
       canonical: 'https://adinovaestudio.com/construccion'
     });
-  }
-  
-  ngAfterViewInit() {
-    if (isPlatformBrowser(this.platformId)) {
-      setTimeout(() => {
-        if (this.preloaderCompleted && !this.pageVisible) {
-          this.pageVisible = true;
-        }
-      }, 100);
-    }
-  }
-  
-  onPreloaderHidden() {
-    if (isPlatformBrowser(this.platformId)) {
-      this.preloaderCompleted = true;
-      
-      const hostEl = document.querySelector('app-preloader');
-      if (hostEl) {
-        (hostEl as HTMLElement).style.display = 'none';
-      }
-      
-      this.enablePageContent();
-      this.pageVisible = true;
-      window.scrollTo(0, 0);
-    }
-  }
-
-  private enablePageContent() {
-    const root = document.querySelector('app-root');
-    if (root) {
-      root.classList.add('loaded');
-    }
   }
 }

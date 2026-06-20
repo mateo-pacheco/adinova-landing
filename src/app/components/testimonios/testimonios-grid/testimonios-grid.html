@@ -1,42 +1,30 @@
 <section id="testimonios-ver" class="relative px-5 py-10 text-white sm:px-8 sm:py-12 lg:px-10 lg:py-20">
-  <div class="gallery-3d-container absolute inset-0 pointer-events-none hidden lg:block">
-    <canvas #canvas3d class="gallery-canvas"></canvas>
-  </div>
-  
   <div class="mx-auto max-w-7xl">
-    <div class="grid gap-5 border-t border-white/10 pt-6 sm:gap-6 sm:pt-8 lg:grid-cols-[1fr_auto] lg:items-end">
+    <div class="grid gap-5 border-t border-white/10 pt-6 sm:gap-6 sm:pt-8">
       <div data-scroll-reveal class="max-w-xl">
         <p class="text-[10px] uppercase tracking-[0.32em] text-[#36A8A8] sm:text-[11px]">Testimonios</p>
         <h2 class="mt-3 text-2xl font-medium leading-tight text-white sm:mt-4 sm:text-3xl lg:text-4xl">
           Experiencias reales.
         </h2>
         <p class="mt-3 text-xs leading-6 text-white/70 sm:text-sm sm:leading-7">
-          Clientes que han confiar en nosotros para hacer realidad sus proyectos.
+          Clientes que han confiado en nosotros para hacer realidad sus proyectos.
         </p>
-      </div>
-
-      <div class="hidden lg:flex gap-3">
-        <button class="gallery-nav-btn rounded-full border border-white/10 bg-white/5 p-3 text-white/60 transition-all hover:border-[#36A8A8]/50 hover:text-[#36A8A8]">
-          <i class="fa-solid fa-chevron-left"></i>
-        </button>
-        <button class="gallery-nav-btn rounded-full border border-white/10 bg-white/5 p-3 text-white/60 transition-all hover:border-[#36A8A8]/50 hover:text-[#36A8A8]">
-          <i class="fa-solid fa-chevron-right"></i>
-        </button>
       </div>
     </div>
 
-    <div class="projects-grid mt-10 sm:mt-12 lg:mt-14">
+    <div class="testimonios-grid mt-10 sm:mt-12 lg:mt-14">
       @for (testimonio of testimonios; track testimonio.id) {
-        <article class="testimonio-card">
-          <div class="testimonio-content">
-            <div class="quote-icon">
-              <i class="fa-solid fa-quote-left fa-lg"></i>
-            </div>
-            
-            <p class="testimonio-text">"{{ testimonio.text }}"</p>
-            
-            <div class="testimonio-author">
-              <h3 class="author-name">{{ testimonio.name }}</h3>
+        <article class="testimonio-card" data-scroll-reveal>
+          <div class="card-accent"></div>
+          
+          <div class="card-body">
+            <p class="card-text">{{ testimonio.text }}</p>
+          </div>
+
+          <div class="card-footer">
+            <div class="avatar">{{ getInitials(testimonio.name) }}</div>
+            <div class="card-info">
+              <h3 class="card-name">{{ testimonio.name }}</h3>
             </div>
           </div>
         </article>
