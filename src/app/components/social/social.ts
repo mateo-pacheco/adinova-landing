@@ -24,5 +24,10 @@ export class Social {
       handle: '@adinovaarq',
       href: 'https://www.tiktok.com/@adinovaarq?_r=1&_t=ZS-96sRdeOBdzz',
     },
+    {
+      name: 'WhatsApp',
+      handle: '+593 98 409 0397',
+      href: 'https://wa.me/593984090397',
+    },
   ];
 }

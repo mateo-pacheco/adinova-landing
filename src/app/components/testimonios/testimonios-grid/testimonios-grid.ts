@@ -6,11 +6,7 @@ import * as THREE from 'three';
 interface Testimonio {
   id: string;
   name: string;
-  role: string;
-  company: string;
   text: string;
-  projectType: string;
-  rating: number;
 }
 
 @Component({
@@ -83,57 +79,28 @@ export class TestimoniosGrid implements OnInit, AfterViewInit, OnDestroy {
   protected readonly testimonios: Testimonio[] = [
     {
       id: '01',
-      name: 'Arq. Sofia Proano',
-      role: 'Socia Directora',
-      company: 'Estudio Proano Arquitectos',
-      text: 'Trabajar con Adinova fue una experiencia excepcional. Entienden la arquitectura desde una perspectiva integral y su capacidad de ejecucion supero nuestras expectativas. Un equipo con criterio y sensibilidad.',
-      projectType: 'Oficinas corporativas Cuenca',
-      rating: 5
+      name: 'Clara Iñiguez',
+      text: 'La experiencia que tengo es con Adinova de un trabajo muy profesional y ético dando un seguimiento hasta concluir con los trámites a ellos encomendados. Recomiendo a éstos jóvenes profesionales como personas y profesionales.',
     },
     {
       id: '02',
-      name: 'Ing. Pablo Montufar',
-      role: 'Gerente de Proyectos',
-      company: 'Grupo Inmobiliario Fides',
-      text: 'Llevamos tres proyectos conjuntos y el nivel de detalle en cada entrega es consistente. Cumplen cronogramas, respetan presupuestos y la calidad constructiva es de primer nivel.',
-      projectType: 'Desarrollo residencial',
-      rating: 5
+      name: 'Marcos Aucay',
+      text: 'Un grupo de jóvenes profesionales, me brindaron un buen asesoramiento en mis trámites, totalmente recomendado.',
     },
     {
       id: '03',
-      name: 'Maria Fernanda Crespo',
-      role: 'Propietaria',
-      company: 'Residencia Alto Valle',
-      text: 'Confiamos en Adinova para nuestra casa familiar y el resultado supero lo que imaginabamos. Cada espacio fue pensado para nuestra rutina diaria. La luz natural y los materiales hacen la diferencia.',
-      projectType: 'Vivienda unifamiliar',
-      rating: 5
+      name: 'Nancy Sánchez',
+      text: 'Muy agradecida a Adinova diseño y construcción un grupo de jóvenes profesionales que me ayudaron en la construcción de mi casita muchísimas gracias y muchos éxitos en su vida profesional.',
     },
     {
       id: '04',
-      name: 'Diego Andrade',
-      role: 'CEO',
-      company: 'Restaurante Tierra',
-      text: 'Transformaron un local comun en un espacio con alma. El diseno de interiores logro exactamente la atmosfera que buscabamos para nuestro restaurante. Los comensales notan la diferencia.',
-      projectType: 'Diseno de interiores',
-      rating: 5
+      name: 'María Ortiz',
+      text: 'El equipo del estudio arquitectónico Adinova es un grupo de profesionales que nos han ayudado desde el principio a fin quiero agradecerles por su trabajo y esmero gracias y tienen un cliente satisfecho.',
     },
     {
       id: '05',
-      name: 'Ing. Gabriela Valdivieso',
-      role: 'Directora de Operaciones',
-      company: 'Centro Logistico Sur',
-      text: 'Para nuestra nave industrial necesitabamos eficiencia ante todo. Adinova diseno los flujos de trabajo y la distribucion optimizando cada metro cuadrado. Proyecto entregado antes del plazo.',
-      projectType: 'Nave industrial',
-      rating: 5
-    },
-    {
-      id: '06',
-      name: 'Dr. Esteban Rosero',
-      role: 'Director Medico',
-      company: 'Hospital General Sur',
-      text: 'Un proyecto hospitalario requiere conocimientos tecnicos muy especificos. Adinova demostro total comprension de las normas sanitarias y flujos clinicos. El resultado es un hospital funcional y acogedor.',
-      projectType: 'Centro de salud',
-      rating: 5
+      name: 'Luis Alberto Padilla',
+      text: 'El mejor estudio de arquitectos realmente son unos profesionales.',
     },
   ];
 

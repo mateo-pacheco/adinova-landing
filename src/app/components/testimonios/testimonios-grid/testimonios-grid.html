@@ -35,16 +35,8 @@
             
             <p class="testimonio-text">"{{ testimonio.text }}"</p>
             
-            <div class="testimonio-rating">
-              @for (star of [1,2,3,4,5]; track star) {
-                <i class="fa-solid fa-star fa-xs" [class.text-yellow-400]="star <= testimonio.rating" [class.text-white-20]="star > testimonio.rating"></i>
-              }
-            </div>
-            
             <div class="testimonio-author">
               <h3 class="author-name">{{ testimonio.name }}</h3>
-              <p class="author-role">{{ testimonio.role }} | {{ testimonio.company }}</p>
-              <span class="author-project">{{ testimonio.projectType }}</span>
             </div>
           </div>
         </article>

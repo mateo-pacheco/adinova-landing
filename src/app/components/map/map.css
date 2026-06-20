@@ -1,5 +1,64 @@
-﻿iframe {
+﻿.map-wrapper {
+  position: relative;
+}
+
+.map-wrapper iframe {
   filter: saturate(0) brightness(0.4) contrast(1.2);
   border-radius: 16px;
   border: 1px solid rgba(255,255,255,0.06);
+  transition: filter 0.4s ease;
+}
+
+.map-wrapper.map-active iframe {
+  filter: saturate(1) brightness(0.6) contrast(1.1);
+}
+
+.map-wrapper .pointer-events-none {
+  pointer-events: none;
+}
+
+.map-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background: rgba(3, 3, 3, 0.6);
+  backdrop-filter: blur(2px);
+  cursor: pointer;
+  border: none;
+  border-radius: inherit;
+  transition: opacity 0.3s ease;
+}
+
+.map-overlay:hover {
+  background: rgba(3, 3, 3, 0.45);
+}
+
+.map-overlay-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(54, 168, 168, 0.5);
+  color: #36A8A8;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.map-overlay:hover .map-overlay-icon {
+  transform: scale(1.1);
+  background: rgba(54, 168, 168, 0.1);
+}
+
+.map-overlay-text {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 400;
 }

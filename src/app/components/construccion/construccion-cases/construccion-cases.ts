@@ -10,9 +10,8 @@ interface Project {
   category: string;
   location: string;
   image: string;
-  area: string;
-  duration: string;
   year: string;
+  description: string;
 }
 
 @Component({
@@ -85,69 +84,23 @@ export class ConstruccionCases implements OnInit, AfterViewInit, OnDestroy {
   protected readonly projects: Project[] = [
     {
       id: '01',
-      title: 'Edificio Metropolitano',
-      subtitle: 'Torre corporativa de 18 niveles',
-      category: 'Comercial',
-      location: 'Cuenca',
-      image: 'assets/img/01.webp',
-      area: '15,200 m2',
-      duration: '22 meses',
-      year: '2024'
+      title: 'Mansión Blanca',
+      subtitle: 'Challuabamba',
+      category: 'Residencial',
+      location: 'Challuabamba',
+      image: 'assets/proyectos/01-Mansión.webp',
+      year: '',
+      description: 'Esta vivienda está diseñada con una estructura de dos niveles, esta casa tipo mansión tiene la característica de contar con techo en varias aguas, debido a la ubicación geográfica y las inclemencias del tiempo de la región.'
     },
     {
       id: '02',
-      title: 'Conjunto San Luis',
-      subtitle: 'Urbanizacion de 65 viviendas',
-      category: 'Vivienda',
-      location: 'Azogues',
-      image: 'assets/img/04.webp',
-      area: '9,800 m2',
-      duration: '16 meses',
-      year: '2024'
-    },
-    {
-      id: '03',
-      title: 'Centro Logistico Biblián',
-      subtitle: 'Bodegas industriales y patio de maniobras',
-      category: 'Industrial',
-      location: 'Biblián',
-      image: 'assets/img/05.webp',
-      area: '18,500 m2',
-      duration: '10 meses',
-      year: '2023'
-    },
-    {
-      id: '04',
-      title: 'Plaza Gualaceo',
-      subtitle: 'Centro comercial 65 locales',
-      category: 'Comercial',
-      location: 'Gualaceo',
-      image: 'assets/img/03.webp',
-      area: '25,000 m2',
-      duration: '14 meses',
-      year: '2023'
-    },
-    {
-      id: '05',
-      title: 'Hacienda Santa Isabel',
-      subtitle: 'Restauracion de hacienda patrimonial',
-      category: 'Vivienda',
-      location: 'Santa Isabel',
-      image: 'assets/img/06.webp',
-      area: '1,200 m2',
-      duration: '12 meses',
-      year: '2022'
-    },
-    {
-      id: '06',
-      title: 'Hospital Paute',
-      subtitle: 'Centro medico de especialidades',
-      category: 'Salud',
-      location: 'Paute',
-      image: 'assets/img/02.webp',
-      area: '8,500 m2',
-      duration: '18 meses',
-      year: '2022'
+      title: 'Mansión La Pradera',
+      subtitle: 'Challuabamba',
+      category: 'Residencial',
+      location: 'Challuabamba',
+      image: 'assets/proyectos/02.webp',
+      year: '',
+      description: 'Esta vivienda se caracteriza por estar diseñada con materiales modernos extraídos del entorno, como lo es la madera. Un aspecto de suma importancia de este estilo de casa es que están construidas en terrenos de grandes extensiones con amplios patios y hermosos paisajes, con acabados de lujo dando como resultado un acabado agradable.'
     },
   ];
 

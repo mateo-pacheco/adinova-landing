@@ -1,7 +1,8 @@
-﻿import { Component, ElementRef, OnInit, OnDestroy, ViewChild, AfterViewInit, NgZone, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
+﻿import { Component, ElementRef, OnInit, OnDestroy, ViewChild, AfterViewInit, NgZone, Output, EventEmitter, ChangeDetectorRef, inject } from '@angular/core';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { CommonModule } from '@angular/common';
+import { PreloaderStateService } from '../../shared/preloader-state.service';
 import * as THREE from 'three';
 
 @Component({
@@ -59,7 +60,7 @@ import * as THREE from 'three';
       align-items: center;
       justify-content: center;
       overflow: hidden;
-      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .preloader.fade-out {
@@ -271,14 +272,13 @@ export class Preloader implements OnInit, AfterViewInit, OnDestroy {
   private isBrowser: boolean;
 
   private loadingSteps = [
-    { progress: 15, text: 'Loading assets' },
-    { progress: 30, text: 'Building scene' },
-    { progress: 50, text: 'Preparing animations' },
-    { progress: 70, text: 'Optimizing' },
-    { progress: 85, text: 'Finalizing' },
+    { progress: 30, text: 'Loading' },
+    { progress: 70, text: 'Preparing' },
     { progress: 100, text: 'Welcome' },
   ];
   private currentStep = 0;
+
+  private preloaderState = inject(PreloaderStateService);
 
   constructor(
     private ngZone: NgZone,
@@ -295,6 +295,11 @@ export class Preloader implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit() {
     if (!this.isBrowser) return;
+
+    if (this.preloaderState.shouldSkipAnimation()) {
+      this.skipAnimation();
+      return;
+    }
     
     this.ngZone.runOutsideAngular(() => {
       try {
@@ -305,6 +310,17 @@ export class Preloader implements OnInit, AfterViewInit, OnDestroy {
       }
       this.simulateLoading();
     });
+  }
+
+  private skipAnimation() {
+    this.progress = 100;
+    this.statusText = 'Welcome';
+    this.cdr.detectChanges();
+    this.isFadingOut = true;
+    setTimeout(() => {
+      this.preloaderState.markPreloaderShown();
+      this.hidden.emit();
+    }, 300);
   }
 
   private hideElement(): void {
@@ -512,7 +528,7 @@ export class Preloader implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private simulateLoading() {
-    const totalDuration = 4000;
+    const totalDuration = 2200;
     const startTime = Date.now();
     
     const updateProgress = () => {
@@ -537,10 +553,11 @@ export class Preloader implements OnInit, AfterViewInit, OnDestroy {
         this.statusText = 'Welcome';
         this.cdr.detectChanges();
         this.isFadingOut = true;
+        this.preloaderState.markPreloaderShown();
         
         setTimeout(() => {
           this.hidden.emit();
-        }, 800);
+        }, 400);
       }
     };
     
@@ -549,6 +566,7 @@ export class Preloader implements OnInit, AfterViewInit, OnDestroy {
 
   hide() {
     this.isFadingOut = true;
+    this.preloaderState.markPreloaderShown();
     
     setTimeout(() => {
       this.isHidden = true;
@@ -562,6 +580,6 @@ export class Preloader implements OnInit, AfterViewInit, OnDestroy {
       
       window.scrollTo(0, 0);
       document.body.classList.remove('preloader-active');
-    }, 1200);
+    }, 500);
   }
 }

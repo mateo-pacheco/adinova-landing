@@ -16,10 +16,21 @@
       </p>
     </div>
 
-    <div class="mt-10 overflow-hidden rounded-[1.6rem] border border-white/10">
+    <div class="map-wrapper mt-10 overflow-hidden rounded-[1.6rem] border border-white/10" [class.map-active]="mapActive()">
+      @if (!mapActive()) {
+        <button class="map-overlay" (click)="activateMap($event)" type="button" aria-label="Click para interactuar con el mapa">
+          <span class="map-overlay-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><polyline points="12 8 12 16"/><line x1="8" y1="12" x2="16" y2="12"/>
+            </svg>
+          </span>
+          <span class="map-overlay-text">Click para interactuar con el mapa</span>
+        </button>
+      }
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3984.720917572065!2d-79.00387649999999!3d-2.8965551!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91cd19f95d794585%3A0x83fed149559fb5ef!2sADINOVA%20Estudio%20Arquitect%C3%B3nico!5e0!3m2!1ses-419!2sec!4v1776880530997!5m2!1ses-419!2sec"
         class="h-[400px] w-full lg:h-[500px] border-0"
+        [class.pointer-events-none]="!mapActive()"
         loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
         title="Ubicacion ADINOVA"

@@ -1,53 +1,54 @@
 ﻿<section id="social" class="px-6 pt-0 pb-14 text-white lg:px-10 lg:pb-20">
   <div class="mx-auto max-w-7xl border-t border-white/10 pt-8">
     <div class="grid gap-4 lg:grid-cols-[0.9fr_1.1fr]">
-      <article class="section-panel premium-card rounded-[1.6rem] border border-white/10 bg-white/[0.04] p-6 sm:p-8">
-        <p class="text-[11px] uppercase tracking-[0.32em] text-[#36A8A8]">Social</p>
+      <article class="rounded-[1.6rem] border border-white/[0.06] bg-gradient-to-b from-white/[0.04] to-white/[0.01] p-6 sm:p-8">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="h-2 w-2 rounded-full bg-[#36A8A8] glow-dot animate-pulse"></span>
+          <p class="text-[10px] uppercase tracking-[0.32em] text-[#36A8A8] sm:text-[11px]">Social</p>
+        </div>
         <h2 class="mt-4 max-w-md text-3xl font-medium leading-tight text-white sm:text-4xl">
           Sigue el estudio y descubre nuevas referencias.
         </h2>
         <p class="mt-5 max-w-md text-sm leading-7 text-white/70 sm:text-base">
           Compartimos procesos, detalles de obra, materialidad y avances recientes con una presencia digital sobria.
         </p>
-
-        <div class="mt-10 border-t border-white/10 pt-6">
-          <p class="text-[11px] uppercase tracking-[0.24em] text-white/70">
-            Facebook / Instagram / LinkedIn / TikTok
-          </p>
-        </div>
       </article>
 
-      <div class="grid gap-4 max-sm:grid-cols-1 sm:grid-cols-2">
+      <div class="grid gap-3 max-sm:grid-cols-1 sm:grid-cols-2">
         @for (item of items; track item.name) {
           <a
             [href]="item.href"
             target="_blank"
             rel="noreferrer"
-            class="group premium-card rounded-[1.6rem] border border-white/10 bg-white/[0.04] p-4 transition duration-300 hover:border-[#36A8A8]/30 hover:bg-white/[0.06] sm:p-5"
+            class="group relative overflow-hidden rounded-[1.4rem] border border-white/[0.06] bg-gradient-to-b from-white/[0.05] to-white/[0.01] p-5 transition-all duration-300 hover:border-white/[0.12] hover:-translate-y-0.5 hover:shadow-lg sm:p-6"
           >
             <div class="flex items-center justify-between">
-              <div class="social-icon-box flex items-center justify-center rounded-full border border-white/10 text-white transition duration-300 group-hover:border-[#36A8A8]/30 group-hover:text-[#36A8A8]">
+              <div class="flex h-10 w-10 items-center justify-center rounded-xl border border-white/[0.08] bg-white/[0.03] text-white/60 transition-all duration-300 group-hover:scale-110 group-hover:border-white/20 group-hover:text-white sm:h-12 sm:w-12">
                 @switch (item.name) {
                   @case ('Facebook') {
-                    <i class="fa-brands fa-facebook-f social-icon"></i>
+                    <i class="fa-brands fa-facebook-f text-base sm:text-lg"></i>
                   }
                   @case ('Instagram') {
-                    <i class="fa-brands fa-instagram social-icon"></i>
-                  }
-                  @case ('LinkedIn') {
-                    <i class="fa-brands fa-linkedin-in social-icon"></i>
+                    <i class="fa-brands fa-instagram text-base sm:text-lg"></i>
                   }
                   @case ('TikTok') {
-                    <i class="fa-brands fa-tiktok social-icon"></i>
+                    <i class="fa-brands fa-tiktok text-base sm:text-lg"></i>
+                  }
+                  @case ('WhatsApp') {
+                    <i class="fa-brands fa-whatsapp text-base sm:text-lg"></i>
                   }
                 }
               </div>
 
-              <span class="glow-dot h-1.5 w-1.5 rounded-full bg-[#36A8A8]"></span>
+              <span class="flex h-7 w-7 items-center justify-center rounded-full border border-white/[0.06] bg-white/[0.02] text-white/20 transition-all duration-300 group-hover:border-[#36A8A8]/30 group-hover:bg-[#36A8A8]/10 group-hover:text-[#36A8A8]">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 17l9.2-9.2M17 17V7H7"/>
+                </svg>
+              </span>
             </div>
 
-            <p class="social-name mt-5 uppercase tracking-[0.24em] text-white sm:mt-6">{{ item.name }}</p>
-            <p class="social-handle mt-2 uppercase tracking-[0.22em] text-white/70 sm:mt-3">{{ item.handle }}</p>
+            <p class="mt-5 text-sm font-medium uppercase tracking-[0.24em] text-white transition-colors duration-300 sm:mt-6">{{ item.name }}</p>
+            <p class="mt-1.5 text-[11px] uppercase tracking-[0.2em] text-white/50 transition-colors duration-300 sm:text-xs">{{ item.handle }}</p>
           </a>
         }
       </div>
