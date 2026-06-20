@@ -107,7 +107,7 @@ export class Contact implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    if (!this.isBrowser) return;
+    if (!this.isBrowser || !this.canvasRef) return;
     this.ngZone.runOutsideAngular(() => {
       try {
         this.initThreeJS();
