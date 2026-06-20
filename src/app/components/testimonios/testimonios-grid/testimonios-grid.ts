@@ -76,6 +76,10 @@ export class TestimoniosGrid implements OnInit, AfterViewInit, OnDestroy {
     this.renderer?.dispose();
   }
 
+  protected getInitials(name: string): string {
+    return name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+  }
+
   protected readonly testimonios: Testimonio[] = [
     {
       id: '01',
@@ -244,5 +248,3 @@ export class TestimoniosGrid implements OnInit, AfterViewInit, OnDestroy {
     return 1 - Math.pow(1 - t, 3);
   }
 }
-
-

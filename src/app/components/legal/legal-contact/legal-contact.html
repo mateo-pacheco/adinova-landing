@@ -111,10 +111,10 @@
             <p class="text-sm text-green-400">Mensaje enviado correctamente. Te contactaremos pronto.</p>
           }
           @if (submitStatus === 'error') {
-            <p class="text-sm text-red-400">Error al enviar. Intentalo nuevamente.</p>
+            <p class="text-sm text-red-400">Error al enviar. Inténtalo nuevamente.</p>
           }
           
-          <button type="submit" [disabled]="isSubmitting" class="contact-submit rounded-full bg-[#36A8A8] px-6 py-3 text-[11px] uppercase tracking-[0.2em] text-white transition-all hover:bg-[#2d8f8f] disabled:opacity-50">
+          <button type="submit" [disabled]="isSubmitting" class="contact-submit w-full sm:w-auto rounded-full bg-[#36A8A8] px-6 py-3 text-[11px] uppercase tracking-[0.2em] text-white transition-all hover:bg-[#2d8f8f] disabled:opacity-50">
             {{ isSubmitting ? 'Enviando...' : 'Enviar mensaje' }}
           </button>
         </form>

@@ -1,11 +1,9 @@
-﻿<section class="px-6 pb-8 text-white lg:px-10 lg:pb-12">
+﻿<section class="px-6 pt-16 pb-8 text-white sm:pt-20 sm:pb-10 lg:pt-24 lg:pb-12">
   <div
-    class="marquee-container group relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-white/[0.06] bg-gradient-to-b from-white/[0.03] to-white/[0.01] py-5 sm:py-6"
+    class="marquee-container group relative mx-auto max-w-7xl overflow-hidden border border-white/[0.06] bg-white/[0.015] py-5 sm:py-6"
     (mouseenter)="onEnter()"
     (mouseleave)="onLeave()"
   >
-    <div class="absolute inset-0 pointer-events-none rounded-[2rem] ring-1 ring-white/[0.04]"></div>
-
     <div
       #track
       class="marquee-track flex w-max items-stretch"
@@ -15,15 +13,15 @@
         <div class="flex items-stretch">
           @for (item of items; track item.title) {
             <article
-              class="group/card mx-2 w-[17rem] shrink-0 overflow-hidden rounded-[1.4rem] border border-white/[0.06] bg-gradient-to-b from-white/[0.06] to-white/[0.02] transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.08] sm:mx-3 sm:w-[21rem]"
+              class="group/card mx-2 w-[17rem] shrink-0 overflow-hidden border border-white/[0.06] bg-white/[0.03] transition-all duration-300 hover:border-white/[0.12] hover:bg-white/[0.05] sm:mx-3 sm:w-[21rem]"
             >
               <div class="relative overflow-hidden">
-                <img [src]="item.image" [alt]="item.label" loading="lazy" class="h-40 w-full object-cover transition-all duration-500 group-hover/card:scale-105 group-hover/card:brightness-110 sm:h-48" />
+                <img [src]="item.image" [alt]="item.label" loading="lazy" decoding="async" class="h-40 w-full object-cover transition-all duration-500 group-hover/card:scale-105 sm:h-48" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 transition-opacity duration-300 group-hover/card:opacity-100"></div>
               </div>
 
               <div class="px-4 py-3.5 sm:px-5 sm:py-4">
-                <p class="text-xs uppercase tracking-[0.2em] text-white/80 group-hover/card:text-white transition-colors">{{ item.title }}</p>
+                <p class="text-xs uppercase tracking-[0.2em] text-white/70 group-hover/card:text-white/90 transition-colors">{{ item.title }}</p>
               </div>
             </article>
           }

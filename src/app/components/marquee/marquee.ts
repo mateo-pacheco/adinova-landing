@@ -30,17 +30,17 @@ export class Marquee {
       image: 'assets/img/03.webp',
     },
     {
-      title: 'Direccion de obra',
+      title: 'Dirección de obra',
       label: 'Conjunto San Luis',
       image: 'assets/img/04.webp',
     },
     {
-      title: 'Diseno conceptual',
+      title: 'Diseño conceptual',
       label: 'Centro Logistico',
       image: 'assets/img/05.webp',
     },
     {
-      title: 'Planificacion espacial',
+      title: 'Planificación espacial',
       label: 'Hacienda El Rosal',
       image: 'assets/img/06.webp',
     },

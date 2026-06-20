@@ -87,8 +87,8 @@ export class LegalContact implements OnInit, AfterViewInit, OnDestroy {
       };
       return labels[field] || 'Este campo es obligatorio';
     }
-    if (control.errors['email']) return 'Ingresa un correo valido';
-    if (control.errors['minlength']) return 'Minimo ' + control.errors['minlength'].requiredLength + ' caracteres';
+    if (control.errors['email']) return 'Ingresa un correo válido';
+    if (control.errors['minlength']) return 'Mínimo ' + control.errors['minlength'].requiredLength + ' caracteres';
     return '';
   }
 
@@ -143,13 +143,13 @@ export class LegalContact implements OnInit, AfterViewInit, OnDestroy {
     {
       id: '02',
       name: 'Desarrollos Vistta',
-      text: 'Asesoria excelent. Cierre de compraventa en tiempo record.',
+      text: 'Asesoría excelente. Cierre de compraventa en tiempo récord.',
       role: 'Director de Proyectos'
     },
     {
       id: '03',
       name: 'Inmobiliaria Horizon',
-      text: 'Professionalismo y conocimiento profundo del tema inmobiliario.',
+      text: 'Profesionalismo y conocimiento profundo del tema inmobiliario.',
       role: 'Socio Director'
     },
   ];

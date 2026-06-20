@@ -73,10 +73,10 @@ export class ConstruccionProcess implements OnInit, AfterViewInit, OnDestroy {
   protected readonly services = [
     {
       id: '01',
-      title: 'Cimentacion',
+      title: 'Cimentación',
       subtitle: 'Fundaciones',
       duration: '2-4 semanas',
-      deliverables: ['Cimentacion superficial', 'Cimentacion profunda', 'Pilotes', 'Zapatas'],
+      deliverables: ['Cimentación superficial', 'Cimentación profunda', 'Pilotes', 'Zapatas'],
       icon: `<i class="fa-solid fa-layer-group fa-2xl"></i>`,
     },
     {
@@ -84,12 +84,12 @@ export class ConstruccionProcess implements OnInit, AfterViewInit, OnDestroy {
       title: 'Estructura',
       subtitle: 'Metal y concreto',
       duration: '4-8 semanas',
-      deliverables: ['Estructura metalica', 'Losa de concreto', 'Columnas', 'Vigas'],
+      deliverables: ['Estructura metálica', 'Losa de concreto', 'Columnas', 'Vigas'],
       icon: `<i class="fa-solid fa-building-columns fa-2xl"></i>`,
     },
     {
       id: '03',
-      title: 'Albañileria',
+      title: 'Albañilería',
       subtitle: 'Muros y obra negra',
       duration: '3-6 semanas',
       deliverables: ['Muros de carga', 'Block estructural', 'Aplanados', 'Castillos'],
@@ -98,9 +98,9 @@ export class ConstruccionProcess implements OnInit, AfterViewInit, OnDestroy {
     {
       id: '04',
       title: 'Instalaciones',
-      subtitle: 'Electricas y hidraulicas',
+      subtitle: 'Eléctricas e hidráulicas',
       duration: '2-4 semanas',
-      deliverables: ['Instalacion electrica', 'Plomeria', 'Aire acondicionado', 'Red de datos'],
+      deliverables: ['Instalación eléctrica', 'Plomería', 'Aire acondicionado', 'Red de datos'],
       icon: `<i class="fa-solid fa-bolt fa-2xl"></i>`,
     },
     {
@@ -108,7 +108,7 @@ export class ConstruccionProcess implements OnInit, AfterViewInit, OnDestroy {
       title: 'Acabados',
       subtitle: 'Terminados finales',
       duration: '2-3 semanas',
-      deliverables: ['Pintura', 'Canceleria', 'Cocina integral', 'Muebles fijos'],
+      deliverables: ['Pintura', 'Cancelería', 'Cocina integral', 'Muebles fijos'],
       icon: `<i class="fa-solid fa-paintbrush fa-2xl"></i>`,
     },
   ];

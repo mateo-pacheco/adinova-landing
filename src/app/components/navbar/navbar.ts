@@ -12,9 +12,9 @@ export class Navbar {
   protected readonly isMenuOpen = signal(false);
 
   protected readonly links = [
-    { label: 'Estudio', href: '#estudio', route: null },
+    { label: 'Estudio', href: '/', route: null },
     { label: 'Diseño', href: null, route: '/diseno' },
-    { label: 'Construccion', href: null, route: '/construccion' },
+    { label: 'Construcción', href: null, route: '/construccion' },
     { label: 'Legal', href: null, route: '/legal' },
     { label: 'Testimonios', href: null, route: '/testimonios' },
   ];

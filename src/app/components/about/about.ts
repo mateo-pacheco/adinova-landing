@@ -12,22 +12,22 @@ export class About implements OnInit {
     {
       title: 'Claridad espacial',
       description:
-        'Cada decision responde a una logica funcional, visual y constructiva. Espacios que fluyen con naturalidad y proposito.',
+        'Cada decisión responde a una lógica funcional, visual y constructiva. Espacios que fluyen con naturalidad y propósito.',
     },
     {
       title: 'Materialidad honesta',
       description:
-        'Trabajamos con texturas autenticas, luz natural y proporciones que envejecen con dignidad. Sin revestimientos innecesarios.',
+        'Trabajamos con texturas auténticas, luz natural y proporciones que envejecen con dignidad. Sin revestimientos innecesarios.',
     },
     {
-      title: 'Precision tecnica',
+      title: 'Precisión técnica',
       description:
-        'El diseno y la ejecucion se articulan con rigor. Control continuo de cada detalle constructivo desde el concepto hasta la entrega.',
+        'El diseño y la ejecución se articulan con rigor. Control continuo de cada detalle constructivo desde el concepto hasta la entrega.',
     },
     {
       title: 'Contexto y lugar',
       description:
-        'Cada proyecto nace del dialogo con su entorno. Clima, topografia, cultura y paisaje definen las decisiones arquitectonicas.',
+        'Cada proyecto nace del diálogo con su entorno. Clima, topografía, cultura y paisaje definen las decisiones arquitectónicas.',
     },
   ];
 
@@ -38,27 +38,27 @@ export class About implements OnInit {
     },
     {
       name: 'Daniel Pedro Chicaiza Quituisaca',
-      role: 'Jefe de Construccion - Encargado de los procesos en obra',
+      role: 'Jefe de Construcción - Encargado de los procesos en obra',
     },
     {
       name: 'Pablo Andres Patiño Campoverde',
-      role: 'Jefe de Topografia - Medicion de terrenos en campo',
+      role: 'Jefe de Topografía - Medición de terrenos en campo',
     },
     {
       name: 'Sami Dayanna Vacacela Naranjo',
-      role: 'Arquitecta Junior - Dibujante de proyectos arquitectonicos',
+      role: 'Arquitecta Junior - Dibujante de proyectos arquitectónicos',
     },
     {
       name: 'Britany Lizbeth Gaon Lopez',
-      role: 'Abogada - Tramite de procesos legales en derecho patrimonial',
+      role: 'Abogada - Trámite de procesos legales en derecho patrimonial',
     },
     {
       name: 'Ivan Joel Pardo Castro',
-      role: 'Marketing Digital - Gestion de campañas y redes sociales',
+      role: 'Marketing Digital - Gestión de campañas y redes sociales',
     },
     {
       name: 'Kevin Anibal Brito Sarmiento',
-      role: 'Arquitecto - Dibujante de proyectos arquitectonicos',
+      role: 'Arquitecto - Dibujante de proyectos arquitectónicos',
     },
   ];
 
