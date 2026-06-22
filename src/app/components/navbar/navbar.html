@@ -1,74 +1,51 @@
 <header class="navbar-container">
-  <nav class="navbar mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
-    <a href="#inicio" class="navbar-logo flex items-center gap-2.5" aria-label="Ir al inicio">
-      <img src="assets/logo/Logo-nav.webp" alt="Adinova Architecture Studio - Logo" decoding="async" class="h-6 w-6 object-contain lg:h-7 lg:w-7" />
-      <span class="text-base font-medium uppercase tracking-[0.25em] text-white/80">ADINOVA</span>
-    </a>
+  <nav class="navbar">
+    <a href="#inicio" class="navbar-brand" aria-label="Ir al inicio">ADINOVA</a>
 
-    <div class="navbar-links hidden items-center gap-8 lg:flex">
+    <div class="navbar-links">
       @for (link of links; track link.label) {
         @if (link.route) {
           <a [routerLink]="link.route"
-             class="navbar-link text-[11px] uppercase tracking-[0.2em] transition-colors duration-300">
-            {{ link.label }}
-          </a>
+             class="navbar-link"
+             routerLinkActive="navbar-link--active"
+             [routerLinkActiveOptions]="{ exact: true }">{{ link.label }}</a>
         } @else {
-          <a [href]="link.href"
-             class="navbar-link text-[11px] uppercase tracking-[0.2em] transition-colors duration-300">
-            {{ link.label }}
-          </a>
+          <a [href]="link.href" class="navbar-link">{{ link.label }}</a>
         }
       }
     </div>
 
-    <div class="hidden lg:block">
-      <a href="#contacto"
-         class="navbar-cta rounded-full px-5 py-2 text-[10px] uppercase tracking-[0.12em] transition-all duration-300">
-        Contacto
-      </a>
-    </div>
+    <div class="navbar-actions">
+      <a href="#contacto" class="navbar-cta">Contacto</a>
 
-    <button type="button"
-            class="navbar-toggle flex h-9 w-9 items-center justify-center border transition-all duration-300 lg:hidden"
-            (click)="toggleMenu()"
-            [attr.aria-expanded]="isMenuOpen()"
-            aria-label="Abrir menú">
-      @if (isMenuOpen()) {
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-4 h-4">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-        </svg>
-      } @else {
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-4 h-4">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
-        </svg>
-      }
-    </button>
+      <button type="button"
+              class="navbar-toggle"
+              (click)="toggleMenu()"
+              [attr.aria-expanded]="isMenuOpen()"
+              aria-label="Abrir menú">
+        @if (isMenuOpen()) {
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-4 h-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        } @else {
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-4 h-4">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
+          </svg>
+        }
+      </button>
+    </div>
   </nav>
 
   @if (isMenuOpen()) {
-    <div class="navbar-mobile px-6 py-5 lg:hidden">
-      <div class="flex flex-col gap-1">
-        @for (link of links; track link.label) {
-          @if (link.route) {
-            <a [routerLink]="link.route"
-               class="navbar-mobile-link rounded-md px-4 py-3 text-[13px] uppercase tracking-[0.2em] transition-all duration-200"
-               (click)="closeMenu()">
-              {{ link.label }}
-            </a>
-          } @else {
-            <a [href]="link.href"
-               class="navbar-mobile-link rounded-md px-4 py-3 text-[13px] uppercase tracking-[0.2em] transition-all duration-200"
-               (click)="closeMenu()">
-              {{ link.label }}
-            </a>
-          }
+    <div class="navbar-mobile">
+      @for (link of links; track link.label) {
+        @if (link.route) {
+          <a [routerLink]="link.route" class="navbar-mobile-link" (click)="closeMenu()">{{ link.label }}</a>
+        } @else {
+          <a [href]="link.href" class="navbar-mobile-link" (click)="closeMenu()">{{ link.label }}</a>
         }
-        <a href="#contacto"
-           class="navbar-mobile-cta mt-2 rounded-md border px-4 py-3 text-center text-[13px] uppercase tracking-[0.2em] transition-all duration-200"
-           (click)="closeMenu()">
-          Contacto
-        </a>
-      </div>
+      }
+      <a href="#contacto" class="navbar-mobile-cta" (click)="closeMenu()">Contacto</a>
     </div>
   }
 </header>
