@@ -13,6 +13,10 @@ export class Marquee {
   protected paused = false;
   protected translateX = 0;
 
+  private touchStartX = 0;
+  private touchEndX = 0;
+  private isDragging = false;
+
   protected readonly items = [
     {
       title: 'Arquitectura residencial',
@@ -66,6 +70,29 @@ export class Marquee {
     const maxScroll = trackWidth - el.parentElement!.clientWidth;
     this.translateX = Math.max(this.translateX - step - gap, -maxScroll);
     el.style.setProperty('transform', `translateX(${this.translateX}px)`, 'important');
+  }
+
+  onTouchStart(event: TouchEvent) {
+    this.touchStartX = event.touches[0].clientX;
+    this.isDragging = true;
+    this.paused = true;
+  }
+
+  onTouchMove(event: TouchEvent) {
+    if (!this.isDragging) return;
+    this.touchEndX = event.touches[0].clientX;
+  }
+
+  onTouchEnd() {
+    if (!this.isDragging) return;
+    this.isDragging = false;
+    const diff = this.touchStartX - this.touchEndX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) this.next();
+      else this.prev();
+    } else {
+      this.onLeave();
+    }
   }
 
   onEnter() {

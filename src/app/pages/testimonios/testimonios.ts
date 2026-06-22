@@ -20,7 +20,8 @@ export class Testimonios implements OnInit {
       title: 'Testimonios de Clientes',
       description: 'Opiniones y experiencias de clientes que confiaron en Adinova para sus proyectos arquitectónicos en Cuenca. Más de 6 años de excelencia en diseño y construcción.',
       keywords: 'testimonios arquitectura Cuenca, opiniones clientes, experiencias construcción',
-      canonical: 'https://adinovaestudio.com/testimonios'
+      canonical: 'https://adinovaestudio.com/testimonios',
+      image: 'https://adinovaestudio.com/assets/logo/icono_fondo.webp'
     });
   }
 }

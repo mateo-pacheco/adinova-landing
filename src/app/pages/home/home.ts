@@ -25,7 +25,8 @@ export class Home implements OnInit {
       title: 'Estudio de Arquitectura Contemporánea en Cuenca',
       description: 'Adinova es un estudio de arquitectura contemporánea en Cuenca. Diseño arquitectónico, construcción y asesoría legal para proyectos residenciales y comerciales. 6+ años transformando espacios.',
       keywords: 'arquitectura Cuenca, estudio arquitectura, diseño arquitectónico, construcción Cuenca, asesoría legal arquitectura',
-      canonical: 'https://adinovaestudio.com/'
+      canonical: 'https://adinovaestudio.com/',
+      image: 'https://adinovaestudio.com/assets/logo/icono_fondo.webp'
     });
   }
 }

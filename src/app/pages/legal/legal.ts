@@ -21,7 +21,8 @@ export class Legal implements OnInit {
       title: 'Asesoría Legal para Proyectos Arquitectónicos en Cuenca',
       description: 'Gestión de permisos de construcción, trámites municipales y asesoría legal para proyectos arquitectónicos en Cuenca. Regularización de bienes inmuebles y seguridad jurídica para inversiones.',
       keywords: 'asesoría legal arquitectura Cuenca, permisos construcción, trámites municipales, regularización inmuebles',
-      canonical: 'https://adinovaestudio.com/legal'
+      canonical: 'https://adinovaestudio.com/legal',
+      image: 'https://adinovaestudio.com/assets/logo/icono_fondo.webp'
     });
   }
 }
