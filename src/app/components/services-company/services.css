@@ -1,1 +1,67 @@
 :host { display: block; }
+
+[id="servicios"] .adn-label,
+[id="servicios"] [class*="text-\\[10px\\]"] {
+  font-size: 0.62rem !important;
+  letter-spacing: 0.28em !important;
+  color: rgba(43,191,179,0.75) !important;
+  font-weight: 400 !important;
+}
+
+[id="servicios"] h2 {
+  font-weight: 300 !important;
+  letter-spacing: -0.03em !important;
+  color: rgba(255,255,255,0.88) !important;
+}
+
+[id="servicios"] p {
+  color: rgba(255,255,255,0.38) !important;
+  font-weight: 300 !important;
+}
+
+[id="servicios"] article img {
+  height: 120px !important;
+  border-radius: 12px 12px 0 0 !important;
+}
+
+[id="servicios"] article {
+  background: rgba(255,255,255,0.025) !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+  border-radius: 16px !important;
+  transition: border-color 0.3s ease, background 0.3s ease !important;
+}
+
+[id="servicios"] article:hover {
+  border-color: rgba(255,255,255,0.12) !important;
+  background: rgba(255,255,255,0.04) !important;
+}
+
+[id="servicios"] article h3 {
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.01em !important;
+}
+
+[id="servicios"] article .glow-dot {
+  opacity: 0.5;
+}
+
+[id="servicios"] article span:first-child {
+  color: rgba(255,255,255,0.15) !important;
+  font-size: 0.62rem !important;
+  letter-spacing: 0.2em !important;
+}
+
+[id="servicios"] article p:last-of-type {
+  font-size: 0.8rem !important;
+  color: rgba(255,255,255,0.38) !important;
+  line-height: 1.7 !important;
+}
+
+[id="servicios"] .adn-rule {
+  width: 28px;
+  height: 1px;
+  background: var(--adn-accent, #2BBFB3);
+  opacity: 0.6;
+  margin-bottom: 1.25rem;
+}

@@ -6,7 +6,7 @@
   <div class="mx-auto max-w-7xl">
     <div class="grid gap-5 border-t border-white/10 pt-6 sm:gap-6 sm:pt-8 lg:grid-cols-[1fr_1.5fr] lg:items-end">
       <div data-scroll-reveal class="max-w-xl">
-        <p class="text-[10px] uppercase tracking-[0.32em] text-[#36A8A8] sm:text-[11px]">Contacto</p>
+        <p class="text-[10px] uppercase tracking-[0.32em] text-[#2BBFB3] sm:text-[11px]">Contacto</p>
         <h2 class="mt-3 text-2xl font-medium leading-tight text-white sm:mt-4 sm:text-3xl lg:text-4xl">
           Comparte tu experiencia.
         </h2>
@@ -31,7 +31,7 @@
               aria-required="true"
               (focus)="onFieldFocus('name')"
               (blur)="onFieldBlur('name')"
-              class="contact-input rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/40 transition-all focus:border-[#36A8A8] focus:outline-none w-full"
+              class="contact-input rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/40 transition-all focus:border-[#2BBFB3] focus:outline-none w-full"
             />
             @if (isFieldInvalid('name')) {
               <p class="mt-1 text-xs text-red-400">{{ getErrorMessage('name') }}</p>
@@ -46,7 +46,7 @@
               aria-required="true"
               (focus)="onFieldFocus('email')"
               (blur)="onFieldBlur('email')"
-              class="contact-input rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/40 transition-all focus:border-[#36A8A8] focus:outline-none w-full"
+              class="contact-input rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/40 transition-all focus:border-[#2BBFB3] focus:outline-none w-full"
             />
             @if (isFieldInvalid('email')) {
               <p class="mt-1 text-xs text-red-400">{{ getErrorMessage('email') }}</p>
@@ -60,7 +60,7 @@
               aria-label="Empresa o proyecto"
               (focus)="onFieldFocus('company')"
               (blur)="onFieldBlur('company')"
-              class="contact-input rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/40 transition-all focus:border-[#36A8A8] focus:outline-none w-full"
+              class="contact-input rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/40 transition-all focus:border-[#2BBFB3] focus:outline-none w-full"
             />
           </div>
           <div>
@@ -72,7 +72,7 @@
               aria-required="true"
               (focus)="onFieldFocus('message')"
               (blur)="onFieldBlur('message')"
-              class="contact-input rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/40 transition-all focus:border-[#36A8A8] focus:outline-none resize-none w-full"
+              class="contact-input rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/40 transition-all focus:border-[#2BBFB3] focus:outline-none resize-none w-full"
             ></textarea>
             @if (isFieldInvalid('message')) {
               <p class="mt-1 text-xs text-red-400">{{ getErrorMessage('message') }}</p>
@@ -86,7 +86,7 @@
             <p class="text-sm text-red-400">Error al enviar. Inténtalo nuevamente.</p>
           }
           
-          <button type="submit" [disabled]="isSubmitting" class="contact-submit w-full sm:w-auto rounded-full bg-[#36A8A8] px-6 py-3 text-[11px] uppercase tracking-[0.2em] text-white transition-all hover:bg-[#2d8f8f] disabled:opacity-50">
+          <button type="submit" [disabled]="isSubmitting" class="contact-submit w-full sm:w-auto rounded-full bg-[#2BBFB3] px-6 py-3 text-[11px] uppercase tracking-[0.2em] text-white transition-all hover:bg-[#2d8f8f] disabled:opacity-50">
             {{ isSubmitting ? 'Enviando...' : 'Enviar testimonio' }}
           </button>
         </form>
@@ -123,7 +123,7 @@
             </div>
             <div>
               <p class="text-sm font-medium text-white">Oficina</p>
-              <p class="mt-1 text-sm text-white/60">Luis Cordero 9-55 y Simon Bolivar, Ofic. #16, Cuenca</p>
+              <p class="mt-1 text-sm text-white/60">Luis Cordero 9-55 y Simón Bolívar, Ofic. #16, Cuenca</p>
             </div>
           </div>
         </div>

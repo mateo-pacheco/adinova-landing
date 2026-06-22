@@ -1,6 +1,4 @@
-:host {
-  display: block;
-}
+:host { display: block; }
 
 .testimonios-grid {
   display: grid;
@@ -14,14 +12,14 @@
   position: relative;
   border-radius: 0;
   padding: 1.75rem 1.75rem 1.5rem;
-  background: rgba(255, 255, 255, 0.015);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(255,255,255,0.015);
+  border: 1px solid rgba(255,255,255,0.055);
   transition: border-color 0.25s ease, background 0.25s ease;
 }
 
 .testimonio-card:hover {
-  background: rgba(255, 255, 255, 0.025);
-  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255,255,255,0.025);
+  border-color: rgba(255,255,255,0.1);
 }
 
 .card-accent {
@@ -31,12 +29,12 @@
   width: 2px;
   height: 2.5rem;
   background: #2BBFB3;
-  opacity: 0.5;
+  opacity: 0.35;
   transition: opacity 0.25s ease;
 }
 
 .testimonio-card:hover .card-accent {
-  opacity: 1;
+  opacity: 0.65;
 }
 
 .card-body {
@@ -45,10 +43,10 @@
 }
 
 .card-text {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.75;
-  font-weight: 350;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.48);
+  line-height: 1.8;
+  font-weight: 300;
   margin: 0;
 }
 
@@ -57,20 +55,20 @@
   align-items: center;
   gap: 0.75rem;
   padding-top: 1rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  border-top: 1px solid rgba(255,255,255,0.04);
 }
 
 .avatar {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
-  background: rgba(43, 191, 179, 0.12);
+  background: rgba(43,191,179,0.08);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.6rem;
-  font-weight: 500;
-  color: #2BBFB3;
+  font-size: 0.58rem;
+  font-weight: 400;
+  color: rgba(43,191,179,0.55);
   flex-shrink: 0;
   letter-spacing: 0.03em;
   text-transform: uppercase;
@@ -82,9 +80,9 @@
 }
 
 .card-name {
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.65);
   margin: 0;
   line-height: 1.3;
   letter-spacing: -0.01em;
@@ -95,7 +93,6 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem;
   }
-
   .testimonio-card {
     padding: 2rem 2rem 1.75rem;
   }
@@ -106,18 +103,10 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 1.25rem;
   }
-
-  .card-text {
-    font-size: 0.82rem;
-  }
+  .card-text { font-size: 0.8rem; }
 }
 
 @media (min-width: 1280px) {
-  .testimonios-grid {
-    gap: 1.5rem;
-  }
-
-  .card-text {
-    font-size: 0.85rem;
-  }
+  .testimonios-grid { gap: 1.5rem; }
+  .card-text { font-size: 0.82rem; }
 }

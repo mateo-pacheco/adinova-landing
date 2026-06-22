@@ -1,51 +1,61 @@
-<header class="navbar-container">
-  <nav class="navbar">
-    <a href="#inicio" class="navbar-brand" aria-label="Ir al inicio">ADINOVA</a>
+<header [class.nav-scrolled]="isScrolled()">
+  <nav class="nav-inner">
 
-    <div class="navbar-links">
+    <!-- LOGO -->
+    <a href="/" class="nav-logo" aria-label="Ir al inicio">
+      <img src="assets/logo/Logo-nav.webp" alt="ADINOVA" class="nav-logo-img" />
+      <span class="nav-logo-text">ADINOVA</span>
+    </a>
+
+    <!-- LINKS DESKTOP -->
+    <div class="nav-links">
       @for (link of links; track link.label) {
         @if (link.route) {
           <a [routerLink]="link.route"
-             class="navbar-link"
-             routerLinkActive="navbar-link--active"
-             [routerLinkActiveOptions]="{ exact: true }">{{ link.label }}</a>
+             class="nav-link"
+             routerLinkActive="nav-link-active">
+            {{ link.label }}
+          </a>
         } @else {
-          <a [href]="link.href" class="navbar-link">{{ link.label }}</a>
+          <a [href]="link.href" class="nav-link">
+            {{ link.label }}
+          </a>
         }
       }
     </div>
 
-    <div class="navbar-actions">
-      <a href="#contacto" class="navbar-cta">Contacto</a>
-
-      <button type="button"
-              class="navbar-toggle"
+    <!-- CTA + TOGGLE -->
+    <div class="nav-actions">
+      <a href="#contacto" class="nav-cta">Contacto</a>
+      <button class="nav-toggle"
               (click)="toggleMenu()"
               [attr.aria-expanded]="isMenuOpen()"
-              aria-label="Abrir menú">
-        @if (isMenuOpen()) {
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-4 h-4">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-          </svg>
-        } @else {
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="w-4 h-4">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/>
-          </svg>
-        }
+              aria-label="Menú">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar nav-toggle-bar-mid"></span>
+        <span class="nav-toggle-bar"></span>
       </button>
     </div>
+
   </nav>
 
+  <!-- MOBILE MENU -->
   @if (isMenuOpen()) {
-    <div class="navbar-mobile">
+    <div class="nav-mobile">
       @for (link of links; track link.label) {
         @if (link.route) {
-          <a [routerLink]="link.route" class="navbar-mobile-link" (click)="closeMenu()">{{ link.label }}</a>
+          <a [routerLink]="link.route"
+             class="nav-mobile-link"
+             routerLinkActive="nav-mobile-link-active"
+             (click)="closeMenu()">{{ link.label }}</a>
         } @else {
-          <a [href]="link.href" class="navbar-mobile-link" (click)="closeMenu()">{{ link.label }}</a>
+          <a [href]="link.href"
+             class="nav-mobile-link"
+             (click)="closeMenu()">{{ link.label }}</a>
         }
       }
-      <a href="#contacto" class="navbar-mobile-cta" (click)="closeMenu()">Contacto</a>
+      <a href="#contacto" class="nav-mobile-cta"
+         (click)="closeMenu()">Contacto</a>
     </div>
   }
 </header>
