@@ -1,1 +1,45 @@
 :host { display: block; }
+
+[id="estudio"] [class*="text-\\[10px\\]"] {
+  font-size: 0.62rem !important;
+  letter-spacing: 0.28em !important;
+  color: rgba(43,191,179,0.75) !important;
+  font-weight: 400 !important;
+}
+
+[id="estudio"] h2 {
+  font-weight: 300 !important;
+  letter-spacing: -0.03em !important;
+  color: rgba(255,255,255,0.88) !important;
+}
+
+[id="estudio"] p {
+  color: rgba(255,255,255,0.38) !important;
+  font-weight: 300 !important;
+}
+
+[id="estudio"] article img {
+  border-radius: 12px;
+}
+
+[id="estudio"] article.premium-card {
+  background: rgba(255,255,255,0.025) !important;
+  border: 1px solid rgba(255,255,255,0.07) !important;
+  border-radius: 16px !important;
+  transition: border-color 0.3s ease, background 0.3s ease !important;
+}
+
+[id="estudio"] article.premium-card:hover {
+  border-color: rgba(255,255,255,0.12) !important;
+  background: rgba(255,255,255,0.04) !important;
+}
+
+[id="estudio"] [class*="border border-white\\/\\[0\\.06\\]"] {
+  background: rgba(255,255,255,0.02) !important;
+  border: 1px solid rgba(255,255,255,0.05) !important;
+  border-radius: 8px !important;
+}
+
+[id="estudio"] [class*="border border-white\\/\\[0\\.06\\]"]:hover {
+  background: rgba(255,255,255,0.04) !important;
+}

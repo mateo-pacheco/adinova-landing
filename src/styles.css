@@ -9,7 +9,7 @@
 a:focus-visible,
 button:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--adn-accent);
   outline-offset: 2px;
   border-radius: 4px;
 }
@@ -17,13 +17,38 @@ button:focus-visible,
 :root {
   color-scheme: dark;
   font-family: -apple-system, "SF Pro Display", BlinkMacSystemFont, "Helvetica Neue", sans-serif;
-  --color-bg: #0a0a0a;
-  --color-surface: rgba(255, 255, 255, 0.03);
+
+  /* Tipografía */
+  --adn-font: -apple-system, "SF Pro Display", BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+
+  /* Superficie */
+  --adn-bg: #080808;
+  --adn-surface: rgba(255, 255, 255, 0.025);
+  --adn-border: rgba(255, 255, 255, 0.07);
+  --adn-border-hover: rgba(255, 255, 255, 0.13);
+
+  /* Texto */
+  --adn-text-primary: rgba(255, 255, 255, 0.88);
+  --adn-text-secondary: rgba(255, 255, 255, 0.42);
+  --adn-text-tertiary: rgba(255, 255, 255, 0.22);
+
+  /* Acento */
+  --adn-accent: #2BBFB3;
+  --adn-accent-dim: rgba(43, 191, 179, 0.12);
+  --adn-accent-border: rgba(43, 191, 179, 0.20);
+
+  /* Espaciado de sección */
+  --adn-section-y: clamp(5rem, 10vh, 8rem);
+  --adn-section-x: clamp(1.5rem, 7vw, 7rem);
+
+  /* Legacy (mantener compatibilidad) */
+  --color-bg: #080808;
+  --color-surface: rgba(255, 255, 255, 0.025);
   --color-border: rgba(255, 255, 255, 0.07);
   --color-text-primary: rgba(255, 255, 255, 0.88);
   --color-text-secondary: rgba(255, 255, 255, 0.42);
-  --color-accent: #36A8A8;
-  --color-accent-subtle: rgba(54, 168, 168, 0.12);
+  --color-accent: #2BBFB3;
+  --color-accent-subtle: rgba(43, 191, 179, 0.12);
 }
 
 html {
@@ -33,8 +58,9 @@ html {
 
 body {
   position: relative;
-  background: var(--color-bg);
-  color: var(--color-text-primary);
+  background: var(--adn-bg);
+  color: var(--adn-text-primary);
+  font-family: var(--adn-font);
   font-weight: 300;
   line-height: 1.65;
   margin: 0;
@@ -44,34 +70,79 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1 { font-weight: 500; letter-spacing: -0.03em; }
-h2 { font-weight: 500; letter-spacing: -0.02em; }
-h3 { font-weight: 500; }
-h4, h5, h6 { font-weight: 500; letter-spacing: -0.02em; }
+h1 { font-weight: 300; letter-spacing: -0.03em; }
+h2 { font-weight: 300; letter-spacing: -0.03em; color: rgba(255, 255, 255, 0.88); }
+h3 { font-weight: 400; }
+h4, h5, h6 { font-weight: 400; letter-spacing: -0.02em; }
 
 b, strong {
   font-weight: 500;
 }
 
 p {
-  color: var(--color-text-secondary);
+  color: var(--adn-text-secondary);
   font-weight: 300;
 }
+
+/* ── Regla base para TODAS las secciones ── */
+
+section {
+  padding-top: var(--adn-section-y);
+  padding-bottom: var(--adn-section-y);
+  padding-left: var(--adn-section-x);
+  padding-right: var(--adn-section-x);
+}
+
+/* ── Labels de categoría ── */
+
+.adn-label {
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--adn-accent);
+  font-weight: 400;
+}
+
+/* ── Línea divisoria de sección ── */
+
+.adn-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--adn-border);
+  margin-bottom: 3rem;
+}
+
+/* ── Acento línea corta decorativa ── */
+
+.adn-rule {
+  width: 28px;
+  height: 1px;
+  background: var(--adn-accent);
+  opacity: 0.6;
+  margin-bottom: 1.25rem;
+}
+
+/* ── Card system ── */
+
+.adn-card {
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.adn-card:hover {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* ── Legacy (backward compat) ── */
 
 .small-label {
   font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   font-weight: 500;
-}
-
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(54, 168, 168, 0.05) 0%, transparent 70%);
-  z-index: 0;
 }
 
 app-root {
@@ -89,7 +160,7 @@ app-root {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-accent);
+  background: var(--adn-accent);
   border-radius: 3px;
   opacity: 0.6;
 }
@@ -99,30 +170,12 @@ app-root {
 }
 
 ::selection {
-  background: var(--color-accent);
-  color: var(--color-bg);
-}
-
-.section-panel {
-  position: relative;
-  overflow: hidden;
-  background: var(--color-surface);
-}
-
-.premium-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.premium-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  background: var(--adn-accent);
+  color: var(--adn-bg);
 }
 
 .glow-dot {
-  box-shadow: 0 0 8px var(--color-accent-subtle);
+  box-shadow: 0 0 8px var(--adn-accent-dim);
 }
 
 button, .btn, .cta, [class*="btn"], [class*="button"] {

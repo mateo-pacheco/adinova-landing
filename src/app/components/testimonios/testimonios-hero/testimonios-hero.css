@@ -1,31 +1,24 @@
-:host {
-  display: block;
-}
+:host { display: block; }
 
 .diseno-hero-canvas {
   width: 100% !important;
   height: 100% !important;
-  opacity: 0.5;
+  opacity: 0.35;
 }
 
-.diseno-stat-card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 16px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.diseno-stat-card, .stat-card {
+  background: rgba(255,255,255,0.025) !important;
+  border: 1px solid rgba(255,255,255,0.06) !important;
+  border-radius: 12px !important;
+  transition: border-color 0.3s ease, background 0.3s ease !important;
 }
 
-.diseno-stat-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+.diseno-stat-card:hover, .stat-card:hover {
+  border-color: rgba(255,255,255,0.12) !important;
+  background: rgba(255,255,255,0.04) !important;
 }
 
 .diseno-cta {
   text-decoration: none;
-}
-
-.stat-card {
-  background: rgba(255,255,255,0.03) !important;
-  border: 1px solid rgba(255,255,255,0.07) !important;
-  border-radius: 16px !important;
+  border-radius: 2px;
 }

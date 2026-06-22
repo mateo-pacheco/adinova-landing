@@ -1,5 +1,32 @@
-﻿:host {
-  display: block;
+:host { display: block; }
+
+.marquee-container {
+  border-top: 1px solid rgba(255,255,255,0.05) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.05) !important;
+  border-left: none !important;
+  border-right: none !important;
+  background: transparent !important;
+}
+
+.marquee-container article {
+  border-radius: 4px !important;
+  border: none !important;
+  overflow: hidden;
+}
+
+.marquee-container article img {
+  filter: brightness(0.75) saturate(0.7);
+  transition: filter 0.4s ease;
+}
+
+.marquee-container article:hover img {
+  filter: brightness(0.9) saturate(0.85);
+}
+
+.marquee-container article p {
+  font-size: 0.6rem !important;
+  letter-spacing: 0.22em !important;
+  color: rgba(255,255,255,0.35) !important;
 }
 
 .marquee-track {
@@ -45,41 +72,29 @@
     width: 36px;
     height: 36px;
   }
-
   .marquee-container:hover .marquee-btn {
     opacity: 0.9;
   }
 }
 
 .marquee-btn:hover {
-  background: rgba(54, 168, 168, 0.15);
-  border-color: rgba(54, 168, 168, 0.3);
-  color: #36A8A8;
+  background: rgba(43, 191, 179, 0.15);
+  border-color: rgba(43, 191, 179, 0.3);
+  color: #2BBFB3;
 }
 
 .marquee-btn:active {
   transform: translateY(-50%) scale(0.95);
 }
 
-.marquee-btn-left {
-  left: 16px;
-}
-
-.marquee-btn-right {
-  right: 16px;
-}
+.marquee-btn-left { left: 16px; }
+.marquee-btn-right { right: 16px; }
 
 @keyframes marquee-scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
-  }
+  .marquee-track { animation: none; }
 }
