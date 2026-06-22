@@ -1,4 +1,4 @@
-import { Component, ElementRef, viewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, viewChild } from '@angular/core';
 
 @Component({
   selector: 'app-marquee',
@@ -7,11 +7,12 @@ import { Component, ElementRef, viewChild } from '@angular/core';
   templateUrl: './marquee.html',
   styleUrl: './marquee.css',
 })
-export class Marquee {
+export class Marquee implements OnDestroy {
   readonly track = viewChild<ElementRef<HTMLDivElement>>('track');
 
   protected paused = false;
   protected translateX = 0;
+  private autoResumeTimer: ReturnType<typeof setTimeout> | null = null;
 
   private touchStartX = 0;
   private touchEndX = 0;
@@ -54,28 +55,56 @@ export class Marquee {
     const el = this.track()?.nativeElement;
     if (!el) return;
     this.paused = true;
+    el.style.animation = 'none';
+    this.clearAutoResume();
     const step = el.querySelector('article')?.getBoundingClientRect().width ?? 300;
     const gap = 12;
     this.translateX = Math.min(this.translateX + step + gap, 0);
-    el.style.setProperty('transform', `translateX(${this.translateX}px)`, 'important');
+    el.style.transform = `translateX(${this.translateX}px)`;
+    this.scheduleAutoResume(el);
   }
 
   next() {
     const el = this.track()?.nativeElement;
     if (!el) return;
     this.paused = true;
+    el.style.animation = 'none';
+    this.clearAutoResume();
     const step = el.querySelector('article')?.getBoundingClientRect().width ?? 300;
     const gap = 12;
     const trackWidth = el.scrollWidth / 2;
     const maxScroll = trackWidth - el.parentElement!.clientWidth;
     this.translateX = Math.max(this.translateX - step - gap, -maxScroll);
-    el.style.setProperty('transform', `translateX(${this.translateX}px)`, 'important');
+    el.style.transform = `translateX(${this.translateX}px)`;
+    this.scheduleAutoResume(el);
+  }
+
+  private scheduleAutoResume(el: HTMLElement) {
+    this.clearAutoResume();
+    this.autoResumeTimer = setTimeout(() => {
+      this.paused = false;
+      el.style.removeProperty('transform');
+      el.style.removeProperty('animation');
+      this.autoResumeTimer = null;
+    }, 4000);
+  }
+
+  private clearAutoResume() {
+    if (this.autoResumeTimer !== null) {
+      clearTimeout(this.autoResumeTimer);
+      this.autoResumeTimer = null;
+    }
   }
 
   onTouchStart(event: TouchEvent) {
     this.touchStartX = event.touches[0].clientX;
     this.isDragging = true;
     this.paused = true;
+    const el = this.track()?.nativeElement;
+    if (el) {
+      el.style.animation = 'none';
+    }
+    this.clearAutoResume();
   }
 
   onTouchMove(event: TouchEvent) {
@@ -97,13 +126,24 @@ export class Marquee {
 
   onEnter() {
     this.paused = true;
+    this.clearAutoResume();
+    const el = this.track()?.nativeElement;
+    if (el) {
+      el.style.animation = 'none';
+    }
   }
 
   onLeave() {
     this.paused = false;
+    this.clearAutoResume();
     const el = this.track()?.nativeElement;
     if (el) {
       el.style.removeProperty('transform');
+      el.style.removeProperty('animation');
     }
+  }
+
+  ngOnDestroy() {
+    this.clearAutoResume();
   }
 }
