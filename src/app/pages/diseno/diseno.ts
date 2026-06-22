@@ -21,7 +21,8 @@ export class Diseno implements OnInit {
       title: 'Diseño Arquitectónico y de Interiores en Cuenca',
       description: 'Servicios profesionales de diseño arquitectónico y de interiores en Cuenca. Planos, renders, y diseño conceptual para proyectos residenciales y comerciales. Transformamos ideas en espacios funcionales y estéticos.',
       keywords: 'diseño arquitectónico Cuenca, diseño interiores Cuenca, planos arquitectónicos, renders 3D, diseño conceptual',
-      canonical: 'https://adinovaestudio.com/diseno'
+      canonical: 'https://adinovaestudio.com/diseno',
+      image: 'https://adinovaestudio.com/assets/logo/icono_fondo.webp'
     });
   }
 }

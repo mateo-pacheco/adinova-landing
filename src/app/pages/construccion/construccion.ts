@@ -22,7 +22,8 @@ export class Construccion implements OnInit {
       title: 'Construcción de Obras Arquitectónicas en Cuenca',
       description: 'Expertos en construcción y ejecución de obras arquitectónicas en Cuenca. Calidad, precisión y cumplimiento de plazos. Remodelaciones, ampliaciones y obra nueva. Solicita tu presupuesto sin compromiso.',
       keywords: 'construcción Cuenca, obras arquitectónicas, remodelaciones Cuenca, construcción residencial, presupuesto construcción',
-      canonical: 'https://adinovaestudio.com/construccion'
+      canonical: 'https://adinovaestudio.com/construccion',
+      image: 'https://adinovaestudio.com/assets/logo/icono_fondo.webp'
     });
   }
 }

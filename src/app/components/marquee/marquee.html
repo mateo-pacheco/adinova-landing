@@ -3,6 +3,9 @@
     class="marquee-container group relative mx-auto max-w-7xl overflow-hidden border border-white/[0.06] bg-white/[0.015] py-5 sm:py-6"
     (mouseenter)="onEnter()"
     (mouseleave)="onLeave()"
+    (touchstart)="onTouchStart($event)"
+    (touchmove)="onTouchMove($event)"
+    (touchend)="onTouchEnd()"
   >
     <div
       #track

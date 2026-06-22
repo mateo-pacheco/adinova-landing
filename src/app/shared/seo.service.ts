@@ -24,9 +24,10 @@ export class SeoService {
     const siteName = 'Adinova Architecture Studio';
     const fullTitle = config.title ? `${config.title} | ${siteName}` : siteName;
     const url = config.canonical || 'https://adinovaestudio.com/';
+    const image = config.image || 'https://adinovaestudio.com/assets/logo/icono_fondo.webp';
 
     this.title.setTitle(fullTitle);
-    
+
     if (config.description) {
       this.meta.updateTag({ name: 'description', content: config.description });
       this.meta.updateTag({ property: 'og:description', content: config.description });
@@ -40,14 +41,16 @@ export class SeoService {
     this.meta.updateTag({ property: 'og:title', content: fullTitle });
     this.meta.updateTag({ property: 'og:url', content: url });
     this.meta.updateTag({ property: 'og:type', content: config.type || 'website' });
+    this.meta.updateTag({ property: 'og:image', content: image });
+    this.meta.updateTag({ property: 'og:image:alt', content: siteName });
+    this.meta.updateTag({ property: 'og:site_name', content: siteName });
+    this.meta.updateTag({ property: 'og:locale', content: 'es_EC' });
 
+    this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
     this.meta.updateTag({ name: 'twitter:title', content: fullTitle });
     this.meta.updateTag({ name: 'twitter:url', content: url });
-
-    if (config.image) {
-      this.meta.updateTag({ property: 'og:image', content: config.image });
-      this.meta.updateTag({ name: 'twitter:image', content: config.image });
-    }
+    this.meta.updateTag({ name: 'twitter:image', content: image });
+    this.meta.updateTag({ name: 'twitter:image:alt', content: siteName });
 
     this.updateCanonicalUrl(url);
     this.generateJsonLd({ name: siteName, url });
