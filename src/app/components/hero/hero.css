@@ -214,6 +214,83 @@
 }
 
 /* ══════════════════════════════════
+   SMALL DESKTOP / LAPTOP (1024px - 1220px)
+   ══════════════════════════════════ */
+
+@media (max-width: 1220px) and (min-width: 1024px) {
+  .hero-content {
+    left: clamp(2.5rem, 5vw, 4rem);
+    bottom: clamp(3rem, 7vh, 5rem);
+    max-width: 440px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.4rem, 4.8vw, 3.6rem);
+  }
+
+  .hero-stats {
+    right: clamp(2.5rem, 5vw, 4rem);
+    bottom: clamp(3rem, 7vh, 5rem);
+    gap: 1.5rem;
+    padding: 1.25rem 0 1.25rem 1.5rem;
+  }
+
+  .stat-label {
+    white-space: nowrap;
+  }
+}
+
+/* ══════════════════════════════════
+   TABLET / RESPONSIVE (768px - 1023px)
+   ══════════════════════════════════ */
+
+@media (max-width: 1023px) and (min-width: 768px) {
+  .hero-content {
+    left: clamp(2rem, 5vw, 4rem);
+    bottom: clamp(8.5rem, 16vh, 10.5rem);
+    max-width: 430px;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 4.5vw, 3.2rem);
+  }
+
+  .hero-stats {
+    left: clamp(2rem, 5vw, 4rem);
+    right: clamp(2rem, 5vw, 4rem);
+    bottom: clamp(2rem, 4vh, 3rem);
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    justify-content: space-between;
+    align-items: end;
+    gap: 1rem;
+    padding: 1rem 0 0;
+    background: linear-gradient(to top, rgba(3, 3, 3, 0.34) 0%, transparent 100%);
+  }
+
+  .stat-item {
+    min-width: 0;
+    text-align: center;
+  }
+
+  .stat-value {
+    font-size: 1.25rem;
+  }
+
+  .stat-label {
+    max-width: 9.5rem;
+    font-size: 0.54rem;
+    line-height: 1.35;
+  }
+
+  .stat-sep {
+    width: 1px;
+    height: 2.25rem;
+    background: rgba(255, 255, 255, 0.20);
+  }
+}
+
+/* ══════════════════════════════════
    MOBILE  (max-width: 767px)
    ══════════════════════════════════ */
 
