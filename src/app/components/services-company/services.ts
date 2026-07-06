@@ -17,7 +17,7 @@ export class Services {
         'Planos topográficos, curvas de nivel e informes para ' +
         'procesos legales, construcción y regularización predial.',
       label: 'Topografía',
-      image: 'assets/img/07.webp',
+      image: 'assets/img/LP.webp',
     },
     {
       index: '02',
@@ -25,7 +25,7 @@ export class Services {
       description:
         'Gestión integral de permisos de construcción, licencias urbanísticas, certificados de afectación y aprobaciones ante el municipio de Cuenca.',
       label: 'Trámites',
-      image: 'assets/img/08.webp',
+      image: 'assets/img/Tra.webp',
     },
     {
       index: '03',
@@ -35,7 +35,7 @@ export class Services {
         'y derechos sucesorios. Procesos de derecho patrimonial ' +
         'con acompañamiento jurídico especializado.',
       label: 'Escrituras',
-      image: 'assets/img/09.webp',
+      image: 'assets/img/AE.webp',
     },
     {
       index: '04',
