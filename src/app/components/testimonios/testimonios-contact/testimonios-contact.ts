@@ -1,4 +1,4 @@
-﻿import { Component, ElementRef, OnInit, OnDestroy, ViewChild, AfterViewInit, NgZone } from '@angular/core';
+﻿import { Component, ElementRef, OnDestroy, ViewChild, AfterViewInit, NgZone } from '@angular/core';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -13,7 +13,7 @@ import * as THREE from 'three';
   templateUrl: './testimonios-contact.html',
   styleUrl: './testimonios-contact.css',
 })
-export class TestimoniosContact implements OnInit, AfterViewInit, OnDestroy {
+export class TestimoniosContact implements AfterViewInit, OnDestroy {
   @ViewChild('canvas3d', { static: true }) canvasRef!: ElementRef<HTMLCanvasElement>;
 
   private fb = new FormBuilder();
@@ -42,8 +42,6 @@ export class TestimoniosContact implements OnInit, AfterViewInit, OnDestroy {
       message: ['', [Validators.required, Validators.minLength(10)]],
     });
   }
-
-  ngOnInit() {}
 
   ngAfterViewInit() {
     if (!this.isBrowser) return;
@@ -122,7 +120,8 @@ export class TestimoniosContact implements OnInit, AfterViewInit, OnDestroy {
         this.contactForm.get(key)?.markAsUntouched();
       });
       setTimeout(() => this.submitStatus = 'idle', 5000);
-    } catch {
+    } catch (error: unknown) {
+      console.error('EmailJS error:', error);
       this.submitStatus = 'error';
       setTimeout(() => this.submitStatus = 'idle', 5000);
     } finally {
