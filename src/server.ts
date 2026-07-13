@@ -10,6 +10,10 @@ import { join } from 'node:path';
 
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
+(globalThis as any).EMAILJS_PUBLIC_KEY = process.env['EMAILJS_PUBLIC_KEY'] || '9z0_yIR7PDq3iFVVx';
+(globalThis as any).EMAILJS_SERVICE_ID = process.env['EMAILJS_SERVICE_ID'] || 'service_p7wtwvf';
+(globalThis as any).EMAILJS_TEMPLATE_ID = process.env['EMAILJS_TEMPLATE_ID'] || 'template_ujvoh44';
+
 const app = express();
 
 app.use(compression());

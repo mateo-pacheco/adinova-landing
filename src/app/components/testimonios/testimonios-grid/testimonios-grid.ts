@@ -1,4 +1,4 @@
-﻿import { Component, ElementRef, OnInit, OnDestroy, ViewChild, AfterViewInit, NgZone, HostListener } from '@angular/core';
+﻿import { Component, ElementRef, OnDestroy, ViewChild, AfterViewInit, NgZone, HostListener } from '@angular/core';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import * as THREE from 'three';
@@ -16,7 +16,7 @@ interface Testimonio {
   templateUrl: './testimonios-grid.html',
   styleUrl: './testimonios-grid.css',
 })
-export class TestimoniosGrid implements OnInit, AfterViewInit, OnDestroy {
+export class TestimoniosGrid implements AfterViewInit, OnDestroy {
   @ViewChild('canvas3d', { static: true }) canvasRef!: ElementRef<HTMLCanvasElement>;
 
   private scene!: THREE.Scene;
@@ -37,8 +37,6 @@ export class TestimoniosGrid implements OnInit, AfterViewInit, OnDestroy {
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
-
-  ngOnInit() {}
 
   ngAfterViewInit() {
     if (!this.isBrowser) return;

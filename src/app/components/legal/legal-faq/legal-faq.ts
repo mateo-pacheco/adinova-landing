@@ -1,4 +1,4 @@
-﻿import { Component, ElementRef, OnInit, OnDestroy, ViewChild, AfterViewInit, NgZone } from '@angular/core';
+﻿import { Component, ElementRef, OnDestroy, ViewChild, AfterViewInit, NgZone } from '@angular/core';
 import { Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { signal } from '@angular/core';
@@ -11,7 +11,7 @@ import * as THREE from 'three';
   templateUrl: './legal-faq.html',
   styleUrl: './legal-faq.css',
 })
-export class LegalFaq implements OnInit, AfterViewInit, OnDestroy {
+export class LegalFaq implements AfterViewInit, OnDestroy {
   @ViewChild('canvas3d', { static: true }) canvasRef!: ElementRef<HTMLCanvasElement>;
 
   private scene!: THREE.Scene;
@@ -31,8 +31,6 @@ export class LegalFaq implements OnInit, AfterViewInit, OnDestroy {
   ) {
     this.isBrowser = isPlatformBrowser(platformId);
   }
-
-  ngOnInit() {}
 
   ngAfterViewInit() {
     if (!this.isBrowser) return;
